@@ -6,7 +6,7 @@ export class User {
     password: String;
     // Notificaciones?
 
-    constructor(realname: String, nickname: String, email: String, phone: String, password: String ) {
+    constructor(realname: String, nickname: String, email: String, phone: String, password: String )  {
         this.realname = realname;
         this.nickname = nickname;
         this.email = email;
