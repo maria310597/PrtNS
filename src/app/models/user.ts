@@ -1,12 +1,12 @@
 export class User {
-    realname: String;
-    nickname: String;
-    email: String;
-    phone: String;
-    password: String;
+    realname: string;
+    nickname: string;
+    email: string;
+    phone: string;
+    password: string;
     // Notificaciones?
 
-    constructor(realname: String, nickname: String, email: String, phone: String, password: String )  {
+    constructor(realname: string, nickname: string, email: string, phone: string, password: string )  {
         this.realname = realname;
         this.nickname = nickname;
         this.email = email;
