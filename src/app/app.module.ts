@@ -13,7 +13,8 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
-
+// Servicios
+import {AuthenticationService} from './services/authentication.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
