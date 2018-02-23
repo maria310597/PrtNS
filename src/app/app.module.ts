@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } 
 
 // Routing
 import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
 
 // Firebase modules
@@ -17,48 +18,20 @@ import { AuthenticationGuard } from './services/authentication.guard';
 
 // Componentes
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import {LoginComponent} from './login/login.component';
+import { NavbarComponent } from './ui/navbar/navbar.component';
+import {LoginComponent} from './ui/login/login.component';
 import {CalendarComponent} from './ui/calendar/calendar.component';
 import { NotificationMessageComponent } from './ui/notifications/notification-message.component';
+
+// Layouts
+import { LoginLayoutComponent } from './ui/login/login-layout.component';
+import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.component';
 
 // Servicios
 import {AuthenticationService} from './services/authentication.service';
 import { PruebaComponent } from './prueba.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 
-const appRoutes: Routes = [
-
-
-  {
-    path: 'main',
-    component: PruebaComponent,
-
-  },
-  { path: 'main/vehiculo',
-  component: CalendarComponent,
-
-  },
-  // Es importante que esta sea la última
-
-  { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard],
-    children: [
-      {
-        path: '',
-        component: NavbarComponent
-      },
-
-
-    ]
-
-  },
-  { path: '',
-    redirectTo: '/dashboard',
-    pathMatch: 'full',
-    canActivate: [AuthenticationGuard]
-  },
-];
 
 @NgModule({
   declarations: [
@@ -66,23 +39,21 @@ const appRoutes: Routes = [
     NavbarComponent,
     PruebaComponent,
     LoginComponent,
+    LoginLayoutComponent,
     CalendarComponent,
     NotificationMessageComponent,
-    DashboardComponent
+    DashboardComponent,
+    DashboardLayoutComponent
   ],
   imports: [
     BrowserModule,
     CoreModule,
+    AppRoutingModule,
     FormsModule, ReactiveFormsModule,
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: false } // <-- debugging purposes only
-    )
   ],
   providers: [AuthenticationService, AuthenticationGuard],
   bootstrap: [AppComponent],

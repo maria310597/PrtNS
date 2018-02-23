@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import {} from '../ui/notifications/notification-message.component';
 
 
@@ -10,13 +10,8 @@ import {} from '../ui/notifications/notification-message.component';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn$: boolean = true;
-
   constructor(private authService: AuthenticationService) { }
- changestate(state: boolean) {
-   this.isLoggedIn$ = state;
 
-  }
   ngOnInit() {
 
   }
