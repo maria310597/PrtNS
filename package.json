@@ -23,7 +23,7 @@
     "@angular/router": "^5.2.0",
     "@ng-bootstrap/ng-bootstrap": "*",
     "bootstrap": "*",
-    "font-awesome":"*",
+    "font-awesome": "*",
     "firebase": "*",
     "angularfire2": "*",
     "core-js": "^2.4.1",

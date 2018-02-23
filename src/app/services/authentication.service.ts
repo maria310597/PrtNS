@@ -26,10 +26,10 @@ export class AuthenticationService {
   user: Observable<User> | null;
 
 
-  private loggedIn = new BehaviorSubject<boolean>(false); // {1}
+  private loggedIn = false; // {1}
 
   get isLoggedIn() {
-    return this.loggedIn.asObservable(); // {2}
+    return this.loggedIn; // {2}
   }
 
 
@@ -83,7 +83,7 @@ export class AuthenticationService {
             emailLogin(email: string, password: string) {
               return this.afAuth.auth.signInWithEmailAndPassword(email, password)
                 .then((user) => {
-                  this.loggedIn.next(true);
+                  this.loggedIn = true;
                   this.notify.update('Logeado!!!', 'success');
                   return this.updateUserData(user); // if using firestore
                 })
@@ -100,7 +100,7 @@ export class AuthenticationService {
             }
 
             signOut() {
-              this.loggedIn.next(false);
+              this.loggedIn = false;
               this.afAuth.auth.signOut().then(() => {
                   this.router.navigate(['/']);
               });
