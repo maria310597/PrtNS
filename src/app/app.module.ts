@@ -41,7 +41,7 @@ const appRoutes: Routes = [
   },
   // Es importante que esta sea la última
   { path: '',
-    redirectTo: '/main',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
     canActivate: [AuthenticationGuard]
   },
