@@ -33,20 +33,31 @@ const appRoutes: Routes = [
   {
     path: 'main',
     component: PruebaComponent,
-   // data: { title: 'Heroes List' }
+   
   },
   { path: 'main/vehiculo',
   component: CalendarComponent,
 
   },
   // Es importante que esta sea la última
+  
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard],
+    children: [
+      {
+        path: '',
+        component: NavbarComponent
+      },
+      
+
+    ]
+
+  },
   { path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full',
     canActivate: [AuthenticationGuard]
   },
-  { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard]}
 ];
 
 @NgModule({

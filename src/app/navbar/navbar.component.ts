@@ -9,11 +9,15 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn$: Observable<boolean>;
-  constructor(private authService: AuthenticationService) { }
+  isLoggedIn$: boolean = true;
 
+  constructor(private authService: AuthenticationService) { }
+ changestate(state:boolean) {
+   this.isLoggedIn$ = state;
+  
+  }
   ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn;
+    
   }
 
 }
