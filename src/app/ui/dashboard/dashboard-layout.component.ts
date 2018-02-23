@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-dashboard-layout',
   template: `
     <app-navbar></app-navbar>
+    <app-notification-message></app-notification-message>
     <router-outlet></router-outlet>
   `,
   styles: []
