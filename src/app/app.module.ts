@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } 
 // Routing
 import { RouterModule, Routes } from '@angular/router';
 
+
 // Firebase modules
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -17,28 +18,44 @@ import { AuthenticationGuard } from './services/authentication.guard';
 // Componentes
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './login/login.component';
+import {LoginComponent} from './login/login.component';
+import {CalendarComponent} from './calendar/calendar.component';
 import { NotificationMessageComponent } from './notifications/notification-message.component';
-
 
 // Servicios
 import {AuthenticationService} from './services/authentication.service';
+import { PruebaComponent } from './prueba.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthenticationGuard] },
-  // { path: 'home', component: HomeComponent },
+
+
+  {
+    path: 'main',
+    component: PruebaComponent,
+   // data: { title: 'Heroes List' }
+  },
+  { path: 'main/vehiculo',
+  component: CalendarComponent,
+
+  },
+  // Es importante que esta sea la última
+  { path: '',
+    redirectTo: '/main',
+    pathMatch: 'full',
+    canActivate: [AuthenticationGuard]
+  },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard]}
 ];
-
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    PruebaComponent,
     LoginComponent,
+    CalendarComponent,
     NotificationMessageComponent,
     DashboardComponent
   ],
@@ -50,7 +67,11 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: false })
+
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: false } // <-- debugging purposes only
+    )
   ],
   providers: [AuthenticationService, AuthenticationGuard],
   bootstrap: [AppComponent],
@@ -59,3 +80,5 @@ const appRoutes: Routes = [
   ]
 })
 export class AppModule { }
+
+
