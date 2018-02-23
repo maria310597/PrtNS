@@ -22,13 +22,13 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "@ng-bootstrap/ng-bootstrap": "*",
-    "bootstrap": "*",
-    "vue-bootstrap4-calendar":"*",
-    "font-awesome": "*",
-    "firebase": "*",
     "angularfire2": "*",
+    "bootstrap": "*",
     "core-js": "^2.4.1",
+    "firebase": "*",
+    "font-awesome": "*",
     "rxjs": "^5.5.6",
+    "angular-calendar": "*",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
