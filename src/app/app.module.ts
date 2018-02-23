@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 //Routing
 import { RouterModule, Routes } from '@angular/router';
@@ -11,16 +12,20 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
+import { CoreModule } from './core/core.module';
+import { AuthenticationGuard } from './services/authentication.guard';
 
 // Componentes
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {LoginComponent} from './login/login.component';
 import{CalendarComponent} from './calendar/calendar.component';
+import { NotificationMessageComponent } from './notifications/notification-message.component';
 
 // Servicios
 import {AuthenticationService} from './services/authentication.service';
 import { PruebaComponent } from './prueba.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
 
@@ -37,8 +42,11 @@ const appRoutes: Routes = [
   //Es importante que esta sea la última
   { path: '',
     redirectTo: '/main',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthenticationGuard]
   },
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard]}
 ];
 
 @NgModule({
@@ -47,10 +55,14 @@ const appRoutes: Routes = [
     NavbarComponent,
     PruebaComponent,
     LoginComponent,
-    CalendarComponent
+    CalendarComponent,
+    NotificationMessageComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
+    CoreModule,
+    FormsModule, ReactiveFormsModule,
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -58,11 +70,14 @@ const appRoutes: Routes = [
 
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     )
   ],
-  providers: [AuthenticationService],
-  bootstrap: [AppComponent]
+  providers: [AuthenticationService, AuthenticationGuard],
+  bootstrap: [AppComponent],
+  exports: [
+    NotificationMessageComponent,
+  ]
 })
 export class AppModule { }
 
