@@ -23,6 +23,7 @@
     "@angular/router": "^5.2.0",
     "@ng-bootstrap/ng-bootstrap": "*",
     "bootstrap": "*",
+    "vue-bootstrap4-calendar":"*",
     "font-awesome": "*",
     "firebase": "*",
     "angularfire2": "*",
