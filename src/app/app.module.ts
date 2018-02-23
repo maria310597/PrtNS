@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-//Routing
+// Routing
 import { RouterModule, Routes } from '@angular/router';
 
 
@@ -19,7 +19,7 @@ import { AuthenticationGuard } from './services/authentication.guard';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {LoginComponent} from './login/login.component';
-import{CalendarComponent} from './calendar/calendar.component';
+import {CalendarComponent} from './calendar/calendar.component';
 import { NotificationMessageComponent } from './notifications/notification-message.component';
 
 // Servicios
@@ -29,7 +29,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
 
-  
+
   {
     path: 'main',
     component: PruebaComponent,
@@ -37,11 +37,11 @@ const appRoutes: Routes = [
   },
   { path: 'main/vehiculo',
   component: CalendarComponent,
-   
-  }, 
-  //Es importante que esta sea la última
+
+  },
+  // Es importante que esta sea la última
   { path: '',
-    redirectTo: '/main',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
     canActivate: [AuthenticationGuard]
   },

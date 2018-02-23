@@ -24,6 +24,8 @@ export interface User {
 @Injectable()
 export class AuthenticationService {
   user: Observable<User> | null;
+
+
   private loggedIn = new BehaviorSubject<boolean>(false); // {1}
 
   get isLoggedIn() {
@@ -117,6 +119,9 @@ export class AuthenticationService {
                 break;
                 case 'auth/user-not-found':
                 this.notify.update('Ese usuario no existe.', 'error');
+                break;
+                case 'auth/network-request-failed':
+                  this.notify.update('Hay algun tipo de error con la conexión.', 'error');
                 break;
                 default:
                   this.notify.update(error.message, 'error');

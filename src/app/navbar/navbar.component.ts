@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AuthenticationService } from '../services/authentication.service';
-//import { User } from '../models/User';
+
 
 @Component({
   selector: 'app-navbar',
@@ -13,15 +13,7 @@ export class NavbarComponent implements OnInit {
   constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
-  /*  var app = app.module('myapp.controllers', []);
- 
-app.controller('NavController', function ($scope, $location) {
-    $scope.isCollapsed = true;
-    $scope.$on('$routeChangeSuccess', function () {
-        $scope.isCollapsed = true;
-    });
-});*/
-this.isLoggedIn$ = this.authService.isLoggedIn;
+    this.isLoggedIn$ = this.authService.isLoggedIn;
   }
 
 }
