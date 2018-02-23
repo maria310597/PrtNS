@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {debounceTime} from 'rxjs/operator/debounceTime';
 
-import { NotifyService } from '../core/notify.service';
+import { NotifyService } from '../../core/notify.service';
 
 @Component({
   selector: 'app-notification-message',

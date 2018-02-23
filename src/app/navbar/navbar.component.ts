@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AuthenticationService } from '../services/authentication.service';
+import {} from '../ui/notifications/notification-message.component';
 
 
 @Component({

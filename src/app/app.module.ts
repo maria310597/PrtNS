@@ -19,13 +19,13 @@ import { AuthenticationGuard } from './services/authentication.guard';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {LoginComponent} from './login/login.component';
-import {CalendarComponent} from './calendar/calendar.component';
-import { NotificationMessageComponent } from './notifications/notification-message.component';
+import {CalendarComponent} from './ui/calendar/calendar.component';
+import { NotificationMessageComponent } from './ui/notifications/notification-message.component';
 
 // Servicios
 import {AuthenticationService} from './services/authentication.service';
 import { PruebaComponent } from './prueba.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './ui/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
 
@@ -44,6 +44,14 @@ const appRoutes: Routes = [
     redirectTo: '/dashboard',
     pathMatch: 'full',
     canActivate: [AuthenticationGuard]
+  },
+  {
+    path: '', // point 2
+    component: NavbarComponent, // point 3
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'vehiculo', component: DashboardComponent }
+    ]
   },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard]}
