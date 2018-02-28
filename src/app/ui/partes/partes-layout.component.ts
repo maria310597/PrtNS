@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard-layout',
+  selector: 'app-partes-layout',
   template: `
     <app-navbar></app-navbar>
     <app-notification-message></app-notification-message>
@@ -9,4 +9,4 @@ import { Component } from '@angular/core';
   `,
   styles: []
 })
-export class DashboardLayoutComponent {}
+export class PartesLayoutComponent {}

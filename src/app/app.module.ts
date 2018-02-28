@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } 
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'angular-calendar';
 import { DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
+import{} from 'angular-bootstrap-datetimepicker'
 
 // Routing
 import { RouterModule, Routes } from '@angular/router';
@@ -35,7 +36,7 @@ import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.compone
 
 // Servicios
 import {AuthenticationService} from './services/authentication.service';
-import { PruebaComponent } from './prueba.component';
+import { PruebaComponent } from './ui/prueba/prueba.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 
 

@@ -6,23 +6,29 @@ import { LoginLayoutComponent } from './ui/login/login-layout.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.component';
 import { CalendarComponent} from './ui/calendar/calendar.component';
-import { PruebaComponent } from './prueba.component';
+import { PruebaComponent } from './ui/prueba/prueba.component';
+import { PartesComponent } from './ui/partes/partes.component';
 const routes: Routes = [
  
+  {
+    path: '',
+    component: DashboardLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: DashboardComponent,
+        canActivate: [AuthenticationGuard],
+      }
+    ]
+  },
   {
     path: '',
     component: LoginLayoutComponent,
     children: [
       {
-        path: '',
-        component: LoginComponent
-      },
-      {
         path: 'login',
-        component: LoginComponent
-      },
-     
-      
+        component: LoginComponent,
+      }
     ]
   },
   
@@ -36,11 +42,17 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: 'vehiculo',
-        component: CalendarComponent
-       
-        
+        path: 'prueba',
+        component: PruebaComponent
       },
+      {
+        path: 'vehiculo',
+        component: PruebaComponent
+      },
+      {
+        path: 'partes',
+        component: PartesComponent
+      }
     ]
   },
 
