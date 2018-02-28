@@ -7,6 +7,7 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.component';
 import { CalendarComponent} from './ui/calendar/calendar.component';
 import { PartesComponent } from './ui/partes/partes.component';
+import { CompanyComponent } from './ui/company/company.component';
 const routes: Routes = [
 
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
       {
         path: 'partes',
         component: PartesComponent
+      },
+      {
+        path: 'company',
+        component: CompanyComponent
       }
     ]
   },

@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+          <h1 class="h2">Empresas</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+              <button (click)="downloadPdfWithName('ReportePartesNeosistec')" class="btn btn-sm btn-outline-secondary">Exportar</button>
+            </div>
+            <div class="btn-group mr-2">
+                <button (click)="downloadPdfWithName('ReportePartesNeosistec')" class="btn btn-sm btn-outline-secondary">Registrar Empresa</button>
+              </div>
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+              <span data-feather="calendar"></span>
+              This week
+            </button>
+          </div>
+        </div>
+
+
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Correo de facturación </th>
+      <th>Fax</th>
+      <th>Teléfono </th>
+      <!--<th>Fecha</th>
+      <th>Hora de inicio</th>
+      <th><i class="fa fa-clock-o"></i></th>
+      <th><i class="fa fa-road"></i></th>
+      <th><i class="fa fa-car"></i></th>-->
+    </tr>
+  </thead>
+  <tbody>
+    
+   <tr *ngFor="let company of mycompany">
+      <td>{{ company.name }}</td>
+      <td>{{ company.email }}</td>
+      <td>{{ company.billMail }}</td>
+      <td>{{ company.faxNumber }}</td>
+      <td>{{ company.tlf }}</td>
+      
+     
+      
+    </tr>
+  </tbody>
+</table>
+      </main>
+    </div>
+</div>

@@ -26,8 +26,10 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './ui/navbar/navbar.component';
 import {LoginComponent} from './ui/login/login.component';
 import { NotificationMessageComponent } from './ui/notifications/notification-message.component';
-
+import { DashboardComponent } from './ui/dashboard/dashboard.component';
+import { PartesComponent } from './ui/partes/partes.component';
 import { CalendarComponent } from './ui/calendar/calendar.component';
+import { CompanyComponent } from './ui/company/company.component';
 
 // Layouts
 import { LoginLayoutComponent } from './ui/login/login-layout.component';
@@ -35,11 +37,8 @@ import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.compone
 
 // Servicios
 import {AuthenticationService} from './services/authentication.service';
-import { DashboardComponent } from './ui/dashboard/dashboard.component';
-import { PartesComponent } from './ui/partes/partes.component';
 import { PartesService } from './services/partes.service';
-
-
+import { CompanyService } from './services/company.service';
 
 
 
@@ -54,7 +53,8 @@ import { PartesService } from './services/partes.service';
     DashboardComponent,
     DashboardLayoutComponent,
     CalendarComponent,
-    PartesComponent
+    PartesComponent,
+    CompanyComponent
 
   ],
   imports: [
@@ -74,7 +74,7 @@ import { PartesService } from './services/partes.service';
     DataTablesModule
 
   ],
-  providers: [AuthenticationService, AuthenticationGuard, PartesService],
+  providers: [AuthenticationService, AuthenticationGuard, PartesService, CompanyService],
   bootstrap: [AppComponent],
   exports: [
     NotificationMessageComponent,
