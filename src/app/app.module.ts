@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'angular-calendar';
+import { DataTablesModule } from 'angular-datatables';
 
 // Routing
 import { RouterModule, Routes } from '@angular/router';
@@ -35,6 +36,8 @@ import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.compone
 // Servicios
 import {AuthenticationService} from './services/authentication.service';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
+import { PartesComponent } from './ui/partes/partes.component';
+import { PartesService } from './services/partes.service';
 
 
 
@@ -51,6 +54,7 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
     DashboardComponent,
     DashboardLayoutComponent,
     CalendarComponent,
+    PartesComponent
 
   ],
   imports: [
@@ -67,10 +71,10 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-
+    DataTablesModule
 
   ],
-  providers: [AuthenticationService, AuthenticationGuard],
+  providers: [AuthenticationService, AuthenticationGuard, PartesService],
   bootstrap: [AppComponent],
   exports: [
     NotificationMessageComponent,
