@@ -9,10 +9,10 @@ export class Report {
     dEnd: Date;
     notes: String[5];
     km: number;
-    displacements: number;
+    displacement: boolean;
     parking: number;
     constructor(id: number, opertor: string, date: Date, company: Company, dBegining: Date, dEnd: Date,
-         notes: String[5], km: number, displacements: number, parking: number ) {
+         notes: String[5], km: number, displacements: boolean, parking: number ) {
         this.id = id;
         this.operator = this.operator;
         this.date = date;
@@ -21,7 +21,7 @@ export class Report {
         this.dEnd = dEnd;
         this.notes = notes;
         this.km = km;
-        this.displacements = displacements;
+        this.displacement = displacements;
         this.parking = parking;
     }
 }

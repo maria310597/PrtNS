@@ -40,6 +40,12 @@ export class LoginComponent implements OnInit {
     this.buildForm();
   }
 
+  redirectLogIn() {
+    if (this.auth.isLoggedIn) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
+
   toggleForm() {
     this.newUser = !this.newUser;
   }

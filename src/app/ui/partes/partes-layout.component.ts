@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-partes-layout',
   template: `
+    <app-navbar></app-navbar>
     <app-notification-message></app-notification-message>
     <router-outlet></router-outlet>
-
-`
+  `,
+  styles: []
 })
-export class AppComponent {
-  title = 'app';
-}
+export class PartesLayoutComponent {}

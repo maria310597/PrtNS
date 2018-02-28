@@ -5,25 +5,28 @@ import { LoginComponent } from './ui/login/login.component';
 import { LoginLayoutComponent } from './ui/login/login-layout.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.component';
+import { PruebaComponent } from './ui/prueba/prueba.component';
+import { PartesComponent } from './ui/partes/partes.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: DashboardLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: DashboardComponent,
+        canActivate: [AuthenticationGuard],
+      }
+    ]
+  },
   {
     path: '',
     component: LoginLayoutComponent,
     children: [
       {
-        path: '',
-        component: LoginComponent
-      }
-    ]
-  },
-    {
-    path: '',
-    component: LoginLayoutComponent,
-    children: [
-      {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
       }
     ]
   },
@@ -35,6 +38,18 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent
+      },
+      {
+        path: 'prueba',
+        component: PruebaComponent
+      },
+      {
+        path: 'vehiculo',
+        component: PruebaComponent
+      },
+      {
+        path: 'partes',
+        component: PartesComponent
       }
     ]
   },
