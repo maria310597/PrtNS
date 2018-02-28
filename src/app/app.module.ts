@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'angular-calendar';
+import { DataTablesModule } from 'angular-datatables';
 
 // Routing
 import { RouterModule, Routes } from '@angular/router';
@@ -67,7 +68,7 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-
+    DataTablesModule
 
   ],
   providers: [AuthenticationService, AuthenticationGuard],

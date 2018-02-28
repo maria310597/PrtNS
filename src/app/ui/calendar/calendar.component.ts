@@ -16,7 +16,7 @@ import {
 } from 'date-fns';
 import { Subject } from 'rxjs/Subject';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {DlDateTimePickerModule} from 'angular-bootstrap-datetimepicker';
+// import {DlDateTimePickerModule} from 'angular-bootstrap-datetimepicker';
 import {
   CalendarEvent,
   CalendarEventAction,
