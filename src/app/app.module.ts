@@ -6,8 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'angular-calendar';
-import { DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
-import{} from 'angular-bootstrap-datetimepicker'
 
 // Routing
 import { RouterModule, Routes } from '@angular/router';
@@ -36,7 +34,6 @@ import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.compone
 
 // Servicios
 import {AuthenticationService} from './services/authentication.service';
-import { PruebaComponent } from './ui/prueba/prueba.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 
 
@@ -48,14 +45,13 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
   declarations: [
     AppComponent,
     NavbarComponent,
-    PruebaComponent,
     LoginComponent,
     LoginLayoutComponent,
     NotificationMessageComponent,
     DashboardComponent,
     DashboardLayoutComponent,
     CalendarComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -63,18 +59,16 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
     AppRoutingModule,
     CommonModule,
     FormsModule,
-   // DlDateTimePickerModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
     NgbModalModule.forRoot(),
     CalendarModule.forRoot(),
-    //DlDateTimePickerModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-   
-    
+
+
   ],
   providers: [AuthenticationService, AuthenticationGuard],
   bootstrap: [AppComponent],

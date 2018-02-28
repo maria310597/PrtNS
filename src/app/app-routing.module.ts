@@ -6,10 +6,9 @@ import { LoginLayoutComponent } from './ui/login/login-layout.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.component';
 import { CalendarComponent} from './ui/calendar/calendar.component';
-import { PruebaComponent } from './ui/prueba/prueba.component';
 import { PartesComponent } from './ui/partes/partes.component';
 const routes: Routes = [
- 
+
   {
     path: '',
     component: DashboardLayoutComponent,
@@ -31,7 +30,7 @@ const routes: Routes = [
       }
     ]
   },
-  
+
   {
     path: '',
     component: DashboardLayoutComponent,
@@ -40,14 +39,6 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent
-      },
-      {
-        path: 'prueba',
-        component: PruebaComponent
-      },
-      {
-        path: 'vehiculo',
-        component: PruebaComponent
       },
       {
         path: 'partes',
