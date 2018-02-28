@@ -5,10 +5,29 @@
           <h1 class="h2">Empresas</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
-              <button (click)="downloadPdfWithName('ReportePartesNeosistec')" class="btn btn-sm btn-outline-secondary">Exportar</button>
+              <button (click)="downloadPdfWithName('ReporteEmpresaNeosistec')" class="btn btn-sm btn-outline-secondary">Exportar</button>
             </div>
             <div class="btn-group mr-2">
-                <button (click)="downloadPdfWithName('ReportePartesNeosistec')" class="btn btn-sm btn-outline-secondary">Registrar Empresa</button>
+                <button id="myBtn">Registrar Empresa</button>
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Modal Header</h2>
+                      </div>
+                      <div class="modal-body">
+                        <p>Some text in the Modal Body</p>
+                        <p>Some other text...</p>
+                      </div>
+                      <div class="modal-footer">
+                        <h3>Modal Footer</h3>
+                      </div>
+                    </div>
+                  
+                  </div>
+                  
               </div>
             <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
               <span data-feather="calendar"></span>
@@ -22,15 +41,12 @@
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Email</th>
-      <th>Correo de facturación </th>
-      <th>Fax</th>
-      <th>Teléfono </th>
-      <!--<th>Fecha</th>
-      <th>Hora de inicio</th>
-      <th><i class="fa fa-clock-o"></i></th>
-      <th><i class="fa fa-road"></i></th>
-      <th><i class="fa fa-car"></i></th>-->
+      <th><i class="fa fa-envelope-o"></i></th>
+      <th>Email de facturación</th>
+      <th><i class="fa fa-fax"></i></th>
+      <th><i class="fa fa-volume-control-phone"></i></th>
+      <th>Último Movimiento </th>
+      <th>Igualada </th>
     </tr>
   </thead>
   <tbody>
@@ -41,7 +57,11 @@
       <td>{{ company.billMail }}</td>
       <td>{{ company.faxNumber }}</td>
       <td>{{ company.tlf }}</td>
-      
+      <td>{{ company.lastmovement | date:'fullDate' }}</td>
+      <td >
+          <i *ngIf="company.igualada" class="fa fa-check-square"></i>
+          <i *ngIf="!company.igualada" class="fa fa-times"></i>
+        </td>
      
       
     </tr>
@@ -50,3 +70,8 @@
       </main>
     </div>
 </div>
+<script>
+    function myFunction() {
+        document.getElementById("demo").style.color = "red";
+    }
+</script>
