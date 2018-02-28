@@ -1,7 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { CalendarModule } from 'angular-calendar';
+import { DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 
 // Routing
 import { RouterModule, Routes } from '@angular/router';
@@ -20,8 +25,9 @@ import { AuthenticationGuard } from './services/authentication.guard';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './ui/navbar/navbar.component';
 import {LoginComponent} from './ui/login/login.component';
-import {CalendarComponent} from './ui/calendar/calendar.component';
 import { NotificationMessageComponent } from './ui/notifications/notification-message.component';
+
+import { CalendarComponent } from './ui/calendar/calendar.component';
 
 // Layouts
 import { LoginLayoutComponent } from './ui/login/login-layout.component';
@@ -33,6 +39,10 @@ import { PruebaComponent } from './prueba.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 
 
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,25 +50,36 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
     PruebaComponent,
     LoginComponent,
     LoginLayoutComponent,
-    CalendarComponent,
     NotificationMessageComponent,
     DashboardComponent,
-    DashboardLayoutComponent
+    DashboardLayoutComponent,
+    CalendarComponent,
+    
   ],
   imports: [
     BrowserModule,
     CoreModule,
     AppRoutingModule,
-    FormsModule, ReactiveFormsModule,
+    CommonModule,
+    FormsModule,
+   // DlDateTimePickerModule,
+    ReactiveFormsModule,
     NgbModule.forRoot(),
+    NgbModalModule.forRoot(),
+    CalendarModule.forRoot(),
+    //DlDateTimePickerModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+   
+    
   ],
   providers: [AuthenticationService, AuthenticationGuard],
   bootstrap: [AppComponent],
   exports: [
     NotificationMessageComponent,
+
   ]
 })
 export class AppModule { }
