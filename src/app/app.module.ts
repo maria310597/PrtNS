@@ -36,6 +36,8 @@ import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.compone
 // Servicios
 import {AuthenticationService} from './services/authentication.service';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
+import { PartesComponent } from './ui/partes/partes.component';
+import { PartesService } from './services/partes.service';
 
 
 
@@ -52,6 +54,7 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
     DashboardComponent,
     DashboardLayoutComponent,
     CalendarComponent,
+    PartesComponent
 
   ],
   imports: [
@@ -71,7 +74,7 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
     DataTablesModule
 
   ],
-  providers: [AuthenticationService, AuthenticationGuard],
+  providers: [AuthenticationService, AuthenticationGuard, PartesService],
   bootstrap: [AppComponent],
   exports: [
     NotificationMessageComponent,
