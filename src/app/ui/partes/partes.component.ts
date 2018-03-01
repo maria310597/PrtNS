@@ -5,6 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import {Report} from '../../models/report';
 
 import { PartesService } from '../../services/partes.service';
+import { InfoUserComponent } from '../info-user/info-user.component';
 
 @Component({
   selector: 'app-partes',
