@@ -36,6 +36,7 @@ export class CompanyService {
                                       lastmovement:Company.lastmovement,tlf:Company.tlf});
     }
   }
+  // tslint:disable-next-line:no-shadowed-variable
   updateTodo(Company: Company) {
     this.companyCollectionRef.doc(Company.name).update({ name: !Company.name,
                                                           email: !Company.email, 
@@ -45,7 +46,7 @@ export class CompanyService {
                                                           lastmovement: !Company.lastmovement,
                                                           tlf: !Company.tlf });
   }
-  
+
   deleteTodo(Company: Company) {
     this.companyCollectionRef.doc(Company.name).delete();
   }

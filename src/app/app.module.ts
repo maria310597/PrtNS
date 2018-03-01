@@ -27,13 +27,10 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './ui/navbar/navbar.component';
 import { LoginComponent } from './ui/login/login.component';
 import { NotificationMessageComponent } from './ui/notifications/notification-message.component';
-<<<<<<< HEAD
 import { InfoUserComponent, UserInfoContent } from './ui/info-user/info-user.component';
 import { InfoCompanyComponent } from './ui/info-company/info-company.component';
-=======
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { PartesComponent } from './ui/partes/partes.component';
->>>>>>> eeb7b9fbb615feac14c6aeacae58efabcc6feaf0
 import { CalendarComponent } from './ui/calendar/calendar.component';
 import { CompanyComponent } from './ui/company/company.component';
 
@@ -44,14 +41,10 @@ import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.compone
 // Servicios
 import {AuthenticationService} from './services/authentication.service';
 import { PartesService } from './services/partes.service';
-<<<<<<< HEAD
 import { UserService } from './services/user.service';
-
-
-
-=======
 import { CompanyService } from './services/company.service';
->>>>>>> eeb7b9fbb615feac14c6aeacae58efabcc6feaf0
+
+
 
 
 
@@ -67,13 +60,10 @@ import { CompanyService } from './services/company.service';
     DashboardLayoutComponent,
     CalendarComponent,
     PartesComponent,
-<<<<<<< HEAD
     InfoUserComponent,
     UserInfoContent,
-    InfoCompanyComponent
-=======
+    InfoCompanyComponent,
     CompanyComponent
->>>>>>> eeb7b9fbb615feac14c6aeacae58efabcc6feaf0
 
   ],
   imports: [
@@ -94,11 +84,7 @@ import { CompanyService } from './services/company.service';
     DataTablesModule
 
   ],
-<<<<<<< HEAD
-  providers: [AuthenticationService, AuthenticationGuard, PartesService, UserService],
-=======
-  providers: [AuthenticationService, AuthenticationGuard, PartesService, CompanyService],
->>>>>>> eeb7b9fbb615feac14c6aeacae58efabcc6feaf0
+  providers: [AuthenticationService, AuthenticationGuard, PartesService, UserService, CompanyService],
   bootstrap: [AppComponent],
   exports: [
     NotificationMessageComponent,
