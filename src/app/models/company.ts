@@ -1,5 +1,5 @@
 export class Company {
-    name: string; //Clave primaria
+    name: string;
     email: string;
     billMail: string;
     faxNumber: string;
