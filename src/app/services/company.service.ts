@@ -50,4 +50,9 @@ export class CompanyService {
   deleteTodo(Company: Company) {
     this.companyCollectionRef.doc(Company.name).delete();
   }
+
+  getCompany$(name: string): Observable<Company[]> {
+    return this.afs.collection<Company>(this.path, ref => ref.where('name', '==', name)).valueChanges();
+  }
+
 }

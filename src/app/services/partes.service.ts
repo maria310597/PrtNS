@@ -9,11 +9,15 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 @Injectable()
 export class PartesService {
 
-  readonly path = '/partes';
+  readonly path = '/reports';
   constructor(private afs: AngularFirestore) { }
 
   getCollection$(): Observable<Report[]> {
     return this.afs.collection<Report>(this.path).valueChanges();
+  }
+
+  getParte$(uid: string): Observable<Report[]> {
+    return this.afs.collection<Report>(this.path, ref => ref.where('uid', '==', uid)).valueChanges();
   }
 
 }
