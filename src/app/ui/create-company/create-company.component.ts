@@ -101,7 +101,7 @@ export class CompanyInfoContent implements OnInit {
       this.igualas[0].selected = value;
       this.selectedsi = value;
     }
-    else {
+else {
       this.igualas[1].selected = value;
       this.selectedno = value;
     }

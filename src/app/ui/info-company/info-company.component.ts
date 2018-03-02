@@ -35,10 +35,23 @@ import { Company } from '../../models/company';
         <div id="modalTab">
             <div class="tab-content">
                 <div class="tab-pane active" id="about">
-                    <a><img src="{{ company[0].imagen }}" name="aboutcompany" width="140" height="140" border="0" class="rounded-circle"></a>
-                    <h3 class="media-heading"> {{myusers[0].name}} <small *ngIf="company[0].igualada" class="badge badge-danger">Igualada</small></h3>
+                    <a><img src="{{company[0].imagen }}" name="aboutcompany" width="140" height="140" border="0" class="rounded-circle"></a>
+                    <h3 class="media-heading">
+                    {{company[0].name}} <small *ngIf="company[0].igualada" class="badge badge-danger">Igualada</small>
+                    </h3>
                     <span><strong>Informacion: </strong></span>
-               
+                    <br>
+                    <span><strong>Email: </strong></span>
+                    <span class="badge badge-warning">{{company[0].email}}</span>
+                    <br>
+                    <span><strong>Email factura: </strong></span>
+                    <span class="badge badge-warning">{{company[0].email}}</span>
+                    <br>
+                    <span><strong>Nickname: </strong></span>
+                    <span class="badge badge-info">{{myusers[0].nickname}}</span>
+                    <br>
+                    <span><strong>Telefono: </strong></span>
+                    <span class="badge badge-success">{{myusers[0].tlf}}</span>
                     <hr>
                         <p class="text-left"><strong>Resumen estadisticas: </strong><br>Aqui estadisticas</p>
                         <br>
