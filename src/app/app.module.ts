@@ -28,9 +28,9 @@ import { NavbarComponent } from './ui/navbar/navbar.component';
 import { LoginComponent } from './ui/login/login.component';
 import { NotificationMessageComponent } from './ui/notifications/notification-message.component';
 import { InfoUserComponent, UserInfoContent } from './ui/info-user/info-user.component';
-import { InfoCompanyComponent } from './ui/info-company/info-company.component';
+import { InfoCompanyComponent, CompanyInfoContent } from './ui/info-company/info-company.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
-import { PartesComponent } from './ui/partes/partes.component';
+import { PartesComponent, ParteInfoContent } from './ui/partes/partes.component';
 import { CalendarComponent } from './ui/calendar/calendar.component';
 import { CompanyComponent } from './ui/company/company.component';
 import { CreateCompanyComponent, CompanyInfoContent} from './ui/create-company/create-company.component';
@@ -62,13 +62,23 @@ import { CreateParteComponent } from './create-parte/create-parte.component';
     DashboardLayoutComponent,
     CalendarComponent,
     PartesComponent,
+    ParteInfoContent,
     InfoUserComponent,
     UserInfoContent,
     InfoCompanyComponent,
+<<<<<<< HEAD
+    CompanyInfoContent,
+    CompanyComponent,
+=======
     CompanyComponent,
     CreateCompanyComponent,
+<<<<<<< HEAD
     CompanyInfoContent,
     CreateParteComponent
+=======
+    CompanyInfoContent
+>>>>>>> ea0243160bb624c994f6bb5ab6e276ceca14e46b
+>>>>>>> 043f2836fe22c6f089f7b2c20d1d1573779094ed
 
   ],
   imports: [
@@ -97,8 +107,13 @@ import { CreateParteComponent } from './create-parte/create-parte.component';
   ],
   entryComponents: [
     UserInfoContent,
+<<<<<<< HEAD
+    ParteInfoContent,
+    CompanyInfoContent
+=======
     CompanyInfoContent,
 
+>>>>>>> ea0243160bb624c994f6bb5ab6e276ceca14e46b
   ]
 })
 export class AppModule { }
