@@ -44,6 +44,7 @@ import {AuthenticationService} from './services/authentication.service';
 import { PartesService } from './services/partes.service';
 import { UserService } from './services/user.service';
 import { CompanyService } from './services/company.service';
+import { CreateParteComponent } from './create-parte/create-parte.component';
 
 
 
@@ -66,7 +67,8 @@ import { CompanyService } from './services/company.service';
     InfoCompanyComponent,
     CompanyComponent,
     CreateCompanyComponent,
-    CompanyInfoContent
+    CompanyInfoContent,
+    CreateParteComponent
 
   ],
   imports: [
