@@ -35,17 +35,13 @@ import { Company } from '../../models/company';
     
     <br>
     <label for="tlf"> Iguala </label>
-  
-   
     <ul>
-    
-      
-      <li *ngFor="let n of igualas"> 
-      {{n.name }}
-      <input type="checkbox" [(ngModel)]="n.selected" (change)="checkIfAllSelected();">
-       
-       </li>
-</ul>
+     
+      {{"Si"}}
+      <input type="checkbox" [disabled]="getSelectedNo()" [(ngModel)]="value"[ngModelOptions]="{standalone: true}" (click)="!getSelectedNo();"(change)="change(value, 'Si');"  >
+      {{"No"}}
+      <input type="checkbox" [disabled]="getSelectedSi()" [(ngModel)]="value" [ngModelOptions]="{standalone: true}"(click)="!getSelectedSi();"(change)="change(value,'No');"  >
+    </ul>
 
     <button 
       type="submit" 
@@ -72,7 +68,8 @@ export class CompanyInfoContent implements OnInit {
   companies$: Observable<Company[]>;
   mycompany: Company[];
   igualas: any;
-  selectedAll: any;
+  selectedsi:boolean = false;
+  selectedno:boolean = false;
   dtTrigger: Subject<any> = new Subject();
 
   constructor(public activeModal: NgbActiveModal, private ref: ChangeDetectorRef, private companyService: CompanyService) {
@@ -91,17 +88,31 @@ export class CompanyInfoContent implements OnInit {
     this.companyService.add(this.model);     
    console.log(this.model.email);
    }
- selectAll() {
-    for (var i = 0; i < this.igualas.length; i++) {
-      console.log(this.igualas.length);
-      this.igualas[i].selected = this.selectedAll;
-    }
+ 
+   getSelectedSi(){
+     return this.selectedsi;
+   }
+   getSelectedNo(){
+    return this.selectedno;
   }
-  checkIfAllSelected() {
-    this.selectedAll = this.igualas.every(function(item:any) {
+   change(value:boolean,item:string){
+    console.log(item);
+    if(item == "Si"){
+      this.igualas[0].selected = value;
+      this.selectedsi = value;
+    }
+    else {
+      this.igualas[1].selected = value;
+      this.selectedno = value;
+    }
+      
+   
+   }
+  /*checkIfSelected() {
+    this.selectedany = this.igualas.(function(item:any) {
         return item.selected == true;
       })
-  }
+  }*/
   ngOnInit() {
     
     this.companyService.getCollection$().subscribe((mycompany: Company[]) => {

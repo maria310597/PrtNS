@@ -28,7 +28,8 @@ export class CompanyService {
   }
 
   add(Company: Company) {
-    if (Company ) {
+    
+    if (Company /*&& !this.companyCollectionRef.doc(Company.name)*/) {
       this.companyCollectionRef.add({ name: Company.name, email:Company.email, 
                                       billMail:Company.billMail,
                                       faxNumber:Company.faxNumber,
