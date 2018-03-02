@@ -33,6 +33,7 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { PartesComponent, ParteInfoContent } from './ui/partes/partes.component';
 import { CalendarComponent } from './ui/calendar/calendar.component';
 import { CompanyComponent } from './ui/company/company.component';
+import { CreateCompanyComponent, CompanyInfoContent} from './ui/create-company/create-company.component';
 
 // Layouts
 import { LoginLayoutComponent } from './ui/login/login-layout.component';
@@ -64,8 +65,14 @@ import { CompanyService } from './services/company.service';
     InfoUserComponent,
     UserInfoContent,
     InfoCompanyComponent,
+<<<<<<< HEAD
     CompanyInfoContent,
     CompanyComponent,
+=======
+    CompanyComponent,
+    CreateCompanyComponent,
+    CompanyInfoContent
+>>>>>>> ea0243160bb624c994f6bb5ab6e276ceca14e46b
 
   ],
   imports: [
@@ -94,8 +101,13 @@ import { CompanyService } from './services/company.service';
   ],
   entryComponents: [
     UserInfoContent,
+<<<<<<< HEAD
     ParteInfoContent,
     CompanyInfoContent
+=======
+    CompanyInfoContent,
+
+>>>>>>> ea0243160bb624c994f6bb5ab6e276ceca14e46b
   ]
 })
 export class AppModule { }

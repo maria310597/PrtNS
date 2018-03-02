@@ -9,7 +9,7 @@ export class Report {
     dEnd: Date;
     notes: string[];
     km: number;
-    displacement: boolean;
+    displacements: boolean;
     parking: number;
     free: boolean;
     interno: boolean;
@@ -27,7 +27,7 @@ export class Report {
         this.dEnd = dEnd;
         this.notes = notes;
         this.km = km;
-        this.displacement = displacements;
+        this.displacements = displacements;
         this.parking = parking;
         this.createdby = createdby;
     }
