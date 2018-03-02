@@ -32,28 +32,28 @@ import { Company } from '../../models/company';
     <br>
     <label for="tlf"> Teléfono </label>
     <input type="text" class="form-control"  required [(ngModel)]="model.tlf"  name="tlf">
-    
+
     <br>
     <label for="tlf"> Iguala </label>
     <ul>
-     
+
       {{"Si"}}
       <input type="checkbox" [disabled]="getSelectedNo()" [(ngModel)]="value"[ngModelOptions]="{standalone: true}" (click)="!getSelectedNo();"(change)="change(value, 'Si');"  >
       {{"No"}}
       <input type="checkbox" [disabled]="getSelectedSi()" [(ngModel)]="value" [ngModelOptions]="{standalone: true}"(click)="!getSelectedSi();"(change)="change(value,'No');"  >
     </ul>
 
-    <button 
-      type="submit" 
-     
+    <button
+      type="submit"
+
       (click)="guardarMovimiento()" > Guardar
     </button>
 
 
     </form>
 
-    
-    
+
+
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
@@ -62,7 +62,7 @@ import { Company } from '../../models/company';
 })
 export class CompanyInfoContent implements OnInit {
   @Input() uid;
-  
+
   model = new Company("","",null,false, "","","");
   submitted = false;
   companies$: Observable<Company[]>;
@@ -76,7 +76,7 @@ export class CompanyInfoContent implements OnInit {
     this.igualas = [
       { name: 'Si', selected: false },
       { name: 'No', selected: false },
-     
+
     ]
   }
 
@@ -84,11 +84,11 @@ export class CompanyInfoContent implements OnInit {
   newCompany(){
     this.model =new Company("","",null,false, "","","");
   }
-  guardarMovimiento() {  
-    this.companyService.add(this.model);     
+  guardarMovimiento() {
+    this.companyService.add(this.model);
    console.log(this.model.email);
    }
- 
+
    getSelectedSi(){
      return this.selectedsi;
    }
@@ -105,8 +105,8 @@ export class CompanyInfoContent implements OnInit {
       this.igualas[1].selected = value;
       this.selectedno = value;
     }
-      
-   
+
+
    }
   /*checkIfSelected() {
     this.selectedany = this.igualas.(function(item:any) {
@@ -114,13 +114,13 @@ export class CompanyInfoContent implements OnInit {
       })
   }*/
   ngOnInit() {
-    
+
     this.companyService.getCollection$().subscribe((mycompany: Company[]) => {
       this.mycompany = mycompany;
       this.dtTrigger.next();
     });
   }
-  
+
 }
 @Component({
   selector: 'app-create-company',

@@ -26,10 +26,9 @@ export class AuthenticationService {
   user: Observable<User> | null;
 
 
-  private loggedIn = false;// {1}
-
+  private loggedIn = false;
   get isLoggedIn() {
-    return this.loggedIn; // {2}
+    return this.loggedIn;
   }
 
 
@@ -84,7 +83,6 @@ export class AuthenticationService {
               return this.afAuth.auth.signInWithEmailAndPassword(email, password)
                 .then((user) => {
                   this.loggedIn = true;
-                  
                   this.notify.update('Logeado!!!', 'success');
                   return this.updateUserData(user); // if using firestore
                 })
