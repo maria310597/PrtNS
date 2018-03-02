@@ -60,7 +60,7 @@ import { Company } from '../../models/company';
     </div>
   `
 })
-export class CompanyInfoContent implements OnInit {
+export class CompanyForm implements OnInit {
   @Input() uid;
 
   model = new Company("","",null,false, "","","");
@@ -132,7 +132,7 @@ export class CreateCompanyComponent {
     constructor(private modalService: NgbModal) {}
     @Input() uid: string;
     open() {
-      const modalRef = this.modalService.open(CompanyInfoContent, { size : 'lg' });
+      const modalRef = this.modalService.open(CompanyForm, { size : 'lg' });
       modalRef.componentInstance.uid = this.uid ;
     }
   }

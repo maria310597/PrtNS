@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import {Company} from '../../models/company';
+import { CreateCompanyComponent } from '../create-company/create-company.component';
 
 import { CompanyService } from '../../services/company.service';
 
@@ -21,7 +22,7 @@ export class CompanyComponent implements OnInit {
   ngOnInit() {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 2
+      pageLength: 10
     };
     this.companyService.getCollection$().subscribe((mycompany: Company[]) => {
       this.mycompany = mycompany;

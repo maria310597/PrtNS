@@ -33,7 +33,7 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { PartesComponent, ParteInfoContent } from './ui/partes/partes.component';
 import { CalendarComponent } from './ui/calendar/calendar.component';
 import { CompanyComponent } from './ui/company/company.component';
-import { CreateCompanyComponent } from './ui/create-company/create-company.component';
+import { CreateCompanyComponent, CompanyForm } from './ui/create-company/create-company.component';
 
 // Layouts
 import { LoginLayoutComponent } from './ui/login/login-layout.component';
@@ -64,8 +64,9 @@ import { CreateParteComponent } from './create-parte/create-parte.component';
     UserInfoContent,
     InfoCompanyComponent,
     CompanyComponent,
-    CreateParteComponent,
+    CreateCompanyComponent,
     CompanyInfoContent,
+    CompanyForm,
     CreateParteComponent
   ],
   imports: [
@@ -95,7 +96,8 @@ import { CreateParteComponent } from './create-parte/create-parte.component';
   entryComponents: [
     UserInfoContent,
     ParteInfoContent,
-    CompanyInfoContent
+    CompanyInfoContent,
+    CompanyForm
   ]
 })
 export class AppModule { }
