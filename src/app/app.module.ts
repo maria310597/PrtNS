@@ -33,6 +33,10 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { PartesComponent, ParteInfoContent } from './ui/partes/partes.component';
 import { CalendarComponent } from './ui/calendar/calendar.component';
 import { CompanyComponent } from './ui/company/company.component';
+<<<<<<< HEAD
+=======
+import { CreateCompanyComponent } from './ui/create-company/create-company.component';
+>>>>>>> 88e8534a65e2f796f41bcb36c4cbc4709c99f3df
 
 // Layouts
 import { LoginLayoutComponent } from './ui/login/login-layout.component';
@@ -44,9 +48,6 @@ import { PartesService } from './services/partes.service';
 import { UserService } from './services/user.service';
 import { CompanyService } from './services/company.service';
 import { CreateParteComponent } from './create-parte/create-parte.component';
-
-
-
 
 
 
@@ -65,15 +66,33 @@ import { CreateParteComponent } from './create-parte/create-parte.component';
     InfoUserComponent,
     UserInfoContent,
     InfoCompanyComponent,
+<<<<<<< HEAD
 
     CompanyInfoContent,
     CompanyComponent,
 
    
+=======
+    CompanyInfoContent,
+    CompanyComponent,
+<<<<<<< HEAD
+    CreateCompanyComponent
+=======
+=======
+    CompanyComponent,
+>>>>>>> 88e8534a65e2f796f41bcb36c4cbc4709c99f3df
     CreateCompanyComponent,
 
     CreateParteComponent
+<<<<<<< HEAD
 
+=======
+=======
+    CompanyInfoContent
+>>>>>>> ea0243160bb624c994f6bb5ab6e276ceca14e46b
+>>>>>>> 043f2836fe22c6f089f7b2c20d1d1573779094ed
+>>>>>>> 130097eda9c4389d0f5dfb6fa248f30823e88d3d
+>>>>>>> 88e8534a65e2f796f41bcb36c4cbc4709c99f3df
 
   ],
   imports: [
