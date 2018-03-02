@@ -28,9 +28,9 @@ import { NavbarComponent } from './ui/navbar/navbar.component';
 import { LoginComponent } from './ui/login/login.component';
 import { NotificationMessageComponent } from './ui/notifications/notification-message.component';
 import { InfoUserComponent, UserInfoContent } from './ui/info-user/info-user.component';
-import { InfoCompanyComponent } from './ui/info-company/info-company.component';
+import { InfoCompanyComponent, CompanyInfoContent } from './ui/info-company/info-company.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
-import { PartesComponent } from './ui/partes/partes.component';
+import { PartesComponent, ParteInfoContent } from './ui/partes/partes.component';
 import { CalendarComponent } from './ui/calendar/calendar.component';
 import { CompanyComponent } from './ui/company/company.component';
 
@@ -60,10 +60,12 @@ import { CompanyService } from './services/company.service';
     DashboardLayoutComponent,
     CalendarComponent,
     PartesComponent,
+    ParteInfoContent,
     InfoUserComponent,
     UserInfoContent,
     InfoCompanyComponent,
-    CompanyComponent
+    CompanyInfoContent,
+    CompanyComponent,
 
   ],
   imports: [
@@ -92,6 +94,8 @@ import { CompanyService } from './services/company.service';
   ],
   entryComponents: [
     UserInfoContent,
+    ParteInfoContent,
+    CompanyInfoContent
   ]
 })
 export class AppModule { }
