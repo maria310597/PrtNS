@@ -5,5 +5,6 @@ export interface User {
     email: string;
     phone: string;
     imagen: string;
+    lvl: string;
     // Notificaciones?
   }

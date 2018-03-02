@@ -1,20 +1,25 @@
 import { Company } from './company';
 
 export class Report {
-    id: number;
+    uid: string;
     operator: string;
     date: Date;
-    company: Company;
+    company: string;
     dBegining: Date;
     dEnd: Date;
-    notes: String[5];
+    notes: string[];
     km: number;
     displacement: boolean;
     parking: number;
+    free: boolean;
+    interno: boolean;
+    telemantenimiento: boolean;
+    cocheParticular: boolean;
+    hiddenIP: string;
     createdby: string;
-    constructor(id: number, opertor: string, date: Date, company: Company, dBegining: Date, dEnd: Date,
-         notes: String[5], km: number, displacements: boolean, parking: number, createdby: string ) {
-        this.id = id;
+    constructor(id: string, opertor: string, date: Date, company: string, dBegining: Date, dEnd: Date,
+         notes: string[], km: number, displacements: boolean, parking: number, createdby: string ) {
+        this.uid = id;
         this.operator = this.operator;
         this.date = date;
         this.company = company;
