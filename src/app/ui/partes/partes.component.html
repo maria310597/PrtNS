@@ -30,7 +30,7 @@
       <tr *ngFor="let parte of mypartes" (click)="moreInfo(parte)">
         <td><app-info-user [uid]="parte.createdby"></app-info-user> {{ parte.operator }}
         </td>
-        <td><app-info-company [uid]="parte.company"></app-info-company> {{ parte.company }}</td>
+        <td><app-info-company [name]="parte.company"></app-info-company> {{ parte.company }}</td>
         <td>{{ parte.date | date:'fullDate' }}</td>
         <td>{{ parte.dBegining | date:'shortTime' }}</td>
         <td>{{ (parte.dEnd - parte.dBegining) / 3600000}} h</td>

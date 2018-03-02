@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {Report} from '../models/report';
-import { AngularFirestore, AngularFirestoreDocument,AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 
 
@@ -9,14 +9,9 @@ import { AngularFirestore, AngularFirestoreDocument,AngularFirestoreCollection }
 @Injectable()
 export class PartesService {
 
-<<<<<<< HEAD
   readonly path = '/reports';
-  constructor(private afs: AngularFirestore) { }
-=======
-  readonly path = '/partes';
   partes$: Observable<Report[]>;
   partesCollectionRef: AngularFirestoreCollection<Report>;
-
   constructor(private afs: AngularFirestore) {
     this.partesCollectionRef = this.afs.collection<Report>(this.path);
     this.partes$ = this.partesCollectionRef.snapshotChanges().map(actions => {
@@ -27,7 +22,6 @@ export class PartesService {
       });
     });
    }
->>>>>>> 130097eda9c4389d0f5dfb6fa248f30823e88d3d
 
   getCollection$(): Observable<Report[]> {
     return this.afs.collection<Report>(this.path).valueChanges();

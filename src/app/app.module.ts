@@ -76,6 +76,7 @@ import { CreateParteComponent } from './create-parte/create-parte.component';
     CompanyInfoContent,
     CompanyComponent,
 <<<<<<< HEAD
+<<<<<<< HEAD
     CreateCompanyComponent
 =======
 =======
@@ -93,6 +94,13 @@ import { CreateParteComponent } from './create-parte/create-parte.component';
 >>>>>>> 043f2836fe22c6f089f7b2c20d1d1573779094ed
 >>>>>>> 130097eda9c4389d0f5dfb6fa248f30823e88d3d
 >>>>>>> 88e8534a65e2f796f41bcb36c4cbc4709c99f3df
+=======
+    CreateCompanyComponent,
+    CompanyInfoContent,
+    CreateParteComponent
+
+
+>>>>>>> 6ef29730aa7a2cce20353d866d4af77bb9d7159f
 
   ],
   imports: [
