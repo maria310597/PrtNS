@@ -1,12 +1,14 @@
 import { Company } from './company';
+import { Time } from '@angular/common';
+import { NgbTimepicker } from '@ng-bootstrap/ng-bootstrap';
 
 export class Report {
     uid: string;
     operator: string;
     date: Date;
     company: string;
-    dBegining: Date;
-    dEnd: Date;
+    dBegining: NgbTimepicker;
+    dEnd: NgbTimepicker;
     notes: string[];
     km: number;
     displacements: boolean;
@@ -17,10 +19,10 @@ export class Report {
     cocheParticular: boolean;
     hiddenIP: string;
     createdby: string;
-    constructor(id: string, opertor: string, date: Date, company: string, dBegining: Date, dEnd: Date,
-         notes: string[], km: number, displacements: boolean, parking: number, createdby: string ) {
-        this.uid = id;
-        this.operator = this.operator;
+    constructor(operator: string, date: Date, company: string, dBegining: NgbTimepicker, dEnd: NgbTimepicker,
+         notes: string[], km: number, displacements: boolean, parking: number, free:boolean, interno: boolean,telemantenimiento:boolean,cocheParticular:boolean, createdby: string) {
+        this.uid = "";
+        this.operator = operator;
         this.date = date;
         this.company = company;
         this.dBegining = dBegining;
@@ -29,6 +31,12 @@ export class Report {
         this.km = km;
         this.displacements = displacements;
         this.parking = parking;
+        this.free = free;
+        this.interno = interno;
+        this.telemantenimiento = telemantenimiento;
+        this.cocheParticular = cocheParticular;
+    this.hiddenIP= "";
         this.createdby = createdby;
     }
+    
 }
