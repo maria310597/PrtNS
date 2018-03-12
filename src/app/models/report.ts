@@ -20,7 +20,8 @@ export class Report {
     hiddenIP: string;
     createdby: string;
     constructor(operator: string, date: Date, company: string, dBegining: NgbTimepicker, dEnd: NgbTimepicker,
-         notes: string[], km: number, displacements: boolean, parking: number, free:boolean, interno: boolean,telemantenimiento:boolean,cocheParticular:boolean, createdby: string) {
+         notes: string[], km: number, displacements: boolean, parking: number, free:boolean, interno: boolean,telemantenimiento:boolean,cocheParticular:boolean, 
+         createdby: string) {
         this.uid = "";
         this.operator = operator;
         this.date = date;
@@ -37,6 +38,7 @@ export class Report {
         this.cocheParticular = cocheParticular;
     this.hiddenIP= "";
         this.createdby = createdby;
+        
     }
     
 }
