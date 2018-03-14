@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.users = this.userService.getAllUsers();
+    this.users = this.userService.getAllUsers$();
   }
 
 }

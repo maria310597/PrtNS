@@ -33,7 +33,7 @@ export class StatisticsService {
                 this.companyService.getCollection$().subscribe((mycompanys: Company[]) => {
                   companys = mycompanys;
                 });
-                this.userService.getAllUsers().subscribe((myusers: User[]) => {
+                this.userService.getAllUsers$().subscribe((myusers: User[]) => {
                   users = myusers;
                   for(let u of users){
                     this.getHorasEmpresa(u.uid).subscribe((mysta: Map<string, number>) => {

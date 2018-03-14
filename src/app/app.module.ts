@@ -133,6 +133,7 @@ import { DashboardStatisticsComponent } from './ui/dashboard-statistics/dashboar
     CompanyInfoContent,
     CompanyForm,
     CreateUserForm,
+    CreateParteForm,
     ConfirmDeleteComponent,
     CreateConfirmComponent,
     ModifyCompanyComponent,
