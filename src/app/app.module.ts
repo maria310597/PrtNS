@@ -34,8 +34,7 @@ import { InfoCompanyComponent, CompanyInfoContent } from './ui/info-company/info
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { PartesComponent, ParteInfoContent } from './ui/partes/partes.component';
 import { CompanyComponent } from './ui/company/company.component';
-import { CreateCompanyComponent, CompanyForm } from './ui/create-company/create-company.component';
-
+import {CreateCompanyComponent,CompanyForm} from './ui/create-company/create-company.component';
 // Layouts
 import { LoginLayoutComponent } from './ui/login/login-layout.component';
 import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.component';
@@ -45,7 +44,7 @@ import {AuthenticationService} from './services/authentication.service';
 import { PartesService } from './services/partes.service';
 import { UserService } from './services/user.service';
 import { CompanyService } from './services/company.service';
-import { CreateParteComponent } from './create-parte/create-parte.component';
+import { CreateParteComponent, CreateParteForm } from './ui/create-parte/create-parte.component';
 import { UsersComponent } from './ui/users/users.component';
 import { CreateUserComponent, CreateUserForm } from './ui/create-user/create-user.component';
 import { UploadService } from './uploads/shared/upload.service';
@@ -72,6 +71,8 @@ import { DashboardStatisticsComponent } from './ui/dashboard-statistics/dashboar
     InfoUserComponent,
     UserInfoContent,
     InfoCompanyComponent,
+    CompanyInfoContent,
+    CompanyComponent,
     CompanyComponent,
     CreateCompanyComponent,
     CompanyInfoContent,
@@ -82,7 +83,10 @@ import { DashboardStatisticsComponent } from './ui/dashboard-statistics/dashboar
     CreateUserForm,
     ConfirmDeleteComponent,
     UserStatisticsComponent,
-    DashboardStatisticsComponent
+    DashboardStatisticsComponent,
+    CreateParteComponent,
+    CompanyForm,
+    CreateParteForm
   ],
   imports: [
     BrowserModule,

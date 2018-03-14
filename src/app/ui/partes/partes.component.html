@@ -24,6 +24,11 @@
         <th><i class="fa fa-clock-o"></i></th>
         <th><i class="fa fa-road"></i></th>
         <th><i class="fa fa-car"></i></th>
+        <th>Desplazamiento</th>
+        <th>Interno</th>
+        <th>Gratuito</th>
+        <th>Telemantenimiento</th>
+        <th>Parking</th>
       </tr>
     </thead>
     <tbody>
@@ -31,15 +36,42 @@
         <td><app-info-user [uid]="parte.createdby"></app-info-user> {{ parte.operator }}
         </td>
         <td><app-info-company [name]="parte.company"></app-info-company> {{ parte.company }}</td>
+<<<<<<< HEAD
         <td>{{ parte.date | date:'fullDate' }}</td>
         <td>{{ parte.dBegining | date:'shortTime' }}</td>
         <td>{{ ((parte.dEnd.hour * 60) + (parte.dEnd.minute)) - (parte.dBegining.hour * 60 + parte.dBegining.minute) }}</td>
+=======
+        <td >{{ parte.date.day }}  /  {{parte.date.month}}/ {{parte.date.year }}</td>
+        <td>{{ parte.dBegining.hour}}:{{parte.dBegining.minute}}:{{parte.dBegining.second}}</td>
+        <td>{{ ((parte.dEnd.hour*60)+(parte.dEnd.minute)) - (parte.dBegining.hour*60 + parte.dBegining.minute) }} minutos </td>
+>>>>>>> a4631171bc22237c98641e6c8955aaf7804f4308
         <td>{{ parte.km }} km</td>
         <td >
            
-          <i *ngIf="parte.displacement" class="fa fa-check-square"></i>
-          <i *ngIf="!parte.displacement" class="fa fa-times"></i>
+          <i *ngIf="parte.cocheParticular" class="fa fa-check-square"></i>
+          <i *ngIf="!parte.cocheParticular" class="fa fa-times"></i>
         </td>
+        <td >
+           
+          <i *ngIf="parte.displacements" class="fa fa-check-square"></i>
+          <i *ngIf="!parte.displacements" class="fa fa-times"></i>
+        </td>
+        <td >
+           
+          <i *ngIf="parte.intern" class="fa fa-check-square"></i>
+          <i *ngIf="!parte.intern" class="fa fa-times"></i>
+        </td>
+        <td >
+           
+          <i *ngIf="parte.free" class="fa fa-check-square"></i>
+          <i *ngIf="!parte.free" class="fa fa-times"></i>
+        </td>
+        <td >
+           
+          <i *ngIf="parte.telemantenimiento" class="fa fa-check-square"></i>
+          <i *ngIf="!parte.telemantenimiento" class="fa fa-times"></i>
+        </td>
+        <td>{{ parte.parking }} €</td>
       </tr>
     </tbody>
   </table>
