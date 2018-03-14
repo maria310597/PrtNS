@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-confirm-delete',
-  templateUrl: './confirm-delete.component.html',
-  styleUrls: ['./confirm-delete.component.css']
-})
-export class ConfirmDeleteComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
-=======
 import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
@@ -102,4 +85,3 @@ export class ConfirmDeleteComponent implements OnInit {
         }
       }
 
->>>>>>> c5c00a668accbe09bcdd5409e6960c141716b26a

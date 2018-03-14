@@ -29,14 +29,8 @@ export class CompanyService {
   }
 
   add(Company: Company) {
-<<<<<<< HEAD
-    if (Company /*&& !this.companyCollectionRef.doc(Company.name)*/) {
-      this.companyCollectionRef.add({ name: Company.name, email:Company.email, 
-=======
-    
     if (Company/* && !this.companyCollectionRef.doc(Company.name)*/) {
     this.companyCollectionRef.add({uid: "",name: Company.name, email:Company.email, 
->>>>>>> c5c00a668accbe09bcdd5409e6960c141716b26a
                                       billMail:Company.billMail,
                                       faxNumber:Company.faxNumber,
                                       igualada: Company.igualada,

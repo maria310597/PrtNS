@@ -137,7 +137,8 @@ import { DashboardStatisticsComponent } from './ui/dashboard-statistics/dashboar
     CreateConfirmComponent,
     ModifyCompanyComponent,
     ModifyParteComponent,
-    CreateConfirmParteComponent
+    CreateConfirmParteComponent,
+    CreateParteForm
   ]
 })
 export class AppModule { }
