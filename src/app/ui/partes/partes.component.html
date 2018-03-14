@@ -33,7 +33,7 @@
         <td><app-info-company [name]="parte.company"></app-info-company> {{ parte.company }}</td>
         <td>{{ parte.date | date:'fullDate' }}</td>
         <td>{{ parte.dBegining | date:'shortTime' }}</td>
-        <td>{{ (parte.dEnd - parte.dBegining) / 3600000}} h</td>
+        <td>{{ ((parte.dEnd.hour * 60) + (parte.dEnd.minute)) - (parte.dBegining.hour * 60 + parte.dBegining.minute) }}</td>
         <td>{{ parte.km }} km</td>
         <td >
            

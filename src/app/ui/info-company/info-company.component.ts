@@ -35,7 +35,7 @@ import { Company } from '../../models/company';
         <div id="modalTab">
             <div class="tab-content">
                 <div class="tab-pane active" id="about">
-                    <a><img src="{{company[0].imagen }}" name="aboutcompany" width="140" height="140" border="0" class="rounded-circle"></a>
+                    <a><img src="{{company[0].image }}" name="aboutcompany" width="140" height="140" border="0" class="rounded-circle"></a>
                     <h3 class="media-heading">
                     {{company[0].name}} <small *ngIf="company[0].igualada" class="badge badge-danger">Igualada</small>
                     </h3>
@@ -45,16 +45,17 @@ import { Company } from '../../models/company';
                     <span class="badge badge-warning">{{company[0].email}}</span>
                     <br>
                     <span><strong>Email factura: </strong></span>
-                    <span class="badge badge-warning">{{company[0].email}}</span>
+                    <span class="badge badge-warning">{{company[0].billMail}}</span>
                     <br>
-                    <span><strong>Nickname: </strong></span>
-                    <span class="badge badge-info">{{myusers[0].nickname}}</span>
+                    <span><strong>Fax: </strong></span>
+                    <span class="badge badge-info">{{company[0].faxNumber}}</span>
                     <br>
                     <span><strong>Telefono: </strong></span>
-                    <span class="badge badge-success">{{myusers[0].tlf}}</span>
+                    <span class="badge badge-success">{{company[0].tlf}}</span>
+                    <br>
+                    <span><strong>Último movimiento: </strong></span>
+                    <span class="badge badge-success">{{company[0].lastmovement | date:'d/M/yyy'}}</span>
                     <hr>
-                        <p class="text-left"><strong>Resumen estadisticas: </strong><br>Aqui estadisticas</p>
-                        <br>
                 </div>
             </div>
         </div>

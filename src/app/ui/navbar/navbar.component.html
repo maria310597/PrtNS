@@ -1,11 +1,15 @@
-
+<div *ngIf="myuser | async as myuser" >
     <nav class="navbar navbar-dark sticky-top bg-white flex-md-nowrap p-0 bb">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" ><img src="/assets/logo-trans.png" width="90%" class="d-inline-block align-top" alt=""></a>
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-        <ul class="navbar-nav px-3">
-          <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Salir</a>
-          </li>
+        <ul class="navbar-nav px-3 fixdrop ">
+                  <div ngbDropdown class="d-inline-block  ">
+                    <a ngbDropdownToggle><img width="30" height="30" border="1" class="rounded-circle" src="{{myuser.imagen}}"/> </a>
+                    <div ngbDropdownMenu class="fixdrop-items" aria-labelledby="dropdownBasic1">
+                      <button class="dropdown-item">Perfil</button>
+                      <button (click)="logout()" class="dropdown-item">Salir</button>
+                    </div>
+                  </div>
         </ul>
       </nav>
   
@@ -24,12 +28,17 @@
                     </a>
                   </h6>
                   <li class="nav-item">
-                      <a class="nav-link mm" href="#">
+                      <a class="nav-link mm" href="#" routerLink="/dashboard">
+                        <i class="fa fa-dashboard"></i> Inicio
+                      </a>
+                    </li>
+                  <li *ngIf="myuser.admin" class="nav-item">
+                      <a class="nav-link mm" routerLink="/users" href="#">
                         <i class="fa fa-user"></i> Usuario
                       </a>
                     </li>
                   <li class="nav-item">
-                      <a class="nav-link mm" href="#">
+                      <a class="nav-link mm" href="#" routerLink="/vehicles">
                         <i class="fa fa-car"></i> Vehículos
                       </a>
                     </li>
@@ -61,3 +70,4 @@
               </ul>
             </div>
           </nav>
+        </div>

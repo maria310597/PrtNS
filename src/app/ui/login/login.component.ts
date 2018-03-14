@@ -50,10 +50,6 @@ export class LoginComponent implements OnInit {
     this.newUser = !this.newUser;
   }
 
-  signup() {
-    this.auth.emailSignUp(this.userForm.value['email'], this.userForm.value['password']);
-  }
-
   login() {
     this.auth.emailLogin(this.userForm.value['email'], this.userForm.value['password'])
       .then(() => this.afterSignIn());

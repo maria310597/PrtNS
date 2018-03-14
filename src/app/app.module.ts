@@ -5,8 +5,10 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CalendarModule } from 'angular-calendar';
 import { DataTablesModule } from 'angular-datatables';
+import { CalendarModule } from 'angular-calendar';
+import { VehicleModule } from './ui/vehicles/vehicle.module';
+import { ChartsModule } from 'ng2-charts';
 
 // Routing
 import { RouterModule, Routes } from '@angular/router';
@@ -31,7 +33,6 @@ import { InfoUserComponent, UserInfoContent } from './ui/info-user/info-user.com
 import { InfoCompanyComponent, CompanyInfoContent } from './ui/info-company/info-company.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { PartesComponent, ParteInfoContent } from './ui/partes/partes.component';
-import { CalendarComponent } from './ui/calendar/calendar.component';
 import { CompanyComponent } from './ui/company/company.component';
 import { CreateCompanyComponent, CompanyForm } from './ui/create-company/create-company.component';
 
@@ -45,6 +46,15 @@ import { PartesService } from './services/partes.service';
 import { UserService } from './services/user.service';
 import { CompanyService } from './services/company.service';
 import { CreateParteComponent } from './create-parte/create-parte.component';
+import { UsersComponent } from './ui/users/users.component';
+import { CreateUserComponent, CreateUserForm } from './ui/create-user/create-user.component';
+import { UploadService } from './uploads/shared/upload.service';
+import { VehiclesComponent } from './ui/vehicles/vehicles.component';
+import { VehicleService } from './services/vehicle.service';
+import { StatisticsService } from './services/statistics.service';
+import { ConfirmDeleteComponent } from './ui/confirm-delete/confirm-delete.component';
+import { UserStatisticsComponent } from './ui/user-statistics/user-statistics.component';
+import { DashboardStatisticsComponent } from './ui/dashboard-statistics/dashboard-statistics.component';
 
 
 
@@ -57,7 +67,6 @@ import { CreateParteComponent } from './create-parte/create-parte.component';
     NotificationMessageComponent,
     DashboardComponent,
     DashboardLayoutComponent,
-    CalendarComponent,
     PartesComponent,
     ParteInfoContent,
     InfoUserComponent,
@@ -67,7 +76,13 @@ import { CreateParteComponent } from './create-parte/create-parte.component';
     CreateCompanyComponent,
     CompanyInfoContent,
     CompanyForm,
-    CreateParteComponent
+    CreateParteComponent,
+    UsersComponent,
+    CreateUserComponent,
+    CreateUserForm,
+    ConfirmDeleteComponent,
+    UserStatisticsComponent,
+    DashboardStatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -75,19 +90,29 @@ import { CreateParteComponent } from './create-parte/create-parte.component';
     AppRoutingModule,
     CommonModule,
     FormsModule,
+    VehicleModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
-    NgbModalModule.forRoot(),
     CalendarModule.forRoot(),
+    NgbModalModule.forRoot(),
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    DataTablesModule
-
+    DataTablesModule,
+    ChartsModule
   ],
-  providers: [AuthenticationService, AuthenticationGuard, PartesService, UserService, CompanyService],
+  providers: [
+    AuthenticationService,
+    AuthenticationGuard,
+    PartesService,
+    UserService,
+    CompanyService,
+    UploadService,
+    VehicleService,
+    StatisticsService
+  ],
   bootstrap: [AppComponent],
   exports: [
     NotificationMessageComponent,
@@ -97,7 +122,8 @@ import { CreateParteComponent } from './create-parte/create-parte.component';
     UserInfoContent,
     ParteInfoContent,
     CompanyInfoContent,
-    CompanyForm
+    CompanyForm,
+    CreateUserForm
   ]
 })
 export class AppModule { }

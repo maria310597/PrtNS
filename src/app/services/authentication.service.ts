@@ -1,39 +1,39 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth, _getAngularFireAuth } from 'angularfire2/auth';
+import { _firebaseAppFactory } from 'angularfire2/firebase.app.module';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { NotifyService } from '../core/notify.service';
 
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { switchMap } from 'rxjs/operators';
-
-
-export interface User {
-  uid: string;
-  realname: string;
-  nickname: string;
-  email: string;
-  phone: string;
-  imagen: string;
-  // Notificaciones?
-
-}
+import { User } from '../models/user';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable()
 export class AuthenticationService {
+
   user: Observable<User> | null;
+  user2: Observable<User> | null;
 
-
+  public admin = false;
   private loggedIn = false;
+  app2: any;
+
   get isLoggedIn() {
     return this.loggedIn;
   }
 
+  get isAdmin(): any {
+    return this.admin;
+  }
 
+
+  // tslint:disable-next-line:max-line-length
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router, private notify: NotifyService) {
-         this.user = this.afAuth.authState
+        this.user = this.afAuth.authState
                 .switchMap((user) => {
                   if (user) {
                     return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
@@ -41,7 +41,8 @@ export class AuthenticationService {
                     return Observable.of(null);
                   }
                 });
-            }
+             this.app2 = firebase.initializeApp(environment.firebase, 'app2');
+           }
             ////// OAuth Methods /////
             googleLogin() {
               const provider = new firebase.auth.GoogleAuthProvider();
@@ -70,11 +71,12 @@ export class AuthenticationService {
                 .catch((error) => this.handleError(error) );
             }
             //// Email/Password Auth ////
-            emailSignUp(email: string, password: string) {
-              return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-                .then((user) => {
+            emailSignUp(email: string, password: string, newDate: User) {
+              return this.app2.auth().createUserWithEmailAndPassword(email, password)
+                .then((newuser) => {
                   this.notify.update('Registrado!!!', 'success');
-                  return this.updateUserData(user); // if using firestore
+                  this.updateUserData(newuser, newDate);
+                  return this.app2.auth().signOut();
                 })
                 .catch((error) => this.handleError(error) );
             }
@@ -92,7 +94,6 @@ export class AuthenticationService {
             // Sends email allowing user to reset password
             resetPassword(email: string) {
               const fbAuth = firebase.auth();
-
               return fbAuth.sendPasswordResetEmail(email)
                 .then(() => this.notify.update('Password update email sent', 'info'))
                 .catch((error) => this.handleError(error));
@@ -101,7 +102,7 @@ export class AuthenticationService {
             signOut() {
               this.loggedIn = false;
               this.afAuth.auth.signOut().then(() => {
-                  this.router.navigate(['/']);
+                  this.router.navigate(['/login']);
               });
             }
 
@@ -129,17 +130,18 @@ export class AuthenticationService {
             }
 
 
-            private updateUserData(user: User) {
-              const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+            private updateUserData(newuser: User, newData?: User) {
+              const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${newuser.uid}`);
               const data: User = {
-                uid: user.uid,
-                email: user.email ,
-                realname: user.realname || 'Defecto' ,
-                nickname: user.nickname || 'Defecto',
-                phone: user.phone || '609512002',
-                imagen: user.imagen || 'https://goo.gl/Fz9nrQ'
+                uid: newuser.uid,
+                email: newuser.email ,
+                realname: newData.realname || newuser.realname || 'Defecto' ,
+                nickname: newData.nickname || newuser.nickname || 'Defecto',
+                phone: newData.phone || newuser.phone || '609512002',
+                imagen: newData.imagen || newuser.imagen || 'https://goo.gl/Fz9nrQ',
+                admin: newData.admin || newuser.admin || false
               };
-              return userRef.set(data);
+              return userRef.set(data, {merge: true});
           }
 
 }

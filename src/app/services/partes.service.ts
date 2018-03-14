@@ -31,4 +31,12 @@ export class PartesService {
     return this.afs.collection<Report>(this.path, ref => ref.where('uid', '==', uid)).valueChanges();
   }
 
+  getPartesFrom$(uid: string): Observable<Report[]> {
+    return this.afs.collection<Report>(this.path, ref => ref.where('createdby', '==', uid)).valueChanges();
+  }
+
+  getPartesFromIn$(uid: string, empresa: string): Observable<Report[]> {
+    return this.afs.collection<Report>(this.path, ref => ref.where('createdby', '==', uid).where('company', '==', empresa)).valueChanges();
+  }
+
 }

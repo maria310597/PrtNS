@@ -5,9 +5,10 @@ import { LoginComponent } from './ui/login/login.component';
 import { LoginLayoutComponent } from './ui/login/login-layout.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.component';
-import { CalendarComponent} from './ui/calendar/calendar.component';
 import { PartesComponent } from './ui/partes/partes.component';
 import { CompanyComponent } from './ui/company/company.component';
+import { UsersComponent } from './ui/users/users.component';
+import { VehiclesComponent } from './ui/vehicles/vehicles.component';
 const routes: Routes = [
 
   {
@@ -31,7 +32,21 @@ const routes: Routes = [
       }
     ]
   },
-
+  // Only admin
+  {
+    path: '',
+    component: DashboardLayoutComponent,
+    canActivate: [AuthenticationGuard],
+    data: {
+      expectedRole: true
+    },
+    children: [
+      {
+        path: 'users',
+        component: UsersComponent,
+      }
+    ]
+  },
   {
     path: '',
     component: DashboardLayoutComponent,
@@ -42,13 +57,17 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
+        path: 'vehicles',
+        component: VehiclesComponent
+      },
+      {
         path: 'partes',
         component: PartesComponent
       },
       {
         path: 'company',
         component: CompanyComponent
-      }
+      },
     ]
   },
 

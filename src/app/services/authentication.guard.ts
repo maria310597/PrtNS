@@ -5,10 +5,14 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
+import { User } from '../models/user';
+import { isAdmin } from '@firebase/util';
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate {
   constructor(private auth: AuthenticationService, private router: Router) {}
+
+
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -17,10 +21,16 @@ export class AuthenticationGuard implements CanActivate {
       .take(1)
       .map(user => !!user)
       .do(loggedIn => {
-        if (!loggedIn) {
-          console.log('access denied');
-          this.router.navigate(['/login']);
-        }
+        const expectedRole = next.data.expectedRole;
+        this.auth.user.subscribe((data: User) => {
+          const token = data.admin;
+          if (!loggedIn) {
+            console.log('Redirect to login');
+            this.router.navigate(['/login']);
+          } else if (token !== undefined && expectedRole !== undefined &&  token !== expectedRole) {
+            this.router.navigate(['/dashboard']);
+          }
+        });
     });
 }
 }

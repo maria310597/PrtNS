@@ -5,6 +5,7 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+import { UserStatisticsComponent } from '../user-statistics/user-statistics.component';
 
 @Component({
   selector: 'app-user-info-content',
@@ -48,8 +49,8 @@ import { User } from '../../models/user';
                     <span><strong>Telefono: </strong></span>
                     <span class="badge badge-success">{{myusers[0].phone}}</span>
                     <hr>
-                        <p class="text-left"><strong>Resumen estadisticas: </strong><br>Aqui estadisticas</p>
-                        <br>
+                        <p class="text-left"><strong>Resumen estadisticas: </strong></p>
+                        <app-user-statistics [uidUser]="this.uid" [name]="myusers[0].realname"></app-user-statistics>
                 </div>
             </div>
         </div>
