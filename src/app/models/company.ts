@@ -1,4 +1,5 @@
 export class Company {
+    uid?: string;
     name: string;
     email: string;
     billMail: string;
@@ -6,8 +7,10 @@ export class Company {
     tlf: string;
     lastmovement: Date;
     igualada: boolean;
+    suspendida: boolean;
 
-    constructor(name: string, email: string, lastmovement: Date, igualada: boolean, billMail: string, faxNumber: string, tlf: string) {
+    constructor( name: string, email: string, lastmovement: Date, igualada: boolean, 
+        billMail: string, faxNumber: string, tlf: string,suspendida: boolean,uid?:string) {
         this.name = name;
         this.email = email;
         this.billMail = billMail;
@@ -15,6 +18,8 @@ export class Company {
         this.tlf = tlf;
         this.igualada = igualada;
         this.lastmovement = lastmovement;
-
+        this.uid = uid;
+        this.suspendida = suspendida;
+        
     }
 }

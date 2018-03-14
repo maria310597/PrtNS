@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { CompanyService } from '../../services/company.service';
 import { Company } from '../../models/company';
+import { NotifyService } from '../../core/notify.service';
 
 @Component({
   selector: 'app-company-info-content',
@@ -34,22 +35,52 @@ import { Company } from '../../models/company';
     <input type="text" class="form-control"  required [(ngModel)]="model.tlf"  name="tlf">
 
     <br>
-    <label for="tlf"> Iguala </label>
-    <ul>
+   
+    <label for="iguala"> Iguala </label>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" [(ngModel)]="model.igualada" name="ig" id="igSi"  [value]="true" checked>
+      <label class="form-check-label" for="grati"> Si </label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" [(ngModel)]="model.igualada" name="ig" id="igNo"  [value]="false">
+      <label class="form-check-label" for="grati"> No </label>
+    </div>
+    <br>
 
-      {{"Si"}}
-      <input type="checkbox" [disabled]="getSelectedNo()" [(ngModel)]="value"[ngModelOptions]="{standalone: true}" (click)="!getSelectedNo();"(change)="change(value, 'Si');"  >
-      {{"No"}}
-      <input type="checkbox" [disabled]="getSelectedSi()" [(ngModel)]="value" [ngModelOptions]="{standalone: true}"(click)="!getSelectedSi();"(change)="change(value,'No');"  >
-    </ul>
+    <label for="iguala"> Suspendida </label>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" [(ngModel)]="model.suspendida" name="sus" id="susSi"  [value]="true" >
+      <label class="form-check-label" for="sus"> Si </label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" [(ngModel)]="model.suspendida" name="sus" id="susNo"  [value]="false" checked>
+      <label class="form-check-label" for="sus"> No </label>
+    </div>
+    <br>
+    
 
     <button
-      type="submit"
-
-      (click)="guardarMovimiento()" > Guardar
+      type="submit" (click)="check()" > Guardar
     </button>
 
-
+    <div  *ngIf="campos[0]==2" class="alert alert-primary" role="alert">
+    Te ha faltado rellenar el campo nombre
+  </div>
+  <div  *ngIf="campos[1]==2" class="alert alert-primary" role="alert">
+    Te ha faltado rellenar el campo email
+  </div>
+  <div  *ngIf="campos[2]==2" class="alert alert-primary" role="alert">
+    Te ha faltado rellenar el campo email de facturación
+  </div>
+  <div  *ngIf="campos[3]==2" class="alert alert-primary" role="alert">
+    Te ha faltado rellenar el campo fax
+  </div>
+  <div  *ngIf="campos[4]==2" class="alert alert-primary" role="alert">
+    Te ha faltado rellenar el campo teléfono
+  </div>
+  <div  *ngIf="campos[5]== 1" class="alert alert-primary" role="alert">
+  Empresa Registrado Correctamente
+ </div>
     </form>
 
 
@@ -61,9 +92,10 @@ import { Company } from '../../models/company';
   `
 })
 export class CompanyForm implements OnInit {
-  @Input() uid;
+  @Input() company;
 
-  model = new Company("","",null,false, "","","");
+  model;
+  modify:boolean;
   submitted = false;
   companies$: Observable<Company[]>;
   mycompany: Company[];
@@ -72,53 +104,85 @@ export class CompanyForm implements OnInit {
   selectedno:boolean = false;
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(public activeModal: NgbActiveModal, private ref: ChangeDetectorRef, private companyService: CompanyService) {
-    this.igualas = [
-      { name: 'Si', selected: false },
-      { name: 'No', selected: false },
-
-    ]
+  constructor(public activeModal: NgbActiveModal, private ref: ChangeDetectorRef,
+     private companyService: CompanyService, private notifyService:NotifyService) {
+    
   }
 
   onSubmit(){ this.submitted = true;}
   newCompany(){
-    this.model =new Company("","",null,false, "","","");
+    this.model =new Company("","",null,false, "","","",false);
   }
-  guardarMovimiento() {
-    this.companyService.add(this.model);
-   console.log(this.model.email);
-   }
+ 
+   campos: number[]=[0,0,0,0,0,0]; //0 nocheck, 1 checkok, 2checkbad
+    check(){
+      if ( this.model.name ==''){
+          this.campos[0] = 2;
+      }else this.campos[0] = 1;
 
-   getSelectedSi(){
-     return this.selectedsi;
-   }
-   getSelectedNo(){
-    return this.selectedno;
-  }
-   change(value:boolean,item:string){
-    console.log(item);
-    if(item == "Si"){
-      this.igualas[0].selected = value;
-      this.selectedsi = value;
+      if ( this.model.email ==''){
+        this.campos[1] = 2;
+      }else this.campos[1] = 1;
+
+     if ( this.model.billMail ==''){
+      this.campos[2] = 2;
+    }else this.campos[2] = 1;
+
+    if (  this.model.faxNumber == ''){
+      this.campos[3] = 2;
+    }else {
+      this.campos[3] = 1;
+      
     }
-else {
-      this.igualas[1].selected = value;
-      this.selectedno = value;
+    if ( this.model.tlf ==''){
+     this.campos[4] = 2;
+    }else this.campos[4] = 1;
+
+    var empty:boolean =true;
+    for(let i=0;i<this.campos.length-1;i++){
+      
+      if(this.campos[i]==1) {
+        empty=false;
+      }
+      else {
+        empty = true;
+        break;
+      }
     }
+    if(!empty) {
+      this.campos[5] = 1;
+      if ( this.modify == true){
+        this.companyService.updateTodo(this.model);
+      this.activeModal.close('Close click')
+      this.notifyService.update('Empresa modificada correctamente', 'success');
+      }else{
+        this.companyService.add(this.model);
+      this.activeModal.close('Close click')
+      this.notifyService.update('Empresa registrada correctamente', 'success');
+      }
+      
+    }
+    }
+    
 
-
-   }
-  /*checkIfSelected() {
-    this.selectedany = this.igualas.(function(item:any) {
-        return item.selected == true;
-      })
-  }*/
   ngOnInit() {
 
     this.companyService.getCollection$().subscribe((mycompany: Company[]) => {
       this.mycompany = mycompany;
       this.dtTrigger.next();
     });
+    
+    if (this.company == undefined){
+    this.model = new Company("","",null,false, "","","",false,"");
+    this.modify = false;
+   }
+   else {
+   
+      this.model = new Company(this.company.name,this.company.email,this.company.lastmovement,this.company.igualada,
+       this.company.billMail,this.company.faxNumber,this.company.tlf,this.company.suspendida,this.company.uid);
+      // this.companyService.deleteTodo(this.company);
+       this.modify = true;
+   }
   }
 
 }
@@ -130,9 +194,26 @@ else {
 export class CreateCompanyComponent {
 
     constructor(private modalService: NgbModal) {}
-    @Input() uid: string;
+    @Input() company: Company;
     open() {
       const modalRef = this.modalService.open(CompanyForm, { size : 'lg' });
-      modalRef.componentInstance.uid = this.uid ;
+    
+      modalRef.componentInstance.company = this.company ;
     }
   }
+  @Component({
+    selector: 'app-modify-company',
+    templateUrl: './modify-company.component.html',
+    styleUrls: ['./modify-company.component.css']
+  })
+  export class ModifyCompanyComponent {
+  
+      constructor(private modalService: NgbModal) {}
+      @Input() company: Company;
+      open2() {
+        const modalRef = this.modalService.open(CompanyForm, { size : 'lg' });
+        modalRef.componentInstance.company = this.company;
+        
+      }
+    }
+  

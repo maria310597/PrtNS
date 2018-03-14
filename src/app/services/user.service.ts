@@ -12,7 +12,11 @@ export class UserService {
   readonly path = 'users';
   constructor(private afs: AngularFirestore, private notify: NotifyService) { }
 
+<<<<<<< HEAD
   getAllUsers(): Observable<User[]> {
+=======
+  getAllUsers$(): Observable<User[]> {
+>>>>>>> c5c00a668accbe09bcdd5409e6960c141716b26a
     return this.afs.collection<User>(this.path).valueChanges();
   }
 

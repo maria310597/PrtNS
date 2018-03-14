@@ -46,23 +46,28 @@ export class PartesService {
                                       telemantenimiento:Report.telemantenimiento,
                                       cocheParticular:Report.cocheParticular,
                                       hiddenIP:Report.hiddenIP,createdby:Report.createdby
-                              });
+                              })
+
+      .then(ref => {
+          Report.uid = ref.id;
+          this.updateTodo(Report);
+          })
     }
 }
   // tslint:disable-next-line:no-shadowed-variable
   updateTodo(Report: Report) {
-    this.partesCollectionRef.doc(Report.uid).update({ uid: !Report.uid, operator: !Report.operator, 
-                                                        date: !Report.date,
-                                                        company: !Report.company,
-                                                        dBegining: !Report.dBegining,
-                                                        dEnd: !Report.dEnd,notes: !Report.notes,
-                                                        km: !Report.km,
-                                                        displacements: !Report.displacements,
-                                                        parking: !Report.parking,
-                                                        free: !Report.free, interno: !Report.interno,
-                                                        telemantenimiento: !Report.telemantenimiento,
-                                                        cocheParticular: !Report.cocheParticular,
-                                                        hiddenIP: !Report.hiddenIP,createdby: !Report.createdby });
+    this.partesCollectionRef.doc(Report.uid).update({ uid: Report.uid, operator: Report.operator, 
+                                                        date: Report.date,
+                                                        company: Report.company,
+                                                        dBegining: Report.dBegining,
+                                                        dEnd: Report.dEnd,notes: Report.notes,
+                                                        km: Report.km,
+                                                        displacements: Report.displacements,
+                                                        parking: Report.parking,
+                                                        free: Report.free, interno: Report.interno,
+                                                        telemantenimiento: Report.telemantenimiento,
+                                                        cocheParticular: Report.cocheParticular,
+                                                        hiddenIP: Report.hiddenIP,createdby: Report.createdby });
   }
 
   getPartesFrom$(uid: string): Observable<Report[]> {

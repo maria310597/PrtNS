@@ -25,10 +25,7 @@
         <th><i class="fa fa-road"></i></th>
         <th><i class="fa fa-car"></i></th>
         <th>Desplazamiento</th>
-        <th>Interno</th>
-        <th>Gratuito</th>
-        <th>Telemantenimiento</th>
-        <th>Parking</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -56,22 +53,11 @@
           <i *ngIf="parte.displacements" class="fa fa-check-square"></i>
           <i *ngIf="!parte.displacements" class="fa fa-times"></i>
         </td>
-        <td >
-           
-          <i *ngIf="parte.intern" class="fa fa-check-square"></i>
-          <i *ngIf="!parte.intern" class="fa fa-times"></i>
+        <td>
+          <app-confirm-parte-delete [parte]="parte"></app-confirm-parte-delete>
+          <app-modify-parte [parte]="parte"></app-modify-parte>
         </td>
-        <td >
-           
-          <i *ngIf="parte.free" class="fa fa-check-square"></i>
-          <i *ngIf="!parte.free" class="fa fa-times"></i>
-        </td>
-        <td >
-           
-          <i *ngIf="parte.telemantenimiento" class="fa fa-check-square"></i>
-          <i *ngIf="!parte.telemantenimiento" class="fa fa-times"></i>
-        </td>
-        <td>{{ parte.parking }} €</td>
+       
       </tr>
     </tbody>
   </table>

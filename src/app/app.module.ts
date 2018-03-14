@@ -34,7 +34,8 @@ import { InfoCompanyComponent, CompanyInfoContent } from './ui/info-company/info
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { PartesComponent, ParteInfoContent } from './ui/partes/partes.component';
 import { CompanyComponent } from './ui/company/company.component';
-import {CreateCompanyComponent,CompanyForm} from './ui/create-company/create-company.component';
+import {CreateCompanyComponent,CompanyForm, ModifyCompanyComponent} from './ui/create-company/create-company.component';
+import {ConfirmDeleteComponent, CreateConfirmComponent, CreateConfirmParteComponent} from './ui/confirm-delete/confirm-delete.component';
 // Layouts
 import { LoginLayoutComponent } from './ui/login/login-layout.component';
 import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.component';
@@ -44,14 +45,13 @@ import {AuthenticationService} from './services/authentication.service';
 import { PartesService } from './services/partes.service';
 import { UserService } from './services/user.service';
 import { CompanyService } from './services/company.service';
-import { CreateParteComponent, CreateParteForm } from './ui/create-parte/create-parte.component';
+import { CreateParteComponent, CreateParteForm, ModifyParteComponent  } from './ui/create-parte/create-parte.component';
 import { UsersComponent } from './ui/users/users.component';
 import { CreateUserComponent, CreateUserForm } from './ui/create-user/create-user.component';
 import { UploadService } from './uploads/shared/upload.service';
 import { VehiclesComponent } from './ui/vehicles/vehicles.component';
 import { VehicleService } from './services/vehicle.service';
 import { StatisticsService } from './services/statistics.service';
-import { ConfirmDeleteComponent } from './ui/confirm-delete/confirm-delete.component';
 import { UserStatisticsComponent } from './ui/user-statistics/user-statistics.component';
 import { DashboardStatisticsComponent } from './ui/dashboard-statistics/dashboard-statistics.component';
 
@@ -86,7 +86,12 @@ import { DashboardStatisticsComponent } from './ui/dashboard-statistics/dashboar
     DashboardStatisticsComponent,
     CreateParteComponent,
     CompanyForm,
-    CreateParteForm
+    CreateParteForm,
+    ConfirmDeleteComponent,
+    CreateConfirmComponent,
+    ModifyCompanyComponent,
+    CreateConfirmParteComponent,
+    ModifyParteComponent
   ],
   imports: [
     BrowserModule,
@@ -127,7 +132,12 @@ import { DashboardStatisticsComponent } from './ui/dashboard-statistics/dashboar
     ParteInfoContent,
     CompanyInfoContent,
     CompanyForm,
-    CreateUserForm
+    CreateUserForm,
+    ConfirmDeleteComponent,
+    CreateConfirmComponent,
+    ModifyCompanyComponent,
+    ModifyParteComponent,
+    CreateConfirmParteComponent
   ]
 })
 export class AppModule { }
