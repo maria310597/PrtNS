@@ -21,8 +21,9 @@ export class Report {
     hiddenIP: string;
     createdby: string;
     constructor(operator: string, date: Date, company: string, dBegining: TimeCustom, dEnd: TimeCustom,
-         notes: string[], km: number, displacements: boolean, parking: number, free:boolean, interno: boolean,telemantenimiento:boolean,cocheParticular:boolean, 
-         createdby: string,uid?:string) {
+         notes: string[], km: number, displacements: boolean, parking: number, free:boolean, 
+         interno: boolean,telemantenimiento:boolean,cocheParticular:boolean, 
+         createdby: string,uid?: string) {
         this.uid = uid;
         this.operator = operator;
         this.date = date;
