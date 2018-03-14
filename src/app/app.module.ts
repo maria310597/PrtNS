@@ -33,7 +33,8 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { PartesComponent, ParteInfoContent } from './ui/partes/partes.component';
 import { CalendarComponent } from './ui/calendar/calendar.component';
 import { CompanyComponent } from './ui/company/company.component';
-import {CreateCompanyComponent,CompanyForm} from './ui/create-company/create-company.component';
+import {CreateCompanyComponent,CompanyForm, ModifyCompanyComponent} from './ui/create-company/create-company.component';
+import {ConfirmDeleteComponent, CreateConfirmComponent, CreateConfirmParteComponent} from './ui/confirm-delete/confirm-delete.component';
 // Layouts
 import { LoginLayoutComponent } from './ui/login/login-layout.component';
 import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.component';
@@ -43,7 +44,7 @@ import {AuthenticationService} from './services/authentication.service';
 import { PartesService } from './services/partes.service';
 import { UserService } from './services/user.service';
 import { CompanyService } from './services/company.service';
-import { CreateParteComponent, CreateParteForm } from './ui/create-parte/create-parte.component';
+import { CreateParteComponent, CreateParteForm,ModifyParteComponent } from './ui/create-parte/create-parte.component';
 
 
 
@@ -68,7 +69,12 @@ import { CreateParteComponent, CreateParteForm } from './ui/create-parte/create-
     CreateCompanyComponent,
     CreateParteComponent,
 CompanyForm,
-CreateParteForm
+CreateParteForm,
+ConfirmDeleteComponent,
+CreateConfirmComponent,
+ModifyCompanyComponent,
+CreateConfirmParteComponent,
+ModifyParteComponent
 
 
   ],
@@ -101,7 +107,13 @@ CreateParteForm
     ParteInfoContent,
     CompanyInfoContent,
     CompanyForm,
-    CreateParteForm
+    CreateParteForm,
+    ConfirmDeleteComponent,
+    CreateConfirmComponent,
+    ModifyCompanyComponent,
+    ModifyParteComponent,
+    CreateConfirmParteComponent
+
   ]
 })
 export class AppModule { }

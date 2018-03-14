@@ -3,7 +3,7 @@ import { Time } from '@angular/common';
 import { NgbTimepicker } from '@ng-bootstrap/ng-bootstrap';
 
 export class Report {
-    uid: string;
+    uid?: string;
     operator: string;
     date: Date;
     company: string;
@@ -20,9 +20,10 @@ export class Report {
     hiddenIP: string;
     createdby: string;
     constructor(operator: string, date: Date, company: string, dBegining: NgbTimepicker, dEnd: NgbTimepicker,
-         notes: string[], km: number, displacements: boolean, parking: number, free:boolean, interno: boolean,telemantenimiento:boolean,cocheParticular:boolean, 
-         createdby: string) {
-        this.uid = "";
+         notes: string[], km: number, displacements: boolean, parking: number, free:boolean, 
+         interno: boolean,telemantenimiento:boolean,cocheParticular:boolean, 
+         createdby: string,uid?: string) {
+        this.uid = uid;
         this.operator = operator;
         this.date = date;
         this.company = company;

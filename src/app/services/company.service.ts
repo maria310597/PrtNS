@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Company } from '../models/company';
+import { DocumentReference } from '@firebase/firestore-types';
 
 
 
@@ -9,7 +10,7 @@ import { Company } from '../models/company';
 @Injectable()
 export class CompanyService {
 
-  readonly path = '/company';
+  readonly path = 'company';
   companies$: Observable<Company[]>;
   companyCollectionRef: AngularFirestoreCollection<Company>;
 
@@ -29,27 +30,38 @@ export class CompanyService {
 
   add(Company: Company) {
     
-    if (Company /*&& !this.companyCollectionRef.doc(Company.name)*/) {
-      this.companyCollectionRef.add({ name: Company.name, email:Company.email, 
+    if (Company/* && !this.companyCollectionRef.doc(Company.name)*/) {
+    this.companyCollectionRef.add({uid: "",name: Company.name, email:Company.email, 
                                       billMail:Company.billMail,
                                       faxNumber:Company.faxNumber,
                                       igualada: Company.igualada,
-                                      lastmovement:Company.lastmovement,tlf:Company.tlf});
+                                      lastmovement:Company.lastmovement,tlf:Company.tlf,
+                                      suspendida: Company.suspendida})
+    .then(ref => {
+      Company.uid = ref.id;
+     this.updateTodo(Company);
+    })
     }
+   
   }
   // tslint:disable-next-line:no-shadowed-variable
   updateTodo(Company: Company) {
-    this.companyCollectionRef.doc(Company.name).update({ name: !Company.name,
-                                                          email: !Company.email, 
-                                                          billMail: !Company.billMail,
-                                                          faxNumber: !Company.faxNumber,
-                                                          igualada: !Company.igualada,
-                                                          lastmovement: !Company.lastmovement,
-                                                          tlf: !Company.tlf });
+    console.log(Company.uid)
+    this.afs.doc(this.path + '/' + Company.uid).set({ uid: Company.uid, name: Company.name,
+                                                          email: Company.email, 
+                                                          billMail: Company.billMail,
+                                                          faxNumber: Company.faxNumber,
+                                                          igualada: Company.igualada,
+                                                          lastmovement: Company.lastmovement,
+                                                          tlf: Company.tlf,
+                                                        suspendida: Company.suspendida });
   }
 
   deleteTodo(Company: Company) {
-    this.companyCollectionRef.doc(Company.name).delete();
+   
+    this.afs.doc(this.path + '/' + Company.uid).delete();
+   
+
   }
 
   getCompany$(name: string): Observable<Company[]> {

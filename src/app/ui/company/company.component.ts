@@ -3,7 +3,6 @@ import { DatePipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import {Company} from '../../models/company';
-import { CreateCompanyComponent } from '../create-company/create-company.component';
 
 import { CompanyService } from '../../services/company.service';
 
@@ -19,6 +18,7 @@ export class CompanyComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject();
   constructor(private companyService: CompanyService) { }
 
+  
   ngOnInit() {
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -26,7 +26,7 @@ export class CompanyComponent implements OnInit {
     };
     this.companyService.getCollection$().subscribe((mycompany: Company[]) => {
       this.mycompany = mycompany;
-     // console.log(mycompany.forEach.name);
+    
       this.dtTrigger.next();
     });
   }

@@ -22,6 +22,8 @@
 <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
   <thead>
     <tr>
+      
+      
       <th>Nombre</th>
       <th><i class="fa fa-envelope-o"></i></th>
       <th>Email de facturación</th>
@@ -29,23 +31,25 @@
       <th><i class="fa fa-volume-control-phone"></i></th>
       <th>Último Movimiento </th>
       <th>Igualada </th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     
    <tr *ngFor="let company of mycompany">
+      
       <td>{{ company.name }}</td>
       <td>{{ company.email }}</td>
       <td>{{ company.billMail }}</td>
       <td>{{ company.faxNumber }}</td>
       <td>{{ company.tlf }}</td>
-      <td>{{ company.lastmovement | date:'fullDate' }}</td>
+      <td>{{ company.lastmovement}}</td>
       <td >
           <i *ngIf="company.igualada" class="fa fa-check-square"></i>
           <i *ngIf="!company.igualada" class="fa fa-times"></i>
         </td>
-     
-      
+        <td><app-confirm-delete [company]="company"></app-confirm-delete>
+          <app-modify-company [company]="company"></app-modify-company></td>
     </tr>
   </tbody>
 </table>
@@ -56,4 +60,5 @@
     function myFunction() {
         document.getElementById("demo").style.color = "red";
     }
+   
 </script>
