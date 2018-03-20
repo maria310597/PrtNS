@@ -44,10 +44,10 @@
                             <h5 class="text-dark text-center"> {{ partes[0].date.day }}  /  {{partes[0].date.month}}/ {{partes[0].date.year }}</h5>
                             <br>
                             <p class="text-dark"><i class="fa fa-clock-o"></i> Hora de inicio: <span class="badge badge-danger">{{ partes[0].dBegining.hour}}:{{partes[0].dBegining.minute}}:{{partes[0].dBegining.second}} </span></p>
-                            <p class="text-dark"><i class="fa fa-clock-o"></i> Hora de fin: <span class="badge badge-danger">{{ partes[0].dEnd.hour}}:{{partes[0].dEnd.minute}}:{{partes[0].dEndsecond}} </span></p>
+                            <p class="text-dark"><i class="fa fa-clock-o"></i> Hora de fin: <span class="badge badge-danger">{{ partes[0].dEnd.hour}}:{{partes[0].dEnd.minute}}:{{partes[0].dEnd.second}} </span></p>
                             <hr>
                             <h5 class="text-center text-dark" >Horas totales</h5>
-                            <h5 class="text-center text-dark" ><span class="badge badge-danger">{{ ((partes[0].dEnd.hour*60)+(partes[0].dEnd.minute)) - (partes[0].dBegining.hour*60 + partes[0].dBegining.minute) / 60 }} h</span></h5>
+                            <h5 class="text-center text-dark" ><span class="badge badge-danger">{{ (((partes[0].dEnd.hour*60)+(partes[0].dEnd.minute)) - (partes[0].dBegining.hour*60 + partes[0].dBegining.minute)) / 60 | number : '1.2-2' }} h</span></h5>
                  </div>
             </div>
             <div class="col-6 col-md-4">
