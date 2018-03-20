@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {Report} from '../models/report';
 import { AngularFirestore, AngularFirestoreDocument,AngularFirestoreCollection } from 'angularfire2/firestore';
+import { and } from '@angular/router/src/utils/collection';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -70,12 +72,18 @@ export class PartesService {
                                                         hiddenIP: Report.hiddenIP,createdby: Report.createdby });
   }
 
-  getPartesFrom$(uid: string): Observable<Report[]> {
-    return this.afs.collection<Report>(this.path, ref => ref.where('createdby', '==', uid)).valueChanges();
+  getPartesFromIn$(uid: string, company:  string): Observable<Report[]> {
+    return this.afs.collection<Report>(this.path, ref => ref.where('createdby', '==', uid).where('company', '==', company)).valueChanges();
   }
 
-  getPartesFromIn$(uid: string, empresa: string): Observable<Report[]> {
-    return this.afs.collection<Report>(this.path, ref => ref.where('createdby', '==', uid).where('company', '==', empresa)).valueChanges();
+  getPartesFrom$(usuario: string): Observable<Report[]> {
+    return this.afs.collection<Report>(this.path, ref => ref.where('operator', '==', usuario)).valueChanges();
+  }
+  getPartesCompany$(empresa: string): Observable<Report[]> {
+    return this.afs.collection<Report>(this.path, ref => ref.where('company', '==', empresa)).valueChanges();
+  }
+  getPartesFromInCU$(empresa: string, usuario: string): Observable<Report[]> {
+   return this.afs.collection<Report>(this.path, ref => ref.where('company', '==', empresa).where('operator', '==', usuario)).valueChanges();
   }
 
   deleteTodo(Report: Report) {

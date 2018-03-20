@@ -23,6 +23,7 @@ export class AuthenticationGuard implements CanActivate {
       .do(loggedIn => {
         const expectedRole = next.data.expectedRole;
         this.auth.user.subscribe((data: User) => {
+          
           const token = data.admin;
           if (!loggedIn) {
             console.log('Redirect to login');

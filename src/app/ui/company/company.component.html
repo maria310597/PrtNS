@@ -22,8 +22,6 @@
 <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
   <thead>
     <tr>
-      
-      
       <th>Nombre</th>
       <th><i class="fa fa-envelope-o"></i></th>
       <th>Email de facturación</th>
@@ -43,7 +41,11 @@
       <td>{{ company.billMail }}</td>
       <td>{{ company.faxNumber }}</td>
       <td>{{ company.tlf }}</td>
-      <td>{{ company.lastmovement}}</td>
+      <td> 
+        <div *ngIf="company.lastmovement==null"></div> 
+        <div *ngIf="company.lastmovement !=null"> {{ company.lastmovement.day }}  /  {{company.lastmovement.month}}/ {{company.lastmovement.year }}
+        </div>
+        </td>
       <td >
           <i *ngIf="company.igualada" class="fa fa-check-square"></i>
           <i *ngIf="!company.igualada" class="fa fa-times"></i>

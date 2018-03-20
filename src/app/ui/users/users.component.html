@@ -21,7 +21,8 @@
         <div class="card-body text-center">
           <h4 class="card-title">{{user.realname}}</h4>
           <span class="social-box">
-              <a href="#"><i class="fa fa-pencil"></i></a>
+              
+              <app-modify-user [user]="user" ></app-modify-user>
               <a (click)="deleteUser(user.uid)" ><i class="fa fa-times"></i></a>
           </span>
         </div>

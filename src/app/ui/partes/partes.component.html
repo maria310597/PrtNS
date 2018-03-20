@@ -3,18 +3,52 @@
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Partes</h1>
-            <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-2">
-                <button (click)="downloadPdfWithName('ReportePartesNeosistec')" class="btn btn-sm btn-outline-secondary">Exportar</button>
-              </div>
-              <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
-                This week
-              </button>
+            
+        </div>
+         <form class="form-inline">
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedCompany}}</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button class="dropdown-item" *ngFor="let c of mycompanies" (click)="ChangeCompany(c.name)" >{{c.name}} </button>
             </div>
           </div>
 
-<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+
+          <label>&nbsp;&nbsp;</label>
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedUser}}</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button class="dropdown-item" *ngFor="let u of myusers" (click)="ChangeUser(u.realname)" >{{u.realname}} </button>
+              </div>
+            </div>
+ 
+            <label for="name"class="inline">&nbsp; Fecha &nbsp;</label>
+
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd"  name="date" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker">
+        
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i> </button>
+                </div>
+                <input class="form-control" placeholder="yyyy-mm-dd" name="date2"  [(ngModel)]="date2" ngbDatepicker #d2="ngbDatepicker">
+                  <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button"> <i class="fa fa-calendar"></i> </button>
+              
+              </div>
+            </div>
+          
+
+           <label>&nbsp;&nbsp;</label>
+            <button class="btn btn-primary" type="submit" (click)="filtrar(date,date2)" >Filtrar</button>
+          
+            <label>&nbsp;&nbsp;</label>
+            <button class="btn btn-primary" type="submit" (click)="clear()" >Limpiar filtro</button>
+          </form>
+          <br />
+
+
+
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" id = "table">
     <thead>
       <tr>
         <th>Operador</th>
@@ -43,9 +77,10 @@
           <i *ngIf="!parte.cocheParticular" class="fa fa-times"></i>
         </td>
         <td >
-           
-          <i *ngIf="parte.displacements" class="fa fa-check-square"></i>
-          <i *ngIf="!parte.displacements" class="fa fa-times"></i>
+           <a aria-label="si">
+          <i *ngIf="parte.displacements" class="fa fa-check-square" aria-hidden="true" >  </i></a>
+          <a>
+          <i *ngIf="!parte.displacements" class="fa fa-times"  aria-hidden="true"></i> </a>
         </td>
         <td>
           <app-confirm-parte-delete [parte]="parte"></app-confirm-parte-delete>

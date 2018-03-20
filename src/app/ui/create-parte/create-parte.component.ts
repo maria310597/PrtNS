@@ -158,19 +158,19 @@ import {AuthenticationService} from '../../services/authentication.service';
     <br>
     <div *ngIf="comments>0">
       <label for="comment" >Descipción:</label>
-      <textarea class="form-control" rows="2" id="comment"></textarea>
+      <textarea class="form-control" rows="2" name="comment0" [(ngModel)]="model.notes[0]"></textarea>
         <button (click)="newComment()" class="btn btn-outline-success btn-sm"><i class="fa fa-plus"></i></button>
         <br>
         <div *ngIf="comments>1">
           <label for="comment" >Descipción:</label>
-          <textarea class="form-control" rows="2" id="comment"></textarea>
+          <textarea class="form-control" rows="2" name="comment1" [(ngModel)]="model.notes[1]"></textarea>
         
 
         <button (click)="newComment()" class="btn btn-outline-success btn-sm"><i class="fa fa-plus"></i></button>
         <br>
         <div *ngIf="comments>2">
           <label for="comment" >Descipción:</label>
-          <textarea class="form-control" rows="2" id="comment"></textarea>
+          <textarea class="form-control" rows="2" name="comment2" [(ngModel)]="model.notes[2]"></textarea>
         </div>
     </div>
     </div>
@@ -271,6 +271,7 @@ export class CreateParteForm implements OnInit {
   ChangeUser(newU: string) { 
     this.selectedUser = newU;
     this.model.operator = newU;
+    
   }
 
 
@@ -278,6 +279,7 @@ export class CreateParteForm implements OnInit {
     newComment(){
      this.comments++;
     }
+    
     campos: number[]=[0,0,0,0,0,0,0]; //0 nocheck, 1 checkok, 2checkbad
     check(){
       if ( this.model.operator ==''){
@@ -332,6 +334,7 @@ export class CreateParteForm implements OnInit {
       }else{
        
       this.partesService.add(this.model);
+      this.companyService.updateLastMovement(this.model.company,this.model.date);
       this.activeModal.close('Close click')
       this.notify.update('Parte registrado correctamente', 'success');
       }
@@ -347,8 +350,8 @@ export class CreateParteForm implements OnInit {
     });
  
     if (this.parte == undefined){
-      
-      this.model = new Report("",null,"",null,null,null,0,false,0,false,false,false,false,"","");
+      var notes: string[] = [];
+      this.model = new Report("",null,"",null,null,notes,0,false,0,false,false,false,false,"","");
       this.modify = false;
      }
      else {
@@ -366,7 +369,7 @@ export class CreateParteForm implements OnInit {
      this.getSelectedUser();
      this.getSelectedCompany();
      this.time = this.model.dBegining;
-  this.time2 = this.model.dEnd;
+   this.time2 = this.model.dEnd;
      
   }
 

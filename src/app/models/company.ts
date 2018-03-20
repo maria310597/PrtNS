@@ -1,3 +1,5 @@
+import { NgbTimepicker, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+
 export class Company {
     uid?: string;
     name: string;
@@ -5,11 +7,11 @@ export class Company {
     billMail: string;
     faxNumber: string;
     tlf: string;
-    lastmovement: Date;
+    lastmovement: NgbDateStruct;
     igualada: boolean;
     suspendida: boolean;
 
-    constructor( name: string, email: string, lastmovement: Date, igualada: boolean, 
+    constructor( name: string, email: string, lastmovement: NgbDateStruct, igualada: boolean, 
         billMail: string, faxNumber: string, tlf: string,suspendida: boolean,uid?:string) {
         this.name = name;
         this.email = email;

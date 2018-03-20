@@ -1,12 +1,12 @@
 import { Company } from './company';
 import { TimeCustom } from './Time';
 import { Time } from '@angular/common';
-import { NgbTimepicker } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTimepicker, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 export class Report {
     uid?: string;
     operator: string;
-    date: Date;
+    date: NgbDateStruct;
     company: string;
     dBegining: TimeCustom;
     dEnd: TimeCustom;
@@ -20,7 +20,7 @@ export class Report {
     cocheParticular: boolean;
     hiddenIP: string;
     createdby: string;
-    constructor(operator: string, date: Date, company: string, dBegining: TimeCustom, dEnd: TimeCustom,
+    constructor(operator: string, date: NgbDateStruct, company: string, dBegining: TimeCustom, dEnd: TimeCustom,
          notes: string[], km: number, displacements: boolean, parking: number, free:boolean, 
          interno: boolean,telemantenimiento:boolean,cocheParticular:boolean, 
          createdby: string,uid?: string) {
@@ -40,5 +40,6 @@ export class Report {
         this.cocheParticular = cocheParticular;
         this.hiddenIP = '';
         this.createdby = createdby;
+        
     }
 }

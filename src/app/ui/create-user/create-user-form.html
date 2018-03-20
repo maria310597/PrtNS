@@ -1,5 +1,6 @@
 <div class="modal-header">
-        <h4 class="modal-title">Registrar usuario</h4>
+        <h4 class="modal-title"  *ngIf="modelo.email=='Email'">Registrar usuario</h4>
+        <h4 class="modal-title"  *ngIf="modelo.email!='Email'">Modificar usuario</h4>
         <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -36,18 +37,23 @@
             <input class="form-control" type="text" name="nickname" [(ngModel)]="modelo.nickname" >
           </div>
         </div>
-        <div class="form-group row">
+        <div *ngIf="modify==false" class="form-group row">
             <label for="example-text-input" class="col-2 col-form-label">Email</label>
             <div class="col-10">
-              <input class="form-control" type="email" name="ubicacion" [(ngModel)]="modelo.email">
+              <input class="form-control" type="email" name="email_r" autocomplete="off" [(ngModel)]="modelo.email">
             </div>
           </div>
-          <div class="form-group row">
+          <div class="form-group row" >
                 <label for="example-text-input" class="col-2 col-form-label">Clave</label>
-                <div class="col-10">
-                  <input class="form-control" type="password" name="password" [(ngModel)]="modelo.password">
+                <div class="col-10" >
+                  <input class="form-control" *ngIf="modify==false" type="password" name="password_r" [(ngModel)]="modelo.password">
+                  <button  class="btn btn-outline-success right"*ngIf="modify==true" (click)="resetpassword()" >Resetear Contraseña</button>
+
                 </div>
-              </div>
+          </div>
+
+
+      
           <div class="form-group row">
               <label for="exampleTextarea" class="col-2 col-form-label">Nombre completo</label>
               <div class="col-10">
@@ -60,7 +66,8 @@
               <input class="form-control" type="text" name="phone" [(ngModel)]="modelo.phone">
               </div>
             </div>
-        <button type="submit" class="btn btn-outline-success right" >Crear</button>
+        <button type="submit" class="btn btn-outline-success right" *ngIf="modify==false">Crear</button>
+        <button type="submit" class="btn btn-outline-success right"  *ngIf="modify==true">Modificar</button>
       </form>
     </div>
     <div class="modal-footer">
