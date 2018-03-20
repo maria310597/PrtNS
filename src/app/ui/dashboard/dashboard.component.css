@@ -1,5 +1,9 @@
 user_data{
     margin-right: 30px;
 }
-
- 
+#sidebar {
+  background-color:#eee;
+  height:100%;
+  position:fixed;
+  right:0;
+}

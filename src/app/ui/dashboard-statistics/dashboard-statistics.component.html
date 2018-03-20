@@ -1,9 +1,9 @@
-<div>
+<div *ngIf="!ready"><i class="fa fa-circle-o-notch fa-spin" style="font-size:100px"></i></div>
+<div *ngIf="ready">
   <div style="display: block">
     <canvas baseChart
             [datasets]="barChartData"
             [labels]="barChartLabels"
-            [colors]="colors"
             [options]="barChartOptions"
             [legend]="barChartLegend"
             [chartType]="barChartType"

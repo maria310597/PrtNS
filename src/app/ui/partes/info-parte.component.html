@@ -24,7 +24,7 @@
                 <i *ngIf="partes[0].free" class="fa fa-check-square"></i>
                 <i *ngIf="!partes[0].free" class="fa fa-times"></i></p>
 
-                <p class="text-dark"><i class="fa fa-money"></i> Precio parking: <span class="badge badge-danger">{{partes[0].parkingPrice}} € </span></p>
+                <p class="text-dark"><i class="fa fa-money"></i> Precio parking: <span class="badge badge-danger">{{partes[0].parking}} € </span></p>
 
                 <p class="text-dark"><i class="fa fa-car"></i> Coche particular:  
                     <i *ngIf="partes[0].cocheParticular" class="fa fa-check-square"></i>
@@ -62,7 +62,7 @@
                                 <i *ngIf="!partes[0].telemantenimiento" class="fa fa-times"></i></p>
     
 
-                            <p class="text-dark"><i class="fa fa-user-secret"></i> IP: <span class="badge badge-danger">{{ partes[0].hiddenIP }}</span></p>
+                            <p class="text-dark"><i class="fa fa-user-secret"></i> IP: <span class="badge badge-danger">{{ this.privateIP }}</span></p>
                  </div>
             </div>
     </div>

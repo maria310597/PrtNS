@@ -1,23 +1,63 @@
-<div class="container-fluid">
-    <div class="row">
-      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<div  data-target="navbar" data-offset="0" class="container-fluid">
+  <div class="row">
+      <main role="main" class="col-md-6 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 <button class="btn btn-sm btn-outline-secondary">Exportar</button>
               </div>
+              
+              <div ngbDropdown >
+              <button ngbDropdownToggle class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                <i class="fa fa-calendar"></i>
+                Este mes
+              </button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button class="dropdown-item" >Esta semana </button>
+              </div>
+            </div>
             </div>
           </div>
+           <app-dashboard-mini-widgets></app-dashboard-mini-widgets>
+           
+          <hr>
          <div class="row">
           <div class="col-md-6">
+            <div class="card">
             <app-dashboard-statistics [uidUser]="this.uid" [name]="this.name"></app-dashboard-statistics>
           </div>
-          <div class="col-md-6">
-            
           </div>
-         </div>
+          <div class="col-md-6">
+             
+          
+                        <ul class="list-group">
+                            <li class="list-group-item  list-group-item-warning text-center"><i class="fa fa-user-circle-o"></i>  Usuarios con partes pendientes</li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <img src="/assets/perfil.png" name="aboutme" width="30" height="30" border="1" class="rounded-circle">
+                              Borja Fernandez
+                              <span class="badge badge-danger badge-pill">14</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <img src="/assets/perfil.png" name="aboutme" width="30" height="30" border="1" class="rounded-circle">
+                              Borja Fernandez
+                              <span class="badge badge-danger badge-pill">14</span>
+                            </li>
+                          </ul>
+
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+
+
+        
+            </div>
+        </div>       
 
         </main>
+        
       </div>
+      
 </div>

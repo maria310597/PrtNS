@@ -1,7 +1,9 @@
 <div *ngIf="myuser | async as myuser" >
-    <nav class="navbar navbar-dark sticky-top bg-white flex-md-nowrap p-0 bb">
+    <nav id="navbar" class="navbar navbar-dark sticky-top bg-white  flex-md-nowrap p-0 bb">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" ><img src="/assets/logo-trans.png" width="90%" class="d-inline-block align-top" alt=""></a>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <form (ngSubmit)="onSubmit()" class="form-control-dark w-100" >
+        <input class="form-control form-control-dark w-100 text-dark"  type="text" [(ngModel)]="this.task.description" name="description" placeholder="Añadir recordatorio rapido..." aria-label="Añadir recordatorio rapido...">
+      </form>
         <ul class="navbar-nav px-3 fixdrop ">
                   <div ngbDropdown class="d-inline-block  ">
                     <a ngbDropdownToggle><img width="30" height="30" border="1" class="rounded-circle" src="{{myuser.imagen}}"/> </a>
@@ -19,7 +21,7 @@
             <div class="sidebar-sticky">
               <ul class="nav flex-column">
                 <li class="nav-item d-flex justify-content-between align-items-center px-3 mt-4 mb-1 ">
-                  <app-create-parte></app-create-parte>                </li>
+                  <app-create-parte></app-create-parte> <app-tasks></app-tasks>               </li>
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>Principal</span>
                     <a class="d-flex align-items-center text-muted" href="#">

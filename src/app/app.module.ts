@@ -54,6 +54,10 @@ import { VehicleService } from './services/vehicle.service';
 import { StatisticsService } from './services/statistics.service';
 import { UserStatisticsComponent } from './ui/user-statistics/user-statistics.component';
 import { DashboardStatisticsComponent } from './ui/dashboard-statistics/dashboard-statistics.component';
+import { DashboardMiniWidgetsComponent } from './ui/dashboard-mini-widgets/dashboard-mini-widgets.component';
+import { TaskService } from './services/task.service';
+import { TasksComponent } from './ui/tasks/tasks.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -91,7 +95,10 @@ import { DashboardStatisticsComponent } from './ui/dashboard-statistics/dashboar
     CreateConfirmComponent,
     ModifyCompanyComponent,
     CreateConfirmParteComponent,
-    ModifyParteComponent
+    ModifyParteComponent,
+    DashboardMiniWidgetsComponent,
+    TasksComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -101,6 +108,7 @@ import { DashboardStatisticsComponent } from './ui/dashboard-statistics/dashboar
     FormsModule,
     VehicleModule,
     ReactiveFormsModule,
+    HttpClientModule,
     NgbModule.forRoot(),
     CalendarModule.forRoot(),
     NgbModalModule.forRoot(),
@@ -120,7 +128,9 @@ import { DashboardStatisticsComponent } from './ui/dashboard-statistics/dashboar
     CompanyService,
     UploadService,
     VehicleService,
-    StatisticsService
+    StatisticsService,
+    TaskService,
+    HttpClient
   ],
   bootstrap: [AppComponent],
   exports: [

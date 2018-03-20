@@ -23,11 +23,14 @@ export class AuthenticationGuard implements CanActivate {
       .do(loggedIn => {
         const expectedRole = next.data.expectedRole;
         this.auth.user.subscribe((data: User) => {
-          const token = data.admin;
+          let token;
+          if(data != null){
+            token = data.admin;
+          }
           if (!loggedIn) {
             console.log('Redirect to login');
             this.router.navigate(['/login']);
-          } else if (token !== undefined && expectedRole !== undefined &&  token !== expectedRole) {
+          } else if (token !== undefined && token != null && expectedRole !== undefined &&  token !== expectedRole) {
             this.router.navigate(['/dashboard']);
           }
         });

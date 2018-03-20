@@ -45,7 +45,7 @@ export class PartesService {
                                       free: Report.free, interno:Report.interno,
                                       telemantenimiento:Report.telemantenimiento,
                                       cocheParticular:Report.cocheParticular,
-                                      hiddenIP:Report.hiddenIP,createdby:Report.createdby
+                                      hiddenIP:Report.hiddenIP,createdby:Report.createdby,type:Report.type
                               })
 
       .then(ref => {
