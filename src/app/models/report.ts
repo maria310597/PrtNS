@@ -3,6 +3,13 @@ import { TimeCustom } from './Time';
 import { Time } from '@angular/common';
 import { NgbTimepicker, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
+export enum TypeReport{
+    Sisemas,
+    Postventa,
+    Desarrollo
+}
+
+
 export class Report {
     uid?: string;
     operator: string;
@@ -20,10 +27,11 @@ export class Report {
     cocheParticular: boolean;
     hiddenIP: string;
     createdby: string;
+    type?: TypeReport;
     constructor(operator: string, date: NgbDateStruct, company: string, dBegining: TimeCustom, dEnd: TimeCustom,
          notes: string[], km: number, displacements: boolean, parking: number, free:boolean, 
          interno: boolean,telemantenimiento:boolean,cocheParticular:boolean, 
-         createdby: string,uid?: string) {
+         createdby: string,typec?:TypeReport,uid?: string) {
         this.uid = uid;
         this.operator = operator;
         this.date = date;
@@ -40,6 +48,6 @@ export class Report {
         this.cocheParticular = cocheParticular;
         this.hiddenIP = '';
         this.createdby = createdby;
-        
+        this.type = typec;
     }
 }

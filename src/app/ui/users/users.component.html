@@ -10,6 +10,7 @@
             </div>
           </div>
         </div>
+<<<<<<< HEAD
         <div clas="row">
         <div *ngFor="let user of users | async">
         <div class="col-sm-4">
@@ -30,6 +31,28 @@
       </div>
   </div>
  </div> 
+=======
+            <div class="row">
+               
+                    <div *ngFor="let user of users | async" class="col">
+                      <div class="card card-01">
+                          <span *ngIf="user.admin" class="badge-box"><i class="fa fa-diamond"></i></span>
+                       <div class="profile-box">
+                         <img class="card-img-top rounded-circle" src="{{ user.imagen }}" alt="Imagen del usuario {{ user.realname }}">
+                       </div>
+                    <div class="card-body text-center">
+                      <h4 class="card-title">{{user.realname}}</h4>
+                      <span class="social-box">
+                          <a href="#"><i class="fa fa-pencil"></i></a>
+                          <a (click)="deleteUser(user.uid)" ><i class="fa fa-times"></i></a>
+                      </span>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+     
+>>>>>>> 6ca09aad5d1c938738ad2c8384b091e156b32270
       </main>
     </div>
 </div>

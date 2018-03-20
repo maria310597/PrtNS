@@ -1,30 +1,60 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StatisticsService } from '../../services/statistics.service';
+import { Estadistica } from '../../models/estadistica';
+import { Company } from '../../models/company';
+import { Filter } from '../../models/filters';
+import { CompanyService } from '../../services/company.service';
+
+interface OurData {
+  data: any[];
+  label:string;
+}
 
 @Component({
   selector: 'app-dashboard-statistics',
   templateUrl: './dashboard-statistics.component.html',
   styleUrls: ['./dashboard-statistics.component.css']
 })
+
 export class DashboardStatisticsComponent implements OnInit {
+  // Variables
   @Input() uidUser;
   @Input() name;
-  estad: Map<string, number>;
-  public barChartData:any[] = [{data: [] , label: ''}];
+  ready = false;
+  mycompanys: Company[];
+  public barChartData:any[] = [{data:[],label:''}];
   public barChartLabels:string[]=[];
+  public allData: Estadistica[];
 
-  constructor(private stadService: StatisticsService) { }
+
+  constructor(private stadService: StatisticsService, private companyService:CompanyService) { }
 
   ngOnInit() {
-    console.log(this.uidUser);
-    this.stadService.getHorasEmpresa(this.uidUser).subscribe((result: Map<string, number>) => {
-      this.estad = result;
-      let fulldata:any[] = [];
-      this.estad.forEach((value: number, key: string) => {
-        this.barChartLabels.push(key);
-        fulldata.push(value);
-      });
-      this.barChartData = [{data: fulldata , label: this.name},{data: fulldata , label: 'Pepe'},{data: fulldata , label: this.name}];
+    this.companyService.getCollection$().subscribe((mycompany: Company[]) => {
+      this.mycompanys = mycompany;
+      for(let c of this.mycompanys){
+        this.barChartLabels.push(c.name);
+      }
+    });
+    this.stadService.getHorasEmpresaTodos(Filter.Month).subscribe((myvar: Estadistica[]) => {
+     this.allData = myvar;
+     let labels:OurData = {data:[],label:''}; 
+     while(this.barChartData.length != this.allData.length){
+      this.barChartData.push(labels); // Esto es necesario para que no falle inicialmente
+    }
+     let j = 0;
+      for(let e of this.allData){
+        let dataofUser = new Array(this.barChartLabels.length).fill(0);
+        let label = e.user.nickname;
+         e.estad.forEach((value: number, key: string) => {
+         let index = this.barChartLabels.indexOf(key);
+         dataofUser[index] = value;
+        });
+        let finalData:OurData = {data:dataofUser,label:label};
+        this.barChartData[j] = finalData;
+        j++;
+      }
+      this.ready = true;
     });
   }
 

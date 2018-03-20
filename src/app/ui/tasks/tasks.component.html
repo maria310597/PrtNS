@@ -1,0 +1,23 @@
+<div *ngIf="mytasks | async as tasks" >
+<ng-template #popContent>
+    <ul class="list-group list-group-flush ">
+      <li *ngIf="tasks.length == 0" class="list-group-item"> No hay tareas pendientes</li>
+      <li *ngFor="let t of tasks" class="list-group-item">
+          <span class="pull-left thumb-small m-t-mini align-middle"> 
+            <i class="fa fa-code fa-lg text-default"></i>
+           </span>
+          <div class="media-body" style="margin-left:50px"> 
+           <div  class="pull-right text-primary m-t-small active"> 
+           <button (click)="deleteTask(t.uid)" class="button btn-outline-secondary s"> <i class="fa fa-check"></i></button>
+          </div>
+           <div>
+            <a class="h5">{{ t.description}}</a></div> 
+            <small class="text-muted">{{ t.time.hour}}:{{t.time.minute}} | {{t.date.day}}/{{t.date.month}}/{{t.date.year}}</small> 
+          </div>
+      </li>
+    </ul>
+</ng-template>
+<button type="button" class="btn btn-outline-secondary btn-sm" [ngbPopover]="popContent" placement="bottom" container="body" popoverTitle="Tareas pendientes">
+<i class="fa fa-tasks"></i> <span class="badge badge-pill badge-danger">{{tasks.length}}</span>
+</button>
+</div>

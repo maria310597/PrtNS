@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StatisticsService } from '../../services/statistics.service';
+import { Filter } from '../../models/filters';
 
 @Component({
   selector: 'app-user-statistics',
@@ -17,7 +18,7 @@ export class UserStatisticsComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.uidUser);
-    this.stadService.getHorasEmpresa(this.uidUser).subscribe((result: Map<string, number>) => {
+    this.stadService.getHorasEmpresa(this.uidUser,Filter.Month).subscribe((result: Map<string, number>) => {
       this.estad = result;
       let fulldata:any[] = [];
       this.estad.forEach((value: number, key: string) => {

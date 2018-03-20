@@ -43,25 +43,8 @@ export class AuthenticationService {
                 });
              this.app2 = firebase.initializeApp(environment.firebase, 'app2');
            }
-            ////// OAuth Methods /////
-            googleLogin() {
-              const provider = new firebase.auth.GoogleAuthProvider();
-              return this.oAuthLogin(provider);
-            }
-            /*
-            githubLogin() {
-              const provider = new firebase.auth.GithubAuthProvider();
-              return this.oAuthLogin(provider);
-            }
-            facebookLogin() {
-              const provider = new firebase.auth.FacebookAuthProvider();
-              return this.oAuthLogin(provider);
-            }
-            twitterLogin() {
-              const provider = new firebase.auth.TwitterAuthProvider();
-              return this.oAuthLogin(provider);
-            }
-            */
+
+
             private oAuthLogin(provider: firebase.auth.AuthProvider) {
               return this.afAuth.auth.signInWithPopup(provider)
                 .then((credential) => {
@@ -85,13 +68,12 @@ export class AuthenticationService {
               return this.afAuth.auth.signInWithEmailAndPassword(email, password)
                 .then((user) => {
                   this.loggedIn = true;
-                  this.notify.update('Logeado!!!', 'success');
-                  return this.updateUserData(user); // if using firestore
+                  this.notify.update('Bienvenido '+ user.realname, 'success');
+                  return user; 
                 })
                 .catch((error) => this.handleError(error) );
             }
 
-            // Sends email allowing user to reset password
             resetPassword(email: string) {
               const fbAuth = firebase.auth();
               return fbAuth.sendPasswordResetEmail(email)
@@ -125,6 +107,7 @@ export class AuthenticationService {
                 break;
                 default:
                   this.notify.update(error.message, 'error');
+                  debugger;
                 break;
               }
             }

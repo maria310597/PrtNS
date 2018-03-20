@@ -351,7 +351,7 @@ export class CreateParteForm implements OnInit {
  
     if (this.parte == undefined){
       var notes: string[] = [];
-      this.model = new Report("",null,"",null,null,notes,0,false,0,false,false,false,false,"","");
+      this.model = new Report("",null,"",null,null,notes,0,false,0,false,false,false,false,"",null, "");
       this.modify = false;
      }
      else {
