@@ -222,13 +222,10 @@ export class CreateParteForm implements OnInit {
 
   company$: Observable<Company[]>;
   mycompanies: Company[];
-  dtTriggerC: Subject<any> = new Subject();
 
   user$: Observable<User[]>;
   myusers: User[];
-  dtTriggerU: Subject<any> = new Subject();
 
-  dtTriggerP: Subject<any> = new Subject();
   comments:number=0;
   
   constructor(public activeModal: NgbActiveModal, private ref: ChangeDetectorRef, private partesService: PartesService, 
@@ -236,11 +233,11 @@ export class CreateParteForm implements OnInit {
      private notify: NotifyService, private authService: AuthenticationService) {
     this.companyService.getCollection$().subscribe((myc: Company[]) => {
        this.mycompanies = myc;
-       this.dtTriggerC.next();
+
     });
     this.userService.getAllUsers$().subscribe((myu: User[]) => {
       this.myusers = myu;
-      this.dtTriggerU.next();
+  
    });
    this.authService.user.subscribe((myu: User) => {
     this.model.createdby = myu.uid;
@@ -330,8 +327,7 @@ export class CreateParteForm implements OnInit {
       this.activeModal.close('Close click')
       this.notify.update('Parte modificado correctamente', 'success');
       }else{
-       
-      this.partesService.add(this.model);
+        this.partesService.add(this.model);
       this.activeModal.close('Close click')
       this.notify.update('Parte registrado correctamente', 'success');
       }
@@ -343,7 +339,6 @@ export class CreateParteForm implements OnInit {
 
     this.partesService.getCollection$().subscribe((myparte: Report[]) => {
       this.myparte = myparte;
-      this.dtTriggerP.next();
     });
  
     if (this.parte == undefined){
@@ -352,7 +347,7 @@ export class CreateParteForm implements OnInit {
       this.modify = false;
      }
      else {
-     
+
         this.model = new Report(this.parte.operator,this.parte.date,
           this.parte.company,this.parte.dBegining,
          this.parte.dEnd,this.parte.notes,this.parte.km, this.parte.displacements,

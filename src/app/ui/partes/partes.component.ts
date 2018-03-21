@@ -7,12 +7,14 @@ import {Report} from '../../models/report';
 import { User } from '../../models/user';
 import { Company } from '../../models/company';
 
+import { HttpClient } from '@angular/common/http';
 import { PartesService } from '../../services/partes.service';
 import { CompanyService } from '../../services/company.service';
 import { UserService } from '../../services/user.service';
 import { InfoUserComponent } from '../info-user/info-user.component';
 import { InfoCompanyComponent } from '../info-company/info-company.component';
 
+declare let ClientIP: any;
 
 
 @Component({
@@ -36,6 +38,9 @@ import { InfoCompanyComponent } from '../info-company/info-company.component';
 export class ParteInfoContent implements OnInit {
   @Input() uid;
 
+  privateIP ;
+  publicIP;
+
   partes: Report[];
   users: User[];
   company: Company[];
@@ -44,7 +49,8 @@ export class ParteInfoContent implements OnInit {
   constructor(public activeModal: NgbActiveModal,
     private reportService: PartesService,
     private companyService: CompanyService,
-    private userService: UserService) {}
+    private userService: UserService,
+    private http: HttpClient) {}
 
 
 
@@ -67,6 +73,8 @@ export class ParteInfoContent implements OnInit {
         this.partes = partes;
         this.loadUser(this.partes[0]);
     });
+
+    this.privateIP = ClientIP;
   }
 }
 

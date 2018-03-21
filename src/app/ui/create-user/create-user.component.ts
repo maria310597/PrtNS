@@ -31,6 +31,7 @@ export class CreateUserForm implements OnInit {
   onSubmit() {
     this.auth.emailSignUp(this.modelo.email, this.modelo.password, this.modelo);
     this.enviado = true;
+    this.activeModal.dismiss();
   }
 
   updateUrl() {
