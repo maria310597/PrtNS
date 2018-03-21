@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Company } from '../models/company';
 import { DocumentReference } from '@firebase/firestore-types';
+import { NgbTimepicker, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -46,7 +47,7 @@ export class CompanyService {
   }
   // tslint:disable-next-line:no-shadowed-variable
   updateTodo(Company: Company) {
-    console.log(Company.uid)
+    
     this.afs.doc(this.path + '/' + Company.uid).set({ uid: Company.uid, name: Company.name,
                                                           email: Company.email, 
                                                           billMail: Company.billMail,
@@ -55,6 +56,19 @@ export class CompanyService {
                                                           lastmovement: Company.lastmovement,
                                                           tlf: Company.tlf,
                                                         suspendida: Company.suspendida });
+  }
+  updateLastMovement(name: string, date :NgbDateStruct){
+    var company: Observable<Company[]> = this.getCompany$(name);
+   
+    company.forEach(c => {
+      for(let i=0;i<c.length;i++){
+        
+        c[i].lastmovement = date;
+        this.updateTodo(c[i]);
+     
+      }
+    })
+
   }
 
   deleteTodo(Company: Company) {

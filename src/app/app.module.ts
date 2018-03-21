@@ -29,7 +29,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './ui/navbar/navbar.component';
 import { LoginComponent } from './ui/login/login.component';
 import { NotificationMessageComponent } from './ui/notifications/notification-message.component';
-import { InfoUserComponent, UserInfoContent } from './ui/info-user/info-user.component';
+import { InfoUserComponent, UserInfoContent} from './ui/info-user/info-user.component';
 import { InfoCompanyComponent, CompanyInfoContent } from './ui/info-company/info-company.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { PartesComponent, ParteInfoContent } from './ui/partes/partes.component';
@@ -47,7 +47,7 @@ import { UserService } from './services/user.service';
 import { CompanyService } from './services/company.service';
 import { CreateParteComponent, CreateParteForm, ModifyParteComponent  } from './ui/create-parte/create-parte.component';
 import { UsersComponent } from './ui/users/users.component';
-import { CreateUserComponent, CreateUserForm } from './ui/create-user/create-user.component';
+import { CreateUserComponent, CreateUserForm, ModifyUserComponent } from './ui/create-user/create-user.component';
 import { UploadService } from './uploads/shared/upload.service';
 import { VehiclesComponent } from './ui/vehicles/vehicles.component';
 import { VehicleService } from './services/vehicle.service';
@@ -96,9 +96,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ModifyCompanyComponent,
     CreateConfirmParteComponent,
     ModifyParteComponent,
+    ModifyUserComponent,
     DashboardMiniWidgetsComponent,
     TasksComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -149,7 +149,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ModifyCompanyComponent,
     ModifyParteComponent,
     CreateConfirmParteComponent,
-    CreateParteForm
+    
+    ModifyUserComponent
   ]
 })
 export class AppModule { }
