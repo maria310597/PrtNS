@@ -68,6 +68,9 @@
             </div>
         <button type="submit" class="btn btn-outline-success right" *ngIf="modify==false">Crear</button>
         <button type="submit" class="btn btn-outline-success right"  *ngIf="modify==true">Modificar</button>
+        <div  *ngIf="error==true" class="alert alert-primary" role="alert">
+            {{ msg }}
+           </div>
       </form>
     </div>
     <div class="modal-footer">

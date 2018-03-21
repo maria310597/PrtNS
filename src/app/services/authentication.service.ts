@@ -61,7 +61,9 @@ export class AuthenticationService {
                   this.updateUserData(newuser, newDate);
                   return this.app2.auth().signOut();
                 })
-                .catch((error) => this.handleError(error) );
+                .catch((error) => { 
+                  console.log(error)
+                  return error} );
             }
 
             emailLogin(email: string, password: string) {
@@ -88,28 +90,33 @@ export class AuthenticationService {
               });
             }
 
-            private handleError(error) {
+            public handleError(error) {
               // Añadimos analisis de casos para manejar los errores y ofrecer+
               // una notificacion
-              console.log(error.code);
+              console.log(error.code)
+              var msg: string;
               switch (error.code) {
                 case 'auth/invalid-email':
-                    this.notify.update('Email invalido', 'error');
+                    msg = 'Email invalido';
                   break;
                 case 'auth/wrong-password':
-                  this.notify.update('La contraseña no es correcta', 'error');
+                    msg = 'La contraseña no es correcta';
+                  
                 break;
                 case 'auth/user-not-found':
-                this.notify.update('Ese usuario no existe.', 'error');
+                    msg= 'Ese usuario no existe.';
                 break;
                 case 'auth/network-request-failed':
-                  this.notify.update('Hay algun tipo de error con la conexión.', 'error');
+                   msg =   'Hay algun tipo de error con la conexión.';
+               
                 break;
                 default:
-                  this.notify.update(error.message, 'error');
-                  debugger;
+                 msg = error.message;
+                  
                 break;
               }
+              this.notify.update(msg, 'error');
+              return error;
             }
 
 

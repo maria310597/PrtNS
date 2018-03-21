@@ -28,13 +28,20 @@ export class CreateUserForm implements OnInit {
   modelo;
   modify:boolean;
   enviado = false;
-
+  error: boolean = false;
+  
+  msg:string;
 
   constructor(private auth: AuthenticationService,public userService:UserService,private notify: NotifyService, public activeModal: NgbActiveModal, private upSvc: UploadService) {}
   onSubmit() {
     if ( !this.modify){
-      this.auth.emailSignUp(this.modelo.email, this.modelo.password, this.modelo);
-      this.activeModal.close('Close click')
+      var er = this.auth.emailSignUp(this.modelo.email, this.modelo.password, this.modelo);
+     
+      if( er != undefined) {
+       this.msg =  this.auth.handleError(er);
+        this.error = true;
+      }
+      
       //this.notify.update('Usuario modificado correctamente', 'success');
     }
     else{
