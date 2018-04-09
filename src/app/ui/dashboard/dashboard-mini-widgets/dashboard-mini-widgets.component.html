@@ -1,0 +1,133 @@
+<div *ngIf="myuser | async as myuser" >
+<div class="admin" *ngIf="!myuser.admin else loading">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card" style="width: 10rem;">
+                <div class="card-body">
+                  <h5 class="card-title text-right"><i class="fa fa-car" placement="top" ngbTooltip="Kilometros realizados con coche propio"></i></h5>
+                  <h5 class="card-title">{{kmparticular}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Kilómetros</h6>
+                  <div class="progress" style="height: 10px;">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 15%"></div>
+                    </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm">
+            <div class="card" style="width: 10rem;">
+                <div class="card-body">
+                  <h5 class="card-title text-right"><i class="fa fa-clock-o" placement="top" ngbTooltip="Horas totales este mes"></i></h5>
+                  <h5 class="card-title">{{htotales}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Horas</h6>
+                  <div class="progress" style="height: 10px;">
+                      <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                    </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm">
+            <div class="card" style="width: 10rem;">
+                <div class="card-body">
+                  <h5 class="card-title text-right"><i class="fa fa-money" placement="top" ngbTooltip="Dinero gastado en parking"></i></h5>
+                  <h5 class="card-title">{{parkingTotal}} €</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Parking</h6>
+                  <div class="progress" style="height: 10px;">
+                      <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 35%"></div>
+                    </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm">
+            <div class="card" style="width: 10rem;">
+                <div class="card-body">
+                  <h5 class="card-title text-right"><i class="fa fa-address-card-o" placement="top" ngbTooltip="Partes este mes"></i></h5>
+                  <h5 class="card-title">{{ partesTotales }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Partes</h6>
+                  <div class="progress" style="height: 10px;">
+                      <div class="progress-bar bg-info progress-bar-striped progress-bar-animated"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 5%"></div>
+                    </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm">
+            <div class="card" style="width: 10rem;">
+                <div class="card-body">
+                  <h5 class="card-title text-right"><i class="fa fa-bookmark-o" placement="top" ngbTooltip="Horas sin iguala"></i></h5>
+                  <h5 class="card-title">{{ horasSinIguala }} h</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Sin iguala</h6>
+                  <div class="progress" style="height: 10px;">
+                      <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 5%"></div>
+                    </div>
+                </div>
+              </div>
+        </div>
+        </div>
+    <hr>
+    </div>
+
+  <ng-template #loading>
+        <div class="row">
+                <div class="col-sm">
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body">
+                          <h5 class="card-title text-right"><i class="fa fa-car" placement="top" ngbTooltip="Desplazamientos"></i></h5>
+                          <h5 class="card-title">{{kmparticular}}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Desplaza.</h6>
+                          <div class="progress" style="height: 10px;">
+                              <div class="progress-bar progress-bar-striped progress-bar-animated"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 15%"></div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body">
+                          <h5 class="card-title text-right"><i class="fa fa-clock-o" placement="top" ngbTooltip="Horas totales este mes"></i></h5>
+                          <h5 class="card-title">{{htotales}}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Horas</h6>
+                          <div class="progress" style="height: 10px;">
+                              <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body">
+                          <h5 class="card-title text-right"><i class="fa fa-money" placement="top" ngbTooltip="Dinero gastado en parking"></i></h5>
+                          <h5 class="card-title">{{parkingTotal}} €</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Parking</h6>
+                          <div class="progress" style="height: 10px;">
+                              <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 35%"></div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body">
+                          <h5 class="card-title text-right"><i class="fa fa-address-card-o" placement="top" ngbTooltip="Partes este mes"></i></h5>
+                          <h5 class="card-title">{{ partesTotales }}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Partes</h6>
+                          <div class="progress" style="height: 10px;">
+                              <div class="progress-bar bg-info progress-bar-striped progress-bar-animated"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 5%"></div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card" style="width: 10rem;">
+                        <div class="card-body">
+                          <h5 class="card-title text-right"><i class="fa fa-bookmark-o" placement="top" ngbTooltip="Horas fin de semana"></i></h5>
+                          <h5 class="card-title">{{ horasSinIguala }} h</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Fin de semana</h6>
+                          <div class="progress" style="height: 10px;">
+                              <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 5%"></div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                </div>
+            <hr>
+  </ng-template>
+</div>

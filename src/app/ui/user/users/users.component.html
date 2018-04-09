@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+          <h1 class="h2">Usuarios</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+              <app-create-user></app-create-user>
+            </div>
+          </div>
+        </div>
+            <div class="row">
+               
+                    <div *ngFor="let user of users | async" class="col">
+                      <div class="card card-01">
+                          <span *ngIf="user.admin" class="badge-box"><i class="fa fa-diamond"></i></span>
+                       <div class="profile-box">
+                         <img class="card-img-top rounded-circle" src="{{ user.imagen }}" alt="Imagen del usuario {{ user.realname }}">
+                       </div>
+                    <div class="card-body text-center">
+                      <h4 class="card-title">{{user.realname}}</h4>
+                      <span class="social-box">
+                        <app-modify-user [user]="user" ></app-modify-user>
+                          <a (click)="deleteUser(user.uid)" ><i class="fa fa-times"></i></a>
+                      </span>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+     
+      </main>
+    </div>
+</div>

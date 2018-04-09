@@ -1,0 +1,123 @@
+<div class="modal-header">
+        <h4 class="modal-title">Informacion detallada</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="pdf-content" >
+        <div *ngIf="!loaded"><i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i></div>  
+        <div *ngIf="loaded">
+     
+    <div class="row">
+            <div class="col-6 col-md-4">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading text-dark"> <i class="fa fa-car "></i> Recorrido</h4>
+               <hr>
+
+               <p class="text-dark"><i class="fa fa-car"></i> Desplazamiento:  
+                <i *ngIf="partes[0].displacement" class="fa fa-check-square"></i>
+                <i *ngIf="!partes[0].displacement" class="fa fa-times"></i></p>
+
+               <p class="text-dark"><i class="fa fa-road"></i> Kilómetros: <span class="badge badge-danger">{{partes[0].km}} km </span></p>
+
+               <p class="text-dark"><i class="fa fa-credit-card"></i> Gratuito:  
+                <i *ngIf="partes[0].free" class="fa fa-check-square"></i>
+                <i *ngIf="!partes[0].free" class="fa fa-times"></i></p>
+
+                <p class="text-dark"><i class="fa fa-money"></i> Precio parking: <span class="badge badge-danger">{{partes[0].parking}} € </span></p>
+
+                <p class="text-dark"><i class="fa fa-car"></i> Coche particular:  
+                    <i *ngIf="partes[0].cocheParticular" class="fa fa-check-square"></i>
+                    <i *ngIf="!partes[0].cocheParticular" class="fa fa-times"></i></p>
+
+               
+
+                   
+               </div>
+             
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="alert alert-info" role="alert">
+                            <h4 class="alert-heading text-dark"><i class="fa fa-calendar"></i> Info temporal</h4>
+                            <hr>
+                            <h5 class="text-dark text-center"> {{ partes[0].date.day }} / {{partes[0].date.month}} / {{partes[0].date.year }}</h5>
+                            <br>
+                            <p class="text-dark"><i class="fa fa-clock-o"></i> Hora de inicio: <span class="badge badge-danger">{{ partes[0].dBegining.hour}}:{{partes[0].dBegining.minute}}:{{partes[0].dBegining.second}} </span></p>
+                            <hr>
+                            <h5 class="text-center text-dark" >Horas totales</h5>
+                            <h5 class="text-center text-dark" ><span class="badge badge-danger">{{ (((partes[0].dEnd.hour*60)+(partes[0].dEnd.minute)) - (partes[0].dBegining.hour*60 + partes[0].dBegining.minute)) / 60 | number : '1.2-2' }} h</span></h5>
+                            <br>
+                          </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="alert alert-warning" role="alert">
+                            <h4 class="alert-heading text-dark">Otra información</h4>
+                            <hr>
+                            <p class="text-dark"><i class="fa fa-industry"></i> Interno:  
+                                <i *ngIf="partes[0].interno" class="fa fa-check-square"></i>
+                                <i *ngIf="!partes[0].interno" class="fa fa-times"></i></p>
+                            <p class="text-dark"><i class="fa fa-cloud"></i> Telemantenimiento:  
+                                <i *ngIf="partes[0].telemantenimiento" class="fa fa-check-square"></i>
+                                <i *ngIf="!partes[0].telemantenimiento" class="fa fa-times"></i></p>
+    
+
+                            <p  class="text-dark"><i class="fa fa-user-secret"></i> IP: <span class="badge badge-danger">{{ partes[0].hiddenIP }}</span></p>
+                          
+                          </div>
+            </div>
+    </div>
+
+    
+    <hr>
+    <p class="text-left"><strong>Descripciones: </strong></p>
+    <div *ngFor="let desc of partes[0].notes; let i = index">
+    <div  class="card">
+            <div class="card-header">
+              Descripción {{ i+1 }}
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>{{desc}}</p>
+              </blockquote>
+            </div>
+        </div>
+        <br>
+    </div>
+    <br>
+    <hr>
+    <div class="row">
+            <div class="col-sm-6">
+              <div class="card text-center">
+                      <div class="card-header">
+                              Operador
+                            </div>
+                <div class="card-body">
+                  <h5 class="card-title">
+                      <img src="{{ users[0].imagen }}" name="aboutme" width="50" height="50" border="0" class="rounded-circle">
+                  </h5>
+                  <p class="card-text">
+                          <span class="badge badge-info">{{users[0].realname}}</span><br>
+                          <span class="badge badge-danger">{{users[0].lvl}}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card text-center">
+                      <div class="card-header">
+                              Empresa
+                            </div>
+                <div class="card-body">
+                  <p class="card-text">
+                          <span class="badge badge-info">{{company[0].name}}</span><br>
+                          <span class="badge badge-success">{{company[0].tlf}}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" (click)="sacarPDF()"><i class="fa fa-download"></i> Exportar</button>
+      </div>
