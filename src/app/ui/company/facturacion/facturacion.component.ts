@@ -1,11 +1,11 @@
 
-import { Company } from '../../models/company';
+import { Company } from '../../../models/company';
 import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { PartesService } from '../../services/partes.service';
-import { Report } from '../../models/report';
+import { PartesService } from '../../../services/partes.service';
+import { Report } from '../../..//models/report';
 import { NgbTimeStruct} from '@ng-bootstrap/ng-bootstrap';
 import { async } from 'q';
 @Component({

@@ -25,7 +25,6 @@ export class AuthenticationGuard implements CanActivate {
             token = data.admin;
           }
           if (!loggedIn) {
-            console.log('Redirect to login');
             this.router.navigate(['/login']);
           } else if (token !== undefined && token != null && expectedRole !== undefined &&  token !== expectedRole) {
             this.router.navigate(['/dashboard']);

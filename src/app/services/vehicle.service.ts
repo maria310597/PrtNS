@@ -21,7 +21,7 @@ export class VehicleService {
     return this.afs.collection<Vehicle>(this.path).valueChanges();
   }
   getVehiculeID$( vehiculo:  string): Observable<Vehicle[]> {
-    return this.afs.collection<Vehicle>(this.path, ref => ref.where('nombre', '==', vehiculo)).valueChanges();
+    return this.afs.collection<Vehicle>(this.path, ref => ref.where('Marca', '==', vehiculo)).valueChanges();
   }
   getReservas(uid: string): Observable<Reserva[]> {
     return this.afs.collection<Reserva>(this.path + '/' + uid + '/reservas').valueChanges();
@@ -61,6 +61,7 @@ export class VehicleService {
   }
 
   addReserva(reserva: Reserva, cocheuid: string): string{
+    
     this.afs.collection<Reserva>(this.path + '/' + cocheuid + '/reservas').add({
             by: reserva.by,
             motivo: reserva.motivo, solicitud:reserva.solicitud,

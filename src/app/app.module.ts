@@ -29,38 +29,38 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './ui/navbar/navbar.component';
 import { LoginComponent } from './ui/login/login.component';
 import { NotificationMessageComponent } from './ui/notifications/notification-message.component';
-import { InfoUserComponent, UserInfoContent} from './ui/info-user/info-user.component';
-import { InfoCompanyComponent, CompanyInfoContent } from './ui/info-company/info-company.component';
-import { DashboardComponent } from './ui/dashboard/dashboard.component';
-import { PartesComponent, ParteInfoContent } from './ui/partes/partes.component';
-import { CompanyComponent } from './ui/company/company.component';
-import {CreateCompanyComponent,CompanyForm, ModifyCompanyComponent} from './ui/create-company/create-company.component';
+import { InfoUserComponent, UserInfoContent} from './ui/user/info-user/info-user.component';
+import { InfoCompanyComponent, CompanyInfoContent } from './ui/company/info-company/info-company.component';
+import { DashboardComponent } from './ui/dashboard/dashboard/dashboard.component';
+import { PartesComponent, ParteInfoContent } from './ui/partes/partes/partes.component';
+import { CompanyComponent } from './ui/company/company/company.component';
+import {CreateCompanyComponent,CompanyForm, ModifyCompanyComponent} from './ui/company/create-company/create-company.component';
 import {ConfirmDeleteComponent, CreateConfirmComponent, CreateConfirmParteComponent} from './ui/confirm-delete/confirm-delete.component';
 // Layouts
 import { LoginLayoutComponent } from './ui/login/login-layout.component';
-import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.component';
+import { DashboardLayoutComponent} from './ui/dashboard/dashboard/dashboard-layout.component';
 
 // Servicios
 import {AuthenticationService} from './services/authentication.service';
 import { PartesService } from './services/partes.service';
 import { UserService } from './services/user.service';
 import { CompanyService } from './services/company.service';
-import { CreateParteComponent, CreateParteForm, ModifyParteComponent  } from './ui/create-parte/create-parte.component';
-import { UsersComponent } from './ui/users/users.component';
-import { CreateUserComponent, CreateUserForm, ModifyUserComponent } from './ui/create-user/create-user.component';
+import { CreateParteComponent, CreateParteForm, ModifyParteComponent  } from './ui/partes/create-parte/create-parte.component';
+import { UsersComponent } from './ui/user/users/users.component';
+import { CreateUserComponent, CreateUserForm, ModifyUserComponent } from './ui/user/create-user/create-user.component';
 import { UploadService } from './uploads/shared/upload.service';
 import { VehiclesComponent } from './ui/vehicles/vehicles.component';
 import { VehicleService } from './services/vehicle.service';
 import { StatisticsService } from './services/statistics.service';
-import { UserStatisticsComponent } from './ui/user-statistics/user-statistics.component';
-import { DashboardStatisticsComponent } from './ui/dashboard-statistics/dashboard-statistics.component';
-import { DashboardMiniWidgetsComponent } from './ui/dashboard-mini-widgets/dashboard-mini-widgets.component';
+import { UserStatisticsComponent } from './ui/user/user-statistics/user-statistics.component';
+import { DashboardStatisticsComponent } from './ui/dashboard/dashboard-statistics/dashboard-statistics.component';
+import { DashboardMiniWidgetsComponent } from './ui/dashboard/dashboard-mini-widgets/dashboard-mini-widgets.component';
 import { TaskService } from './services/task.service';
 import { TasksComponent } from './ui/tasks/tasks.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './ui/admin/admin.component';
 import {ExportService} from './services/export.service';
-import { FacturacionComponent, FacturacionFormComponent, FacturacionFormNo } from './ui/facturacion/facturacion.component';
+import { FacturacionComponent, FacturacionFormComponent, FacturacionFormNo } from './ui/company/facturacion/facturacion.component';
 
 
 

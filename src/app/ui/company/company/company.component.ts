@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import {Company} from '../../models/company';
+import {Company} from '../../../models/company';
 
-import { CompanyService } from '../../services/company.service';
+import { CompanyService } from '../../../services/company.service';
 
 @Component({
   selector: 'app-company',
