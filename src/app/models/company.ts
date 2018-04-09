@@ -10,10 +10,16 @@ export class Company {
     lastmovement: NgbDateStruct;
     igualada: boolean;
     suspendida: boolean;
+    igualahours: number;
+    nif:string;
+    address: string;
 
-    constructor( name: string, email: string, lastmovement: NgbDateStruct, igualada: boolean, 
+    constructor( nif:string, address:string,igualahours:number, name: string, email: string, lastmovement: NgbDateStruct, igualada: boolean, 
         billMail: string, faxNumber: string, tlf: string,suspendida: boolean,uid?:string) {
-        this.name = name;
+        
+            this.nif = nif;
+            this.address = address;
+            this.name = name;
         this.email = email;
         this.billMail = billMail;
         this.faxNumber = faxNumber;
@@ -22,6 +28,6 @@ export class Company {
         this.lastmovement = lastmovement;
         this.uid = uid;
         this.suspendida = suspendida;
-        
+        this.igualahours = igualahours;
     }
 }

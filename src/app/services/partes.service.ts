@@ -28,6 +28,10 @@ export class PartesService {
    getParte$(uid: string): Observable<Report[]> {
     return this.afs.collection<Report>(this.path, ref => ref.where('uid', '==', uid)).valueChanges();
   }
+
+  getServAditionalCompany$(empresa: string): Observable<Report[]> {
+    return this.afs.collection<Report>(this.path, ref => ref.where('company', '==', empresa).where('servAditional', '==', true)).valueChanges();
+  }
   getCollection$(): Observable<Report[]> {
     return this.afs.collection<Report>(this.path).valueChanges();
   }
@@ -36,7 +40,8 @@ export class PartesService {
     
     if (Report /*&& !this.companyCollectionRef.doc(Company.name*/) {
     
-      this.partesCollectionRef.add({ uid: Report.uid, operator:Report.operator, 
+      this.partesCollectionRef.add({ 
+                                      uid: Report.uid, operator:Report.operator, 
                                       date:Report.date,
                                       company:Report.company,
                                       dBegining: Report.dBegining,
@@ -47,7 +52,8 @@ export class PartesService {
                                       free: Report.free, interno:Report.interno,
                                       telemantenimiento:Report.telemantenimiento,
                                       cocheParticular:Report.cocheParticular,
-                                      hiddenIP:Report.hiddenIP,createdby:Report.createdby,type:Report.type
+                                      hiddenIP:Report.hiddenIP,createdby:Report.createdby,
+                                      servAditional: Report.servAditional,type:Report.type
                               })
 
       .then(ref => {
@@ -58,7 +64,8 @@ export class PartesService {
 }
   // tslint:disable-next-line:no-shadowed-variable
   updateTodo(Report: Report) {
-    this.partesCollectionRef.doc(Report.uid).update({ uid: Report.uid, operator: Report.operator, 
+    this.partesCollectionRef.doc(Report.uid).update({ 
+                                                        uid: Report.uid, operator: Report.operator, 
                                                         date: Report.date,
                                                         company: Report.company,
                                                         dBegining: Report.dBegining,
@@ -69,7 +76,8 @@ export class PartesService {
                                                         free: Report.free, interno: Report.interno,
                                                         telemantenimiento: Report.telemantenimiento,
                                                         cocheParticular: Report.cocheParticular,
-                                                        hiddenIP: Report.hiddenIP,createdby: Report.createdby });
+                                                        hiddenIP: Report.hiddenIP,createdby: Report.createdby
+                                                      , servAditional: Report.servAditional });
   }
 
   getPartesFromIn$(uid: string, company:  string): Observable<Report[]> {

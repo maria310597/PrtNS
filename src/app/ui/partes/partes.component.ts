@@ -232,7 +232,6 @@ export class PartesComponent implements OnInit {
       pagingType: 'full_numbers',
       pageLength: 10,
       dom: 'Bfrtip',
-      
       buttons: [
         'copy', 'csv', 'excel', 'pdf', 'print'
       

@@ -36,6 +36,15 @@ import { NotifyService } from '../../core/notify.service';
 
     <br>
    
+    <label for="address"> Dirección </label>
+    <input type="text" class="form-control"  required [(ngModel)]="model.address"  name="address">
+
+    <br>
+    <label for="nif"> NIF </label>
+    <input type="text" class="form-control"  required [(ngModel)]="model.nif"  name="nif">
+
+    <br>
+
     <label for="iguala"> Iguala </label>
     <div class="form-check form-check-inline">
       <input class="form-check-input" type="radio" [(ngModel)]="model.igualada" name="ig" id="igSi"  [value]="true" checked>
@@ -46,6 +55,13 @@ import { NotifyService } from '../../core/notify.service';
       <label class="form-check-label" for="grati"> No </label>
     </div>
     <br>
+
+    <div class="form-inline">
+      <label for="ighours" class="form-inline"> Horas &nbsp;</label>
+      <input type="number" size=10 class="form-control-inline" [(ngModel)]="model.igualahours"  name="igas">
+    </div>
+    <br> 
+
 
     <label for="iguala"> Suspendida </label>
     <div class="form-check form-check-inline">
@@ -111,7 +127,7 @@ export class CompanyForm implements OnInit {
 
   onSubmit(){ this.submitted = true;}
   newCompany(){
-    this.model =new Company("","",null,false, "","","",false);
+    this.model =new Company("","",0,"","",null,false, "","","",false);
   }
  
    campos: number[]=[0,0,0,0,0,0]; //0 nocheck, 1 checkok, 2checkbad
@@ -173,16 +189,20 @@ export class CompanyForm implements OnInit {
     });
     
     if (this.company == undefined){
-    this.model = new Company("","",null,false, "","","",false,"");
+    this.model = new Company("","",0,"","",null,false, "","","",false,"");
     this.modify = false;
+    
    }
    else {
    
-      this.model = new Company(this.company.name,this.company.email,this.company.lastmovement,this.company.igualada,
+      this.model = new Company(this.company.nif,this.company.address,this.company.igualahours,this.company.name,this.company.email,this.company.lastmovement,this.company.igualada,
        this.company.billMail,this.company.faxNumber,this.company.tlf,this.company.suspendida,this.company.uid);
       // this.companyService.deleteTodo(this.company);
        this.modify = true;
+      
    }
+  
+   console.log(this.company)
   }
 
 }

@@ -48,7 +48,7 @@ import {AuthenticationService} from '../../services/authentication.service';
     <div class="form-group">
       <div class="input-group">
         <input class="form-control" placeholder="yyyy-mm-dd"
-              name="date" [(ngModel)]="model.date" ngbDatepicker #d="ngbDatepicker">
+              name="date" [(ngModel)]="model.date" [dayTemplate]="customDay" ngbDatepicker #d="ngbDatepicker">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
           <i class="fa fa-calendar"></i>
@@ -148,6 +148,17 @@ import {AuthenticationService} from '../../services/authentication.service';
       <label class="form-check-label" for="coche"> No </label>
     </div>
     <br>
+
+    <label for="cocheP"> Servicio adicional </label>
+    <div class="form-check-inline">
+      <input class="form-check-input" type="radio" [(ngModel)]="model.servAditional" name="serv" id="servSi"  [value]="true" >
+      <label class="form-check-label" for="serv"> Si </label>
+    </div>
+    <div class="form-check-inline">
+      <input class="form-check-input" type="radio" [(ngModel)]="model.servAditional" name="serv" id="servNo"  [value]="false" checked>
+      <label class="form-check-label" for="serv"> No </label>
+    </div>
+    <br>
   
     
     <label for="comment">Descipción:</label>
@@ -215,6 +226,7 @@ export class CreateParteForm implements OnInit {
   //time: NgbTimeStruct = {hour:0,minute:0,second:0};
   //time2: NgbTimeStruct = {hour:0,minute:0,second:0};
   modify:boolean;
+  customDay:any;
   time: NgbTimeStruct;
   time2: NgbTimeStruct;
   partes$: Observable<Report[]>;
@@ -238,13 +250,24 @@ export class CreateParteForm implements OnInit {
        this.mycompanies = myc;
        this.dtTriggerC.next();
     });
-    this.userService.getAllUsers$().subscribe((myu: User[]) => {
-      this.myusers = myu;
-      this.dtTriggerU.next();
-   });
+   
    this.authService.user.subscribe((myu: User) => {
     this.model.createdby = myu.uid;
+    if( myu.admin){
+      this.selectedUser = "Usuario";
+      this.userService.getAllUsers$().subscribe((myu: User[]) => {
+     
+        this.myusers = myu;
+        this.dtTriggerU.next();
+     });
+    }
+    else {
+      this.selectedUser = myu.realname;
+      this.myusers = [];
+    }
     });
+
+    
     
   }
  
@@ -257,7 +280,7 @@ export class CreateParteForm implements OnInit {
     this.model.company = newSortOrder;
   }
 
-  selectedUser: string = "Usuario";
+  selectedUser: string;
   selectedSortOrder: string = "Empresa";
   getSelectedUser(){
     if (this.model.operator == "") this.selectedUser =  "Usuario";
@@ -326,9 +349,11 @@ export class CreateParteForm implements OnInit {
     
     if(empty == false) {
       this.campos[6] = 1;
-     
+    
       if ( this.modify == true){
+       // console.log(this.model)
         this.partesService.updateTodo(this.model);
+        this.companyService.updateLastMovement(this.model.company,this.model.date);
       this.activeModal.close('Close click')
       this.notify.update('Parte modificado correctamente', 'success');
       }else{
@@ -351,7 +376,7 @@ export class CreateParteForm implements OnInit {
  
     if (this.parte == undefined){
       var notes: string[] = [];
-      this.model = new Report("",null,"",null,null,notes,0,false,0,false,false,false,false,"",null, "");
+      this.model = new Report("",null,"",null,null,notes,0,false,0,false,false,false,false,"",false,null, "");
       this.modify = false;
      }
      else {
@@ -360,7 +385,7 @@ export class CreateParteForm implements OnInit {
           this.parte.company,this.parte.dBegining,
          this.parte.dEnd,this.parte.notes,this.parte.km, this.parte.displacements,
         this.parte.parking, this.parte.free,this.parte.interno, 
-      this.parte.telemantenimiento, this.parte.cocheParticular, this.parte.createdby,this.parte.uid);
+      this.parte.telemantenimiento, this.parte.cocheParticular, this.parte.createdby,this.parte.servAditional,this.parte.typec,this.parte.uid);
         // this.partesService.deleteTodo(this.parte);
         this.modify = true;
      }

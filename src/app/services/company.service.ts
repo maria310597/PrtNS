@@ -14,6 +14,7 @@ export class CompanyService {
   readonly path = 'company';
   companies$: Observable<Company[]>;
   companyCollectionRef: AngularFirestoreCollection<Company>;
+  
 
   constructor(private afs: AngularFirestore) {
     this.companyCollectionRef = this.afs.collection<Company>(this.path);
@@ -32,7 +33,9 @@ export class CompanyService {
   add(Company: Company) {
     
     if (Company/* && !this.companyCollectionRef.doc(Company.name)*/) {
-    this.companyCollectionRef.add({uid: "",name: Company.name, email:Company.email, 
+    this.companyCollectionRef.add({nif: Company.nif,
+                                      address: Company.address,
+                                      igualahours: Company.igualahours,uid: "",name: Company.name, email:Company.email, 
                                       billMail:Company.billMail,
                                       faxNumber:Company.faxNumber,
                                       igualada: Company.igualada,
@@ -47,27 +50,34 @@ export class CompanyService {
   }
   // tslint:disable-next-line:no-shadowed-variable
   updateTodo(Company: Company) {
-    
-    this.afs.doc(this.path + '/' + Company.uid).set({ uid: Company.uid, name: Company.name,
+  
+    this.afs.doc(this.path + '/' + Company.uid).set({ nif:Company.nif,
+      address:Company.address,igualahours: Company.igualahours, uid: Company.uid, name: Company.name,
                                                           email: Company.email, 
                                                           billMail: Company.billMail,
                                                           faxNumber: Company.faxNumber,
                                                           igualada: Company.igualada,
+                                                          
                                                           lastmovement: Company.lastmovement,
                                                           tlf: Company.tlf,
                                                         suspendida: Company.suspendida });
   }
   updateLastMovement(name: string, date :NgbDateStruct){
-    var company: Observable<Company[]> = this.getCompany$(name);
+ 
+
+
+  this.getCompany$(name).take(1).subscribe(c => {
+    
+    c[0].lastmovement = date;
+    this.updateTodo(c[0]);
+ 
+  });
+       
+      
    
-    company.forEach(c => {
-      for(let i=0;i<c.length;i++){
-        
-        c[i].lastmovement = date;
-        this.updateTodo(c[i]);
+
      
-      }
-    })
+   
 
   }
 

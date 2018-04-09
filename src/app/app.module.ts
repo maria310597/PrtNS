@@ -58,6 +58,7 @@ import { DashboardMiniWidgetsComponent } from './ui/dashboard-mini-widgets/dashb
 import { TaskService } from './services/task.service';
 import { TasksComponent } from './ui/tasks/tasks.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FacturacionComponent, FacturacionFormComponent, FacturacionFormNo } from './ui/facturacion/facturacion.component';
 
 
 
@@ -99,6 +100,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ModifyUserComponent,
     DashboardMiniWidgetsComponent,
     TasksComponent,
+    FacturacionComponent,
+    FacturacionFormComponent,
+    FacturacionFormNo
   ],
   imports: [
     BrowserModule,
@@ -149,8 +153,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ModifyCompanyComponent,
     ModifyParteComponent,
     CreateConfirmParteComponent,
-    
-    ModifyUserComponent
+    FacturacionFormComponent,
+    ModifyUserComponent,
+    FacturacionFormNo
   ]
 })
 export class AppModule { }

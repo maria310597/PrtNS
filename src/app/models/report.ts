@@ -28,10 +28,15 @@ export class Report {
     hiddenIP: string;
     createdby: string;
     type?: TypeReport;
+    servAditional: boolean;
+    
+
     constructor(operator: string, date: NgbDateStruct, company: string, dBegining: TimeCustom, dEnd: TimeCustom,
          notes: string[], km: number, displacements: boolean, parking: number, free:boolean, 
          interno: boolean,telemantenimiento:boolean,cocheParticular:boolean, 
-         createdby: string,typec?:TypeReport,uid?: string) {
+         createdby: string, servAditional: boolean, typec?:TypeReport,uid?: string) {
+        
+        
         this.uid = uid;
         this.operator = operator;
         this.date = date;
@@ -49,5 +54,6 @@ export class Report {
         this.hiddenIP = '';
         this.createdby = createdby;
         this.type = typec;
+        this.servAditional = servAditional;
     }
 }

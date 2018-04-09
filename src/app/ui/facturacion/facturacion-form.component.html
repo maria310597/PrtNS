@@ -1,0 +1,100 @@
+
+<div class="modal-header">
+    <h4 class="modal-title">Facturación de {{ company.name }} &nbsp; Mes:</h4>
+    <label>&nbsp;&nbsp;</label>
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle> {{ selected }}  </button>
+     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+       <button class="dropdown-item" *ngFor="let m of months" (click)="ChangeMonth(m)" > {{m}} </button>
+     </div>
+    </div>
+
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  
+
+  
+  
+  <table  id="t01">
+    <thead>
+      
+      <tr>
+        <th> Información </th>
+        <th>Gastadas </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Horas iguala</td>
+        <td > {{ HGastadas / 60 | number : '1.2-2' }} h  de {{ company.igualahours  }} h contratadas</td>
+        
+      </tr>
+      <tr>
+          <td> Horas Fin de semana</td>
+          <td> {{ hFinSemana / 60 | number : '1.2-2' }} h </td>
+      </tr>
+      <tr>
+        <td> Horas Servicios Adicionales</td>
+        <td> {{ hServAditional / 60 | number : '1.2-2' }} h </td>
+       </tr>
+      <tr>
+          <td> Horas en Exceso</td>
+          <td>  {{ extra / 60 | number : '1.2-2'}} h </td>
+        </tr>
+      
+    </tbody>
+  </table>
+  
+  <br>
+ 
+  
+  <!--<table class="table">
+    <thead>
+      <tr>
+        <th>Operador</th>
+        <th>Fecha de Inicio</th>
+        <th>Minutos</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let parte of weekend" >
+        <td>{{parte.operator}}</td>
+        <td>{{parte.date.day}} / {{ parte.date.month }} / {{ parte.date.year}}</td>
+        <td> {{ ((parte.dEnd.hour*60)+(parte.dEnd.minute)) - (parte.dBegining.hour*60 + parte.dBegining.minute) }} minutos </td>
+      </tr>
+      
+    </tbody>
+  </table>-->
+
+  
+  <p style="color:black; font-size:190%;"> Horas totales:  {{ totalHours / 60 | number : '1.2-2'}} h </p>
+  
+  
+  <!--<table class="table">
+      <thead>
+        <tr>
+          <th>Operador</th>
+          <th>Fecha de Inicio</th>
+          <th>Minutos</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let parte of partesExceso" >
+          <td>{{parte.operator}}</td>
+          <td>{{parte.date.day}} / {{ parte.date.month }} / {{ parte.date.year}}</td>
+          <td> {{ ((parte.dEnd.hour*60)+(parte.dEnd.minute)) - (parte.dBegining.hour*60 + parte.dBegining.minute) }} minutos </td>
+        </tr>
+        
+      </tbody>
+    </table>-->
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  </div>

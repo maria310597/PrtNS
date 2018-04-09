@@ -25,10 +25,25 @@
       </button>
     </div>
     <div class="modal-body">
+        <div class="form-inline">
+          <div class = "row text-center justify-content-center">
+           <div class="col-sm"> 
+             <a> Hora de Inicio  </a>
+            <ngb-timepicker size="small" name="dBegining" [(ngModel)]="time"  [ngModelOptions]="{standalone: true}" ></ngb-timepicker>
+          </div>
+          <div class="col-sm"> 
+            <a > Hora de Fin </a>
+            <ngb-timepicker  size="small" name="dEnd" [(ngModel)]="time2" [ngModelOptions]="{standalone: true}"></ngb-timepicker>
+          </div>
+          </div>
+        </div>
+        <br>
+        
         <div class="input-group mb-3">
+            <button type="button" class="btn btn-outline-primary" (click)="mostrarcoches()"> Mostrar Coches</button>
             <select class="custom-select" id="inputGroupSelect02">
-              <option selected>Elije un vehiculo</option>
-              <option  *ngFor="let vehi of this.vehicleService.available" value="1">{{ vehi.nombre }}</option>
+              
+              <option  *ngFor="let vehi of operativos" value="vehiculo">{{ vehi.Marca }}</option>
 
             </select>
             <div class="input-group-append">
@@ -40,19 +55,20 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-sm">Motivo</span>
         </div>
-        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="motivo">
       </div>
       <div class="text-center">
-          <button type="button" class="btn btn-outline-success">Solicitar</button>
+          <button type="button" class="btn btn-outline-success" (click)="solicitar();close()">Solicitar</button>
       </div>
      
 
     </div>
   </ng-template>
   
-  <div class="row text-center">
+  <!--<div class="row text-center">
     <div class="col-md-4">
       <div class="btn-group">
+        
         <div
           class="btn btn-primary"
           mwlCalendarPreviousView
@@ -80,7 +96,10 @@
     <div class="col-md-4">
       <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
     </div>
-  </div>
+   
+     
+       
+  </div>-->
   <br>
   
   <ng-template
@@ -132,12 +151,17 @@
     </div>
   </div>
 </ng-template>
+<mwl-demo-utils-calendar-header
+  [(view)]="view"
+  [(viewDate)]="viewDate">
+</mwl-demo-utils-calendar-header>
 
   <div [ngSwitch]="view">
     <mwl-calendar-month-view
       *ngSwitchCase="'month'"
       [viewDate]="viewDate"
       [events]="events"
+      
       [refresh]="refresh"
       [cellTemplate]="monthCellTemplate"
       [activeDayIsOpen]="activeDayIsOpen"
@@ -150,8 +174,15 @@
     <mwl-calendar-day-view
     *ngSwitchCase="'day'"
     [viewDate]="viewDate"
-    [events]="events">
+    [events]="events"
+    [dayStartHour]="0"
+    [dayEndHour]="24">
   </mwl-calendar-day-view>
+  <mwl-calendar-week-view
+  *ngSwitchCase="'week'"
+  [viewDate]="viewDate"
+  [events]="events">
+</mwl-calendar-week-view>
   </div>
         </main>
       </div>
