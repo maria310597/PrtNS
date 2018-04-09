@@ -142,18 +142,25 @@ export class StatisticsService {
           const partes = pa;
           let partesFiltrados = this.filterPartes(partes,filter);
           if(isAdmin){
+            console.log("Soy admin");
             for(let p of partesFiltrados){
-              final[0] = 0;
-              final[1] = 0;
-              final[2] = 0;
+              var date = new Date(p.date.year,p.date.month-1,p.date.day);
+              if(p.displacements) final[0]++;
+              final[1] = 0;  // Falta implementar
+              final[2] += p.parking;
               final[3]++;
-              final[4] = 0;
+              if( date.toString().includes('Sat') || date.toString().includes('Sun') && !p.servAditional){
+                var hFinSemana = (((p.dEnd.hour*60)+(p.dEnd.minute)) - (p.dBegining.hour*60 + p.dBegining.minute));
+                final[4]+= hFinSemana;
+              }
+         
             }
          }else {
+           console.log("No soy admin");
           for(let p of partesFiltrados){
           if(p.createdby == uid){
             if(p.cocheParticular) final[0] += p.km;
-            const horas = ((p.dEnd.hour * 60) + (p.dEnd.minute)) - (p.dBegining.hour * 60 + p.dBegining.minute);
+            const horas = (((p.dEnd.hour * 60) + (p.dEnd.minute)) - (p.dBegining.hour * 60 + p.dBegining.minute));
             final[1] += horas
             final[2] += p.parking;
             final[3]++;

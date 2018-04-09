@@ -22,7 +22,7 @@ export class DashboardMiniWidgetsComponent implements OnInit {
     this.myuser = this.authService.user;
     this.myuser.subscribe((user : User) =>{
       this.uid = user.uid;
-      this.staService.getEstadisticasWidgets(this.uid,true,Filter.Month).subscribe((data:number[])=>{
+      this.staService.getEstadisticasWidgets(this.uid,user.admin,Filter.Month).subscribe((data:number[])=>{
         console.log(data);
         this.kmparticular = data[0];
         this.htotales = data[1];
