@@ -7,6 +7,10 @@ import { StatisticsService } from '../../services/statistics.service';
 import {DashboardStatisticsComponent} from '../dashboard-statistics/dashboard-statistics.component'; 
 import {DashboardMiniWidgetsComponent} from '../dashboard-mini-widgets/dashboard-mini-widgets.component';
 import { Estadistica } from '../../models/estadistica';
+import { FrasesService } from '../../services/frases.service';
+import { Frase } from '../../models/frase';
+
+
 
 @Component({
   selector: 'app-dashboard',
@@ -14,8 +18,10 @@ import { Estadistica } from '../../models/estadistica';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private auth: AuthenticationService, private pService: PartesService, private stadService: StatisticsService) { }
+  privateIP;
+  frase: Observable<Frase>;
+  constructor(private auth: AuthenticationService, private pService: PartesService, private stadService: StatisticsService, private fService: FrasesService) { }
   ngOnInit() {
-  
+      this.frase = this.fService.getFrases();
   }
 }

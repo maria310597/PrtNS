@@ -7,6 +7,7 @@ import {Report} from '../../models/report';
 import { User } from '../../models/user';
 import { Company } from '../../models/company';
 
+import { HttpClient } from '@angular/common/http';
 import { PartesService } from '../../services/partes.service';
 import { CompanyService } from '../../services/company.service';
 import { UserService } from '../../services/user.service';
@@ -16,6 +17,10 @@ import { InfoCompanyComponent } from '../info-company/info-company.component';
 import { DataTablesModule } from 'angular-datatables';
 
 import { Button } from 'protractor';
+import { ExportService } from '../../services/export.service';
+import { StatisticsService } from '../../services/statistics.service';
+import { AuthCredential } from '@firebase/auth-types';
+import { AuthenticationService } from '../../services/authentication.service';
 
 
 @Component({
@@ -35,9 +40,12 @@ import { Button } from 'protractor';
 ],
   templateUrl: './info-parte.component.html',
 })
-// tslint:disable-next-line:component-class-suffix
+
 export class ParteInfoContent implements OnInit {
   @Input() uid;
+
+  privateIP ;
+  publicIP;
 
   partes: Report[];
   users: User[];
@@ -48,12 +56,15 @@ export class ParteInfoContent implements OnInit {
   constructor(public activeModal: NgbActiveModal,
     private reportService: PartesService,
     private companyService: CompanyService,
-    private userService: UserService) {
+    private userService: UserService,
+    private exportService:ExportService)
+    {
 
-    
     }
 
-
+    sacarPDF(){
+      this.exportService.createPDF("","test.pdf");
+     }
 
     loadCompany(name: string) {
       this.companyService.getCompany$(name).subscribe((company: Company[]) => {
@@ -67,10 +78,11 @@ export class ParteInfoContent implements OnInit {
         this.users = users;
         this.loadCompany(parte.company);
     });
+
+    
     }
 
-   
-   
+  
 
   ngOnInit() {
     this.reportService.getParte$(this.uid).subscribe((partes: Report[]) => {
@@ -100,6 +112,7 @@ export class PartesComponent implements OnInit {
 
   user$: Observable<User[]>;
   myusers: User[];
+  myuser: User;
   dtTriggerU: Subject<any> = new Subject();
 
   company$: Observable<Company[]>;
@@ -118,7 +131,9 @@ export class PartesComponent implements OnInit {
   }*/
 
   constructor(private reportService: PartesService,private companyService: CompanyService, 
-    private modalService: NgbModal, private userService: UserService ) { 
+    private modalService: NgbModal, private userService: UserService,
+    private exportService: ExportService,private staService: StatisticsService,
+    private authService: AuthenticationService ) { 
     this.userService.getAllUsers$().subscribe((myu: User[]) => {
       this.myusers = myu;
       this.dtTriggerU.next();
@@ -131,6 +146,11 @@ export class PartesComponent implements OnInit {
    
   }
 
+
+  export(){
+    this.exportService.createPDF("",'test.pdf');
+ 
+  }
 
   moreInfo(report: Report): void {
     const modal = this.modalService.open(ParteInfoContent, { size : 'lg' });
@@ -171,7 +191,7 @@ export class PartesComponent implements OnInit {
         });
       }// Usuario
       else{
-        this.reportService.getPartesFrom$(this.selectedUser).subscribe((mypart : Report[]) => {
+        this.reportService.getPartesFromOperator$(this.selectedUser).subscribe((mypart : Report[]) => {
           this.mypartes = [];
           for(let par of mypart){
             if(par.date.year >= date.year && par.date.year <= date2.year && par.date.month >= date.month && par.date.month <= date2.month
@@ -226,23 +246,31 @@ export class PartesComponent implements OnInit {
 
 
   ngOnInit() {
-    
     this.dtOptions = {
-      
       pagingType: 'full_numbers',
       pageLength: 10,
+      retrieve: true,
       dom: 'Bfrtip',
       buttons: [
         'copy', 'csv', 'excel', 'pdf', 'print'
-      
       ]
-    
-    
     };
-    this.reportService.getCollection$().subscribe((mypartes: Report[]) => {
-      this.mypartes = mypartes;
-      this.dtTrigger.next();
+
+    this.authService.user.subscribe((data: User)=>{
+      this.myuser = data;
+      if(data.admin){
+        this.reportService.getCollection$().subscribe((mypartes: Report[]) => {
+          this.mypartes = mypartes;
+          this.dtTrigger.next();
+        });
+      }else{
+        this.reportService.getPartesFrom$(data.uid).subscribe((mypartes: Report[]) => {
+          this.mypartes = mypartes;
+          this.dtTrigger.next();
+        });
+      }
     });
+  
   }
 
 

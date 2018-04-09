@@ -58,6 +58,8 @@ import { DashboardMiniWidgetsComponent } from './ui/dashboard-mini-widgets/dashb
 import { TaskService } from './services/task.service';
 import { TasksComponent } from './ui/tasks/tasks.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './ui/admin/admin.component';
+import {ExportService} from './services/export.service';
 import { FacturacionComponent, FacturacionFormComponent, FacturacionFormNo } from './ui/facturacion/facturacion.component';
 
 
@@ -102,7 +104,8 @@ import { FacturacionComponent, FacturacionFormComponent, FacturacionFormNo } fro
     TasksComponent,
     FacturacionComponent,
     FacturacionFormComponent,
-    FacturacionFormNo
+    FacturacionFormNo,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -134,6 +137,7 @@ import { FacturacionComponent, FacturacionFormComponent, FacturacionFormNo } fro
     VehicleService,
     StatisticsService,
     TaskService,
+    ExportService,
     HttpClient
   ],
   bootstrap: [AppComponent],

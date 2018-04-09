@@ -50,6 +50,7 @@ export class CreateUserForm implements OnInit {
       this.notify.update('Usuario modificado correctamente', 'success');
     }
     this.enviado = true;
+    this.activeModal.dismiss();
   }
   resetpassword(){
     this.auth.resetPassword(this.modelo.email);

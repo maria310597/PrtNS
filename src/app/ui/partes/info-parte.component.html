@@ -4,7 +4,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="pdf-content" >
         <div *ngIf="!loaded"><i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i></div>  
         <div *ngIf="loaded">
      
@@ -33,7 +33,6 @@
                
 
                    
-              
                </div>
              
             </div>
@@ -41,14 +40,14 @@
                 <div class="alert alert-info" role="alert">
                             <h4 class="alert-heading text-dark"><i class="fa fa-calendar"></i> Info temporal</h4>
                             <hr>
-                            <h5 class="text-dark text-center"> {{ partes[0].date.day }}  /  {{partes[0].date.month}}/ {{partes[0].date.year }}</h5>
+                            <h5 class="text-dark text-center"> {{ partes[0].date.day }} / {{partes[0].date.month}} / {{partes[0].date.year }}</h5>
                             <br>
                             <p class="text-dark"><i class="fa fa-clock-o"></i> Hora de inicio: <span class="badge badge-danger">{{ partes[0].dBegining.hour}}:{{partes[0].dBegining.minute}}:{{partes[0].dBegining.second}} </span></p>
-                            <p class="text-dark"><i class="fa fa-clock-o"></i> Hora de fin: <span class="badge badge-danger">{{ partes[0].dEnd.hour}}:{{partes[0].dEnd.minute}}:{{partes[0].dEnd.second}} </span></p>
                             <hr>
                             <h5 class="text-center text-dark" >Horas totales</h5>
                             <h5 class="text-center text-dark" ><span class="badge badge-danger">{{ (((partes[0].dEnd.hour*60)+(partes[0].dEnd.minute)) - (partes[0].dBegining.hour*60 + partes[0].dBegining.minute)) / 60 | number : '1.2-2' }} h</span></h5>
-                 </div>
+                            <br>
+                          </div>
             </div>
             <div class="col-6 col-md-4">
                 <div class="alert alert-warning" role="alert">
@@ -62,8 +61,9 @@
                                 <i *ngIf="!partes[0].telemantenimiento" class="fa fa-times"></i></p>
     
 
-                            <p class="text-dark"><i class="fa fa-user-secret"></i> IP: <span class="badge badge-danger">{{ this.privateIP }}</span></p>
-                 </div>
+                            <p  class="text-dark"><i class="fa fa-user-secret"></i> IP: <span class="badge badge-danger">{{ partes[0].hiddenIP }}</span></p>
+                          
+                          </div>
             </div>
     </div>
 
@@ -108,9 +108,6 @@
                               Empresa
                             </div>
                 <div class="card-body">
-                  <h5 class="card-title">
-                          <img src="{{ company[0].image }}" name="aboutme" width="50" height="50" border="0" class="rounded-circle">
-                  </h5>
                   <p class="card-text">
                           <span class="badge badge-info">{{company[0].name}}</span><br>
                           <span class="badge badge-success">{{company[0].tlf}}</span>
@@ -122,5 +119,5 @@
     </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+        <button type="button" class="btn btn-outline-success" (click)="sacarPDF()"><i class="fa fa-download"></i> Exportar</button>
       </div>

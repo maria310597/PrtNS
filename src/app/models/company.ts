@@ -6,6 +6,8 @@ export class Company {
     email: string;
     billMail: string;
     faxNumber: string;
+    //direccion: string;
+    //nif:string;
     tlf: string;
     lastmovement: NgbDateStruct;
     igualada: boolean;

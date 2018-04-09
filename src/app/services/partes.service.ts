@@ -4,6 +4,7 @@ import {Report} from '../models/report';
 import { AngularFirestore, AngularFirestoreDocument,AngularFirestoreCollection } from 'angularfire2/firestore';
 import { and } from '@angular/router/src/utils/collection';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Filter } from '../models/filters';
 
 
 
@@ -85,6 +86,10 @@ export class PartesService {
   }
 
   getPartesFrom$(usuario: string): Observable<Report[]> {
+    return this.afs.collection<Report>(this.path, ref => ref.where('createdby', '==', usuario)).valueChanges();
+  }
+
+  getPartesFromOperator$(usuario: string): Observable<Report[]> {
     return this.afs.collection<Report>(this.path, ref => ref.where('operator', '==', usuario)).valueChanges();
   }
   getPartesCompany$(empresa: string): Observable<Report[]> {
@@ -93,6 +98,7 @@ export class PartesService {
   getPartesFromInCU$(empresa: string, usuario: string): Observable<Report[]> {
    return this.afs.collection<Report>(this.path, ref => ref.where('company', '==', empresa).where('operator', '==', usuario)).valueChanges();
   }
+
 
   deleteTodo(Report: Report) {
     this.partesCollectionRef.doc(Report.uid).delete();
