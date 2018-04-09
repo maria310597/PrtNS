@@ -22,7 +22,8 @@ export class CompanyComponent implements OnInit {
   ngOnInit() {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 10
+      pageLength: 10,
+      retrieve: true
     };
     this.companyService.getCollection$().subscribe((mycompany: Company[]) => {
       this.mycompany = mycompany;

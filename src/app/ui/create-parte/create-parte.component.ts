@@ -13,7 +13,7 @@ import { empty } from 'rxjs/Observer';
 import {AuthenticationService} from '../../services/authentication.service';
 
 //import { NotifyService } from '../../core/notify.service';
-
+declare let ClientIP: any;
 @Component({
   selector: 'app-create-parte-form',
   styles: ["js/bootstrap.min.js", 
@@ -28,21 +28,22 @@ import {AuthenticationService} from '../../services/authentication.service';
       </button>
     </div>
     <div class="modal-body">
-    <form>
     
-  
+    <form>
     <div class="row">
-    <div class="col">
-    <div ngbDropdown class="d-inline-block">
-    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedUser}}</button>
-   <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-     <button class="dropdown-item" *ngFor="let u of myusers" (click)="ChangeUser(u.realname)" >{{u.realname}} </button>
-   </div>
-   </div>
-   </div>
+  
+   <div class="col-sm">
+   <div ngbDropdown class="d-inline-block">
+   <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedSortOrder}}</button>
+  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <button class="dropdown-item" *ngFor="let sortOrder of mycompanies" (click)="ChangeSortOrder(sortOrder.name)" >{{sortOrder.name}}</button>
+  </div>
+  </div>
+  </div>
+
    </div>
       
-    <br />
+    <br>
     <label for="name"> Fecha </label>
 
     <div class="form-group">
@@ -58,14 +59,7 @@ import {AuthenticationService} from '../../services/authentication.service';
     </div>
 
     <div class="row">
-       <div class="col">
-       <div ngbDropdown class="d-inline-block">
-       <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedSortOrder}}</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button class="dropdown-item" *ngFor="let sortOrder of mycompanies" (click)="ChangeSortOrder(sortOrder.name)" >{{sortOrder.name}}</button>
-      </div>
-      </div>
-      </div>
+  
       </div>
 
     <br />
@@ -151,36 +145,34 @@ import {AuthenticationService} from '../../services/authentication.service';
   
     
     <label for="comment">Descipción:</label>
-    <textarea class="form-control" rows="2" id="comment"></textarea>
+    <textarea class="form-control" rows="2" name="comment0" id="comment0" [(ngModel)]="model.notes[0]"></textarea>
    
 
     <button (click)="newComment()" class="btn btn-outline-success btn-sm"><i class="fa fa-plus"></i></button>
     <br>
     <div *ngIf="comments>0">
       <label for="comment" >Descipción:</label>
-      <textarea class="form-control" rows="2" name="comment0" [(ngModel)]="model.notes[0]"></textarea>
+      <textarea class="form-control" rows="2" name="comment1" [(ngModel)]="model.notes[1]"></textarea>
         <button (click)="newComment()" class="btn btn-outline-success btn-sm"><i class="fa fa-plus"></i></button>
         <br>
         <div *ngIf="comments>1">
           <label for="comment" >Descipción:</label>
-          <textarea class="form-control" rows="2" name="comment1" [(ngModel)]="model.notes[1]"></textarea>
+          <textarea class="form-control" rows="2" name="comment2" [(ngModel)]="model.notes[2]"></textarea>
         
 
         <button (click)="newComment()" class="btn btn-outline-success btn-sm"><i class="fa fa-plus"></i></button>
         <br>
         <div *ngIf="comments>2">
           <label for="comment" >Descipción:</label>
-          <textarea class="form-control" rows="2" name="comment2" [(ngModel)]="model.notes[2]"></textarea>
+          <textarea class="form-control" rows="2" name="comment3" [(ngModel)]="model.notes[3]"></textarea>
         </div>
     </div>
     </div>
     
     
-    <button class="btn btn-outline-dark" type="submit" (click)="check()" > Guardar </button>
-
-    <div  *ngIf="campos[0]==2" class="alert alert-primary" role="alert">
-      Te ha faltado rellenar el campo usuario
-    </div>
+    <button class="btn btn-outline-success float-right" type="submit" (click)="check()" > Guardar </button>
+    <br>
+    <br>
     <div  *ngIf="campos[1]==2" class="alert alert-primary" role="alert">
       Te ha faltado rellenar el campo fecha
     </div>
@@ -196,12 +188,8 @@ import {AuthenticationService} from '../../services/authentication.service';
     <div  *ngIf="campos[5]==2" class="alert alert-primary" role="alert">
      La hora de inicio es mayor que la de fin
     </div>
-    
 
     </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
     </div>
   `
 })
@@ -241,6 +229,7 @@ export class CreateParteForm implements OnInit {
    });
    this.authService.user.subscribe((myu: User) => {
     this.model.createdby = myu.uid;
+    this.model.operator = myu.realname;
     });
     
   }
@@ -256,10 +245,7 @@ export class CreateParteForm implements OnInit {
 
   selectedUser: string = "Usuario";
   selectedSortOrder: string = "Empresa";
-  getSelectedUser(){
-    if (this.model.operator == "") this.selectedUser =  "Usuario";
-    else this.selectedUser=  this.model.operator;
-  }
+
   getSelectedCompany(){
     
     if (this.model.company == "") this.selectedSortOrder =  "Empresa";
@@ -348,6 +334,7 @@ export class CreateParteForm implements OnInit {
     if (this.parte == undefined){
       var notes: string[] = [];
       this.model = new Report("",null,"",null,null,notes,0,false,0,false,false,false,false,"",null, "");
+      this.model.hiddenIP = ClientIP;
       this.modify = false;
      }
      else {
@@ -361,8 +348,7 @@ export class CreateParteForm implements OnInit {
         this.modify = true;
      }
 
-     
-     this.getSelectedUser();
+    
      this.getSelectedCompany();
      this.time = this.model.dBegining;
    this.time2 = this.model.dEnd;

@@ -9,6 +9,7 @@ import { PartesComponent } from './ui/partes/partes.component';
 import { CompanyComponent } from './ui/company/company.component';
 import { UsersComponent } from './ui/users/users.component';
 import { VehiclesComponent } from './ui/vehicles/vehicles.component';
+import { AdminComponent } from './ui/admin/admin.component';
 const routes: Routes = [
 
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
       {
         path: 'users',
         component: UsersComponent,
+      },
+      {
+        path: 'admin',
+        component: AdminComponent,
       }
     ]
   },

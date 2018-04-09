@@ -19,16 +19,12 @@ import { Report } from '../../models/report';
     </div>
     <div class="modal-body">
     <form>
-    <label for="name"> ¿Quieres borrarlo? </label>
+    <label for="name"> Los cambios serán irreversibles </label>
     <br>
     <button type="button" class="btn btn-success" (click)="si()" > Si </button>
 
     <button type="button" class="btn btn-danger" (click)="no()" > No </button>
     </form>
-
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
     </div>
   `
 })

@@ -1,3 +1,10 @@
+<ng-template #menu>
+  <div  class="fixdrop-items" aria-labelledby="dropdownBasic1">
+    <button (click)="logout()" class="dropdown-item">Salir</button>
+  </div>
+</ng-template>
+
+
 <div *ngIf="myuser | async as myuser" >
     <nav id="navbar" class="navbar navbar-dark sticky-top bg-white  flex-md-nowrap p-0 bb">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" ><img src="/assets/logo-trans.png" width="90%" class="d-inline-block align-top" alt=""></a>
@@ -5,12 +12,9 @@
         <input class="form-control form-control-dark w-100 text-dark"  type="text" [(ngModel)]="this.task.description" name="description" placeholder="Añadir recordatorio rapido..." aria-label="Añadir recordatorio rapido...">
       </form>
         <ul class="navbar-nav px-3 fixdrop ">
-                  <div ngbDropdown class="d-inline-block  ">
-                    <a ngbDropdownToggle><img width="30" height="30" border="1" class="rounded-circle" src="{{myuser.imagen}}"/> </a>
-                    <div ngbDropdownMenu class="fixdrop-items" aria-labelledby="dropdownBasic1">
-                      <button class="dropdown-item">Perfil</button>
-                      <button (click)="logout()" class="dropdown-item">Salir</button>
-                    </div>
+                  <div  class="d-inline-block  ">
+                    <a [ngbPopover]="menu" placement="left" container="body" popoverTitle="" ><img width="30" height="30" border="1" class="rounded-circle" src="{{myuser.imagen}}"/> </a>
+                
                   </div>
         </ul>
       </nav>
@@ -60,11 +64,10 @@
                   <span data-feather="plus-circle"></span>
                 </a>
               </h6>
-              <ul class="nav flex-column mb-2">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    
+              <ul *ngIf="myuser.admin" class="nav flex-column mb-2">
+                <li  class="nav-item">
+                  <a class="nav-link" href="#" routerLink="/admin">
+                      <i class="fa fa-user"></i> Administracion
                   </a>
                 </li>
  

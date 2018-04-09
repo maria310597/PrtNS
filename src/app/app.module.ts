@@ -58,6 +58,8 @@ import { DashboardMiniWidgetsComponent } from './ui/dashboard-mini-widgets/dashb
 import { TaskService } from './services/task.service';
 import { TasksComponent } from './ui/tasks/tasks.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './ui/admin/admin.component';
+import {ExportService} from './services/export.service';
 
 
 
@@ -99,6 +101,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ModifyUserComponent,
     DashboardMiniWidgetsComponent,
     TasksComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,6 +133,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     VehicleService,
     StatisticsService,
     TaskService,
+    ExportService,
     HttpClient
   ],
   bootstrap: [AppComponent],

@@ -30,7 +30,7 @@ export class StatisticsService {
 
           
 
-  filterPartes(p: Report[] , filter: Filter): Report[] {
+  public filterPartes(p: Report[] , filter: Filter): Report[] {
     let filtered: Report[] = [];
     let fecha  = new Date();
     let firstday = new Date(fecha.setDate(fecha.getDate() - fecha.getDay()));
@@ -60,7 +60,8 @@ export class StatisticsService {
         };
       break;
       case Filter.NoFilter:
-      break;
+        filtered = p;
+         break;
       default:
       break;
     }
@@ -131,33 +132,54 @@ export class StatisticsService {
 
 
 
-  getKilometrosDeParticular(uid:string,filter: Filter): Observable<number>{
+  getEstadisticasWidgets(uid:string,isAdmin: boolean,filter: Filter) : Observable<number[]> {
     return Observable.create(result =>{
-      let km = 0;
-      this.partesService.getPartesFrom$(uid).subscribe((p: Report[])=>{
-        const partes = p;
-        let partesFiltrados = this.filterPartes(partes,filter);
-          for(let i of partesFiltrados){
-            if(i.cocheParticular) km +=i.km;
-          }
-        result.next(km);
-        result.complete();   
+      let final:number[] = [0,0,0,0,0];
+      let company: Company[] = [];
+      this.companyService.getCollection$().subscribe((company:Company[])=>{
+        company = company;
+        this.partesService.getCollection$().subscribe((pa: Report[])=>{
+          const partes = pa;
+          let partesFiltrados = this.filterPartes(partes,filter);
+          if(isAdmin){
+            for(let p of partesFiltrados){
+              final[0] = 0;
+              final[1] = 0;
+              final[2] = 0;
+              final[3]++;
+              final[4] = 0;
+            }
+         }else {
+          for(let p of partesFiltrados){
+          if(p.createdby == uid){
+            if(p.cocheParticular) final[0] += p.km;
+            const horas = ((p.dEnd.hour * 60) + (p.dEnd.minute)) - (p.dBegining.hour * 60 + p.dBegining.minute);
+            final[1] += horas
+            final[2] += p.parking;
+            final[3]++;
+            let obj = company.find(o => o.name === p.company);
+            if(obj && !obj.igualada) final[4] += horas;
+          };
+        }
+         }
+         result.next(final);
+         result.complete();
+        });
       });
     });
   }
 
-  getMoneyParking(uid:string,filter: Filter): Observable<number>{
-    return Observable.create(result =>{
-      let money = 0;
-      this.partesService.getPartesFrom$(uid).subscribe((p: Report[])=>{
-        const partes = p;
-        let partesFiltrados = this.filterPartes(partes,filter);
-          for(let i of partesFiltrados){
-            if(!i.free) money +=i.parking;
-          }
-        result.next(money);
-        result.complete();   
-      });
-    });
+
+
+  getHorasFindeSemana(uid:string,company: string): Observable<number> {
+    return Observable.create(result => {
+      
+    })
+  }
+
+  getHorasIguala(uid:string,filter: Filter): Observable<number> {
+    return Observable.create(result => {
+
+    })
   }
 }
