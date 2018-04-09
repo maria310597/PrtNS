@@ -113,29 +113,37 @@ export class VehiclesComponent implements OnInit {
 
     this.vehicleService.getAllVehicles().subscribe((v: Vehicle[]) => {
       this.vehiculos = v;
-    });
-    this.vehicleService.getReservas(coche1).subscribe((reservas: Reserva[]) => {
-     this.events = [];
-      this.reservas = reservas;
-      //console.log(this.reservas)
-       var inicio: Date;
-       var fin: Date;
+      this.events = [];
+    for (let ve of v){
+     
+      console.log("ve.uid")
+      this.vehicleService.getReservas(ve.uid).take(1).subscribe((reservas: Reserva[]) => {
+        
+          console.log(this.reservas)
+          this.reservas = reservas;
+          //console.log(this.reservas)
+          var inicio: Date;
+          var fin: Date;
 
-      for (let reserva of this.reservas) {
-       inicio = new Date(reserva.solicitud);
-       inicio.setHours(reserva.timeStart.hour);
-       inicio.setMinutes(reserva.timeStart.minute);
+          for (let reserva of this.reservas) {
+          inicio = new Date(reserva.solicitud);
+          inicio.setHours(reserva.timeStart.hour);
+          inicio.setMinutes(reserva.timeStart.minute);
 
-       fin = new Date(reserva.solicitud);
-       
-       fin.setHours(reserva.timeEnd.hour);
-       fin.setMinutes(reserva.timeEnd.minute);
+          fin = new Date(reserva.solicitud);
+          
+          fin.setHours(reserva.timeEnd.hour);
+          fin.setMinutes(reserva.timeEnd.minute);
 
 
-        this.añadirReservasDB(coche1, inicio, fin, reserva.motivo, reserva.by, reserva.uid);
-      }
+            this.añadirReservasDB(ve, inicio, fin, reserva.motivo, reserva.by, reserva.uid);
+          }
+    
+  
      // console.log(this.events)
-    });
+    }); 
+  }
+  });
     this.authService.user.subscribe((user: User) => {
       this.myuser = user;
     });
@@ -185,10 +193,10 @@ export class VehiclesComponent implements OnInit {
     this.refresh.next();
   }
 
-  añadirReservasDB(coche: string, inicio: Date, fin: Date, motivo: string, by: string, uidr: string): void {
+  añadirReservasDB(coche: Vehicle, inicio: Date, fin: Date, motivo: string, by: string, uidr: string): void {
 
   this.events.push({
-                  title: 'Operario: ' + by + '<br> Motivo: ' + motivo,
+                  title: 'Operario: ' + by + '<br> Motivo: ' + motivo + '<br> Coche: ' + coche.Marca,
                   start: inicio, 
                  
                   end: fin,
@@ -197,7 +205,7 @@ export class VehiclesComponent implements OnInit {
                   actions: this.actions,
                   meta: {
                     createdby: by,
-                    cocheuid: coche,
+                    cocheuid: coche.uid,
                     uidr: uidr
       }
     });
@@ -216,6 +224,18 @@ motivo: string;
     this.vehicleService.getVehiculeID$(selectedText).subscribe(v =>{
      
       var uidR = this.vehicleService.addReserva(reserva,v[0].uid);
+
+      var inicio = new Date(reserva.solicitud);
+          inicio.setHours(reserva.timeStart.hour);
+          inicio.setMinutes(reserva.timeStart.minute);
+
+          var fin = new Date(reserva.solicitud);
+          
+          fin.setHours(reserva.timeEnd.hour);
+          fin.setMinutes(reserva.timeEnd.minute);
+
+
+            this.añadirReservasDB(v[0], inicio, fin, reserva.motivo, reserva.by, uidR);
       
     });
     this.motivo = "";
