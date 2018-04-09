@@ -2,15 +2,15 @@ import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy } 
 import {NgbModal, NgbActiveModal, NgbTimepicker, NgbTimeStruct} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { PartesService } from '../../services/partes.service';
-import {CompanyService} from '../../services/company.service';
-import {UserService} from '../../services/user.service';
-import { Report } from '../../models/report';
-import { Company } from '../../models/company';
-import { User } from '../../models/user';
-import { NotifyService } from '../../core/notify.service';
+import { PartesService } from '../../../services/partes.service';
+import {CompanyService} from '../../../services/company.service';
+import {UserService} from '../../../services/user.service';
+import { Report } from '../../../models/report';
+import { Company } from '../../../models/company';
+import { User } from '../../../models/user';
+import { NotifyService } from '../../../core/notify.service';
 import { empty } from 'rxjs/Observer';
-import {AuthenticationService} from '../../services/authentication.service';
+import {AuthenticationService} from '../../../services/authentication.service';
 
 //import { NotifyService } from '../../core/notify.service';
 declare let ClientIP: any;

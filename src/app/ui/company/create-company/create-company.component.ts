@@ -2,9 +2,9 @@ import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy } 
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { CompanyService } from '../../services/company.service';
-import { Company } from '../../models/company';
-import { NotifyService } from '../../core/notify.service';
+import { CompanyService } from '../../../services/company.service';
+import { Company } from '../../../models/company';
+import { NotifyService } from '../../../core/notify.service';
 
 @Component({
   selector: 'app-company-info-content',

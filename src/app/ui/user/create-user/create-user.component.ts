@@ -4,13 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { NgForm } from '@angular/forms';
 
-import { AuthenticationService } from '../../services/authentication.service';
-import { NotifyService } from '../../core/notify.service';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { NotifyService } from '../../../core/notify.service';
 
-import { User } from '../../models/user';
-import { Upload } from '../../uploads/shared/upload';
-import { UploadService } from '../../uploads/shared/upload.service';
-import { UserService } from '../../services/user.service';
+import { User } from '../../../models/user';
+import { Upload } from '../../../uploads/shared/upload';
+import { UploadService } from '../../../uploads/shared/upload.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-create-user-form',

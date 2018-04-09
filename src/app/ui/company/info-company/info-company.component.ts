@@ -1,10 +1,7 @@
 import {Component, Input, OnInit, ChangeDetectorRef, ChangeDetectionStrategy} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-
-
-
-import { CompanyService } from '../../services/company.service';
-import { Company } from '../../models/company';
+import { CompanyService } from '../../../services/company.service';
+import { Company } from '../../../models/company';
 
 @Component({
   selector: 'app-user-info-content',

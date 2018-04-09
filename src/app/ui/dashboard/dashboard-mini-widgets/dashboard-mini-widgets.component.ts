@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user';
-import { AuthenticationService } from '../../services/authentication.service';
+import { User } from '../../../models/user';
+import { AuthenticationService } from '../../../services/authentication.service';
 import { Observable } from 'rxjs/Observable';
-import { StatisticsService } from '../../services/statistics.service';
-import { Filter } from '../../models/filters';
+import { StatisticsService } from '../../../services/statistics.service';
+import { Filter } from '../../../models/filters';
 @Component({
   selector: 'app-dashboard-mini-widgets',
   templateUrl: './dashboard-mini-widgets.component.html',

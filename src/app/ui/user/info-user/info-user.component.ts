@@ -3,8 +3,8 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 
-import { UserService } from '../../services/user.service';
-import { User } from '../../models/user';
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../models/user';
 import { UserStatisticsComponent } from '../user-statistics/user-statistics.component';
 
 @Component({

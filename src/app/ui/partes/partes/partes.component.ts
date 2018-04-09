@@ -3,24 +3,24 @@ import {NgbModal, NgbActiveModal,NgbDatepicker,NgbDateStruct} from '@ng-bootstra
 import { DatePipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import {Report} from '../../models/report';
-import { User } from '../../models/user';
-import { Company } from '../../models/company';
+import {Report} from '../../../models/report';
+import { User } from '../../../models/user';
+import { Company } from '../../../models/company';
 
 import { HttpClient } from '@angular/common/http';
-import { PartesService } from '../../services/partes.service';
-import { CompanyService } from '../../services/company.service';
-import { UserService } from '../../services/user.service';
-import { InfoUserComponent } from '../info-user/info-user.component';
-import { InfoCompanyComponent } from '../info-company/info-company.component';
+import { PartesService } from '../../../services/partes.service';
+import { CompanyService } from '../../../services/company.service';
+import { UserService } from '../../../services/user.service';
+import { InfoUserComponent } from '../../user/info-user/info-user.component';
+import { InfoCompanyComponent } from '../../company/info-company/info-company.component';
 
 import { DataTablesModule } from 'angular-datatables';
 
 import { Button } from 'protractor';
-import { ExportService } from '../../services/export.service';
-import { StatisticsService } from '../../services/statistics.service';
+import { ExportService } from '../../../services/export.service';
+import { StatisticsService } from '../../../services/statistics.service';
 import { AuthCredential } from '@firebase/auth-types';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 
 @Component({

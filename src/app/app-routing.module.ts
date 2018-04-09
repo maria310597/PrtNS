@@ -3,11 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationGuard } from './services/authentication.guard';
 import { LoginComponent } from './ui/login/login.component';
 import { LoginLayoutComponent } from './ui/login/login-layout.component';
-import { DashboardComponent } from './ui/dashboard/dashboard.component';
-import { DashboardLayoutComponent} from './ui/dashboard/dashboard-layout.component';
-import { PartesComponent } from './ui/partes/partes.component';
-import { CompanyComponent } from './ui/company/company.component';
-import { UsersComponent } from './ui/users/users.component';
+import { DashboardComponent } from './ui/dashboard/dashboard/dashboard.component';
+import { DashboardLayoutComponent} from './ui/dashboard/dashboard/dashboard-layout.component';
+import { PartesComponent } from './ui/partes/partes/partes.component';
+import { CompanyComponent } from './ui/company/company/company.component';
+import { UsersComponent } from './ui/user/users/users.component';
 import { VehiclesComponent } from './ui/vehicles/vehicles.component';
 import { AdminComponent } from './ui/admin/admin.component';
 const routes: Routes = [

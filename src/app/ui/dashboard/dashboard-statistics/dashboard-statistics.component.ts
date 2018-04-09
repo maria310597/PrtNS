@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { StatisticsService } from '../../services/statistics.service';
-import { Estadistica } from '../../models/estadistica';
-import { Company } from '../../models/company';
-import { Filter } from '../../models/filters';
-import { CompanyService } from '../../services/company.service';
+import { StatisticsService } from '../../../services/statistics.service';
+import { Estadistica } from '../../../models/estadistica';
+import { Company } from '../../../models/company';
+import { Filter } from '../../../models/filters';
+import { CompanyService } from '../../../services/company.service';
 
 interface OurData {
   data: any[];

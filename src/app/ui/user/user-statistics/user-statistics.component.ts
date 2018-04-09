@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { StatisticsService } from '../../services/statistics.service';
-import { Filter } from '../../models/filters';
+import { StatisticsService } from '../../../services/statistics.service';
+import { Filter } from '../../../models/filters';
 
 @Component({
   selector: 'app-user-statistics',
