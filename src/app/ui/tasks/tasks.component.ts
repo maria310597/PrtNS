@@ -24,7 +24,7 @@ export class TasksComponent implements OnInit {
   }
 
   deleteTask(uid: string){
-    console.log("Se va ha borrar"+ uid);
+    //console.log("Se va ha borrar"+ uid);
     this.taskService.deletePendiente(uid);
   }
 

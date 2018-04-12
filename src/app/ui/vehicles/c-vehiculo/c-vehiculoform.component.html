@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h4 class="modal-title">Registrar Vehiculo</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+            <label for="Marca"> Marca </label>
+            <input type="text" class="form-control" id="Marca" required [(ngModel)]="model.Marca" name="Marca">
+            <br>
+            <label for="nombre"> Nombre </label>
+            <input type="text" class="form-control" id="nombre" required [(ngModel)]="model.nombre" name="nombre">
+            <br>
+            <button
+                type="submit" (click)="guardar()" > Guardar
+            </button>
+            <div  *ngIf="campos[0]==2" class="alert alert-primary" role="alert">
+                    Te ha faltado rellenar el campo Marca
+                  </div>
+                  <div  *ngIf="campos[1]==2" class="alert alert-primary" role="alert">
+                    Te ha faltado rellenar el campo nombre
+                  </div>
+
+    </form>
+
+
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>

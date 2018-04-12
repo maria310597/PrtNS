@@ -10,6 +10,10 @@ import { CalendarModule } from 'angular-calendar';
 import { CalendarHeaderComponent } from './calendar-header.component';
 import { DateTimePickerComponent } from './date-time-picker.component';
 import { VehiclesComponent } from './vehicles.component';
+import { CVehiculoComponent,FVehiculoComponent } from './c-vehiculo/c-vehiculo.component';
+import { DeleteVehiculoComponent, FDeleteVehiculoComponent} from './delete-vehiculo/delete-vehiculo.component';
+
+import { ConfirmDeleteComponent, ConfirmVehiculoComponent} from './confirm-d/confirm-d.component';
 
 @NgModule({
   imports: [
@@ -22,7 +26,16 @@ import { VehiclesComponent } from './vehicles.component';
     }),
     CalendarModule
   ],
-  declarations: [CalendarHeaderComponent, DateTimePickerComponent, VehiclesComponent],
-  exports: [CalendarHeaderComponent, DateTimePickerComponent]
+  declarations: [
+    CalendarHeaderComponent, DateTimePickerComponent, VehiclesComponent, 
+    CVehiculoComponent,FVehiculoComponent, 
+    DeleteVehiculoComponent, FDeleteVehiculoComponent,
+    ConfirmVehiculoComponent,
+    ConfirmDeleteComponent
+  ],
+  exports: [CalendarHeaderComponent, DateTimePickerComponent],
+  entryComponents: [FVehiculoComponent,FDeleteVehiculoComponent,
+     ConfirmVehiculoComponent
+  ]
 })
 export class VehicleModule { }

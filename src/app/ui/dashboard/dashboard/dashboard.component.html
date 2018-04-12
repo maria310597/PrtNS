@@ -6,7 +6,7 @@
             <div class="btn-toolbar mb-2 mb-md-0">            
               <div ngbDropdown >
               <button ngbDropdownToggle class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <i class="fa fa-calendar"></i>
+                <i aria-hidden class="fa fa-calendar" title="calendario"></i> <span class="sr-only">calendario</span>
                 Este mes
               </button>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -18,7 +18,7 @@
           <div class="row">
             <div class="col"> 
                 <div class="alert border-secondary mb-3" >
-                    <div *ngIf="!frase"><i class="fa fa-circle-o-notch fa-spin justify-content-center align-self-center" style="font-size:100px"></i></div>
+                    <div *ngIf="!frase"><i aria-hidden class="fa fa-circle-o-notch fa-spin justify-content-center align-self-center" style="font-size:100px" title="cargando"></i> <span class="sr-only">cargando</span></div>
                     <div *ngIf="frase | async as f" class="row">
                       <div style="margin-top: auto;margin-bottom: auto;" class="col" ><img width="90px" class="fa-beat mx-auto d-block img-responsive" src="assets/loveneo.png"/></div>
                       <div style="margin-top: auto;margin-bottom: auto;" class="col">
@@ -32,7 +32,7 @@
             </div>
             <div class="col">
                 <div class="card border-secondary mb-3">
-                    <div class="card-header"><i class="fa fa-table"></i> Facturación rápida</div>
+                    <div class="card-header"><i aria-hidden class="fa fa-table" title="facturación rápida"></i> Facturación rápida <span class="sr-only">facturación rápida</span></div>
                     <ul class="list-group list-group-flush ">
                       <li  class="list-group-item">
                           <span class="pull-left thumb-small m-t-mini align-middle"> 

@@ -59,7 +59,25 @@ export class VehicleService {
 
 
   }
-
+  addVehiculo(vehiculo: Vehicle){
+    
+    this.afs.collection<Vehicle>(this.path).add({
+                                                Marca: vehiculo.Marca,
+                                                nombre: vehiculo.nombre,
+    }) .then(ref => {
+      vehiculo.uid = ref.id;
+      this.updateVehiculo(vehiculo);
+      });
+     
+    
+  }
+  updateVehiculo(vehiculo){
+    this.afs.doc(this.path+ '/' + vehiculo.uid).update({
+                              Marca: vehiculo.Marca,
+                              nombre: vehiculo.nombre,
+                              uid:vehiculo.uid
+    });
+  }
   addReserva(reserva: Reserva, cocheuid: string): string{
     
     this.afs.collection<Reserva>(this.path + '/' + cocheuid + '/reservas').add({
@@ -111,6 +129,9 @@ export class VehicleService {
       }
     });
   }
- 
+
+  deleteTodo(Vehicle: Vehicle) {
+    this.afs.collection<Vehicle>(this.path).doc(Vehicle.uid).delete();
+  }
 
 }

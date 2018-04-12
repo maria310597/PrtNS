@@ -57,9 +57,19 @@
         <th>Empresa</th>
         <th>Fecha</th>
         <th>Hora de inicio</th>
-        <th><i class="fa fa-clock-o"></i></th>
-        <th><i class="fa fa-road"></i></th>
-        <th><i class="fa fa-car"></i></th>
+        <th>
+          <i aria-hidden class="fa fa-clock-o" title="duracion"></i>
+          <span class="sr-only">duracion</span>
+
+        </th>
+        <th>
+          <i aria-hidden class="fa fa-road" title="km" ></i>
+          <span class="sr-only">Kilometros</span>
+        </th>
+        <th>
+          <i aria-hidden class="fa fa-car" title="coche particular"></i>
+          <span class="sr-only">coche particular</span>
+        </th>
         <th>Desplazamiento</th>
         <th></th>
       </tr>
@@ -75,14 +85,20 @@
         <td>{{ parte.km }} km</td>
         <td >
            
-          <i *ngIf="parte.cocheParticular" class="fa fa-check-square"></i>
-          <i *ngIf="!parte.cocheParticular" class="fa fa-times"></i>
+          <i *ngIf="parte.cocheParticular"  aria-hidden class="fa fa-check-square" title="si"></i>
+          <span class="sr-only">si</span>
+          <i *ngIf="!parte.cocheParticular" aria-hidden class="fa fa-times" title="no" ></i>
+          <span class="sr-only">no</span>
         </td>
         <td >
            <a aria-label="si">
-          <i *ngIf="parte.displacements" class="fa fa-check-square" aria-hidden="true" >  </i></a>
+          <i *ngIf="parte.displacements" aria-hidden class="fa fa-check-square"  title="si">  </i>
+          <span class="sr-only">si</span>
+        </a>
           <a>
-          <i *ngIf="!parte.displacements" class="fa fa-times"  aria-hidden="true"></i> </a>
+          <i *ngIf="!parte.displacements" aria-hidden class="fa fa-times" title="no" ></i>
+          <span class="sr-only">no</span>
+        </a>
         </td>
         <td>
           <app-confirm-parte-delete [parte]="parte"></app-confirm-parte-delete>

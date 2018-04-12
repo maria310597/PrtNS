@@ -20,10 +20,19 @@
   <thead>
     <tr>
       <th>Nombre</th>
-      <th><i class="fa fa-envelope-o"></i></th>
+      <th>
+        <i aria-hidden class="fa fa-envelope-o" title="email" ></i>
+        <span class="sr-only">email</span>
+      </th>
       <th>Email de facturación</th>
-      <th><i class="fa fa-fax"></i></th>
-      <th><i class="fa fa-volume-control-phone"></i></th>
+      <th>
+        <i aria-hidden class="fa fa-fax" title="fax"></i>
+        <span class="sr-only">fax</span>
+      </th>
+      <th>
+        <i aria-hidden class="fa fa-volume-control-phone" title="teléfono"></i>
+        <span class="sr-only">teléfono</span>
+      </th>
       <th>Último Movimiento </th>
       <th>Igualada </th>
       <th></th>
@@ -44,8 +53,9 @@
         </div>
         </td>
       <td >
-          <i *ngIf="company.igualada" class="fa fa-check-square"></i>
-          <i *ngIf="!company.igualada" class="fa fa-times"></i>
+          <i *ngIf="company.igualada" aria-hidden class="fa fa-check-square" title="si"></i>
+          <span class="sr-only">si</span>
+          <i *ngIf="!company.igualada" aria-hidden class="fa fa-times" title="no" ></i> <span class="sr-only">no</span>
         </td>
         <td>
           <app-confirm-delete [company]="company"></app-confirm-delete>

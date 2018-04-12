@@ -116,10 +116,10 @@ export class VehiclesComponent implements OnInit {
       this.events = [];
     for (let ve of v){
      
-      console.log("ve.uid")
+      //console.log("ve.uid")
       this.vehicleService.getReservas(ve.uid).take(1).subscribe((reservas: Reserva[]) => {
         
-          console.log(this.reservas)
+          //console.log(this.reservas)
           this.reservas = reservas;
           //console.log(this.reservas)
           var inicio: Date;
@@ -263,9 +263,9 @@ motivo: string;
       }
     }
     if (reservado.length == 0) {
-      console.log(this.vehiculos)
+      //console.log(this.vehiculos)
      this.operativos = this.vehiculos;
-     console.log(this.operativos)
+     //console.log(this.operativos)
       // return this.vehiculos;
     }
     else {
@@ -297,7 +297,7 @@ motivo: string;
         }
        
         this.operativos = disponibles;
-        console.log(this.operativos)
+       // console.log(this.operativos)
         //return disponibles;
         });
     

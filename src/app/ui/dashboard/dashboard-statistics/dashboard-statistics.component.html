@@ -1,4 +1,4 @@
-<div *ngIf="!ready"><i class="fa fa-circle-o-notch fa-spin justify-content-center align-self-center" style="font-size:100px"></i></div>
+<div *ngIf="!ready"><i aria-hidden ="fa fa-circle-o-notch fa-spin justify-content-center align-self-center" style="font-size:100px" title="cargando"></i> <span class="sr-only">cargando</span></div>
 <div *ngIf="ready">
   <div style="display: block">
     <canvas baseChart

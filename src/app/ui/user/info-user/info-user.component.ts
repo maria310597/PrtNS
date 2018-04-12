@@ -57,7 +57,7 @@ import { UserStatisticsComponent } from '../user-statistics/user-statistics.comp
     </div>
 
     </div>
-    <div *ngIf="!loaded"><i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i></div>
+    <div *ngIf="!loaded"><i aria-hidden class="fa fa-circle-o-notch fa-spin" style="font-size:24px" title="descargando"></i> <span class="sr-only">descargando</span> </div>
     </div>
   `
 })

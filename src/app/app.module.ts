@@ -64,6 +64,8 @@ import { FacturacionComponent, FacturacionFormComponent, FacturacionFormNo } fro
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,6 +108,9 @@ import { FacturacionComponent, FacturacionFormComponent, FacturacionFormNo } fro
     FacturacionFormComponent,
     FacturacionFormNo,
     AdminComponent,
+    
+  //CreateConfirmVehiculoComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -159,7 +164,12 @@ import { FacturacionComponent, FacturacionFormComponent, FacturacionFormNo } fro
     CreateConfirmParteComponent,
     FacturacionFormComponent,
     ModifyUserComponent,
-    FacturacionFormNo
+    FacturacionFormNo,
+   // CreateConfirmVehiculoComponent
+    //CVehiculoComponent,
+    //FVehiculoComponent
+   // VehiculoForm
+    
   ]
 })
 export class AppModule { }
