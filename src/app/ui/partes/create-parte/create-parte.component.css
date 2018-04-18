@@ -1,0 +1,15 @@
+select {
+    text-align-last: center;
+padding-right: 29px;
+    font-size: 15px;
+    border: 1px solid blue;
+    border-radius: 30px;
+  
+    padding: 8px;
+    width: 120px;
+    -webkit-appearance: none;
+
+    background-color: lightblue;
+    
+    
+}

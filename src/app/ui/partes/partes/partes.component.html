@@ -3,14 +3,18 @@
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Partes</h1>
+           
             <div class="btn-toolbar mb-2 mb-md-0">   
             <form class="form-inline">
          
-                <div ngbDropdown class="d-inline-block">
-                  <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedCompany}}</button>
-                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                  <button class="dropdown-item" *ngFor="let c of mycompanies" (click)="ChangeCompany(c.name)" >{{c.name}} </button>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="select">Empresas</label>
                 </div>
+                <select class="custom-select" id="select" item-height="2px">
+                  <option *ngFor="let sortOrder of dropDownCompany"  >{{sortOrder}}</option>
+                  
+                </select>
               </div>
           
     
@@ -67,7 +71,7 @@
           <span class="sr-only">Kilometros</span>
         </th>
         <th>
-          <i aria-hidden class="fa fa-car" title="coche particular"></i>
+          <i aria-hidden class="fa fa-car" ></i>
           <span class="sr-only">coche particular</span>
         </th>
         <th>Desplazamiento</th>
@@ -81,7 +85,7 @@
         <td><app-info-company [name]="parte.company"></app-info-company> {{ parte.company }}</td>
         <td >{{ parte.date.day }}  /  {{parte.date.month}}/ {{parte.date.year }}</td>
         <td>{{ parte.dBegining.hour}}:{{parte.dBegining.minute}}:{{parte.dBegining.second}}</td>
-        <td>{{ ((parte.dEnd.hour*60)+(parte.dEnd.minute)) - (parte.dBegining.hour*60 + parte.dBegining.minute) }} minutos </td>
+        <td>{{ parte.duracion }} minutos </td>
         <td>{{ parte.km }} km</td>
         <td >
            

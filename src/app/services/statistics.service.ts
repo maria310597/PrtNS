@@ -116,7 +116,7 @@ export class StatisticsService {
            partes = mypartes;
            let partesFiltrados = this.filterPartes(partes,filtro);
            for (let pa of partesFiltrados) {
-            const hTotales = ((pa.dEnd.hour * 60) + (pa.dEnd.minute)) - (pa.dBegining.hour * 60 + pa.dBegining.minute);
+            const hTotales =  pa.duracion;
             if (!map.has(pa.company)) {
             map.set(pa.company, hTotales);
           } else {
@@ -150,7 +150,7 @@ export class StatisticsService {
               final[2] += p.parking;
               final[3]++;
               if( date.toString().includes('Sat') || date.toString().includes('Sun') && !p.servAditional){
-                var hFinSemana = (((p.dEnd.hour*60)+(p.dEnd.minute)) - (p.dBegining.hour*60 + p.dBegining.minute));
+                var hFinSemana =  p.duracion;
                 final[4]+= hFinSemana;
               }
          
@@ -160,7 +160,7 @@ export class StatisticsService {
           for(let p of partesFiltrados){
           if(p.createdby == uid){
             if(p.cocheParticular) final[0] += p.km;
-            const horas = (((p.dEnd.hour * 60) + (p.dEnd.minute)) - (p.dBegining.hour * 60 + p.dBegining.minute));
+            const horas = (  p.duracion);
             final[1] += horas
             final[2] += p.parking;
             final[3]++;

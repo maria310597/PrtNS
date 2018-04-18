@@ -109,7 +109,7 @@ export class FacturacionFormComponent implements OnInit{
        
         if( date.toString().includes('Sat') || date.toString().includes('Sun') && !parte.servAditional){
           this.weekend.push(parte);
-          this.hFinSemana = this.hFinSemana +(((parte.dEnd.hour*60)+(parte.dEnd.minute)) - (parte.dBegining.hour*60 + parte.dBegining.minute));
+          this.hFinSemana = this.hFinSemana + parte.duracion;
         }
       } 
      
@@ -119,7 +119,7 @@ export class FacturacionFormComponent implements OnInit{
       let total:number  = 0;
       for(let parte of this.mypartes) {
         if( !parte.servAditional){
-          total +=  ((parte.dEnd.hour*60)+(parte.dEnd.minute)) - (parte.dBegining.hour*60 + parte.dBegining.minute);
+          total +=    parte.duracion;
         }
       }
       this.totalHours = total;
@@ -129,7 +129,7 @@ export class FacturacionFormComponent implements OnInit{
 
       for(let parte of this.mypartes) {
         if( parte.servAditional){
-          total +=  ((parte.dEnd.hour*60)+(parte.dEnd.minute)) - (parte.dBegining.hour*60 + parte.dBegining.minute);
+          total +=   parte.duracion;
         }
       }
       this.hServAditional = total;
@@ -145,7 +145,7 @@ export class FacturacionFormComponent implements OnInit{
 
         if (!parte.servAditional && !(date.toString().includes('Sat') || date.toString().includes('Sun'))) {
          
-          horas +=  ((parte.dEnd.hour*60)+(parte.dEnd.minute)) - (parte.dBegining.hour*60 + parte.dBegining.minute);
+          horas += parte.duracion;
             if(this.iguala < horas){
               this.partesExceso.push(parte);
             }
@@ -244,7 +244,7 @@ export class FacturacionFormComponent implements OnInit{
        
         if( date.toString().includes('Sat') || date.toString().includes('Sun')){
           this.weekend.push(parte);
-          this.hFinSemana = this.hFinSemana +(((parte.dEnd.hour*60)+(parte.dEnd.minute)) - (parte.dBegining.hour*60 + parte.dBegining.minute));
+          this.hFinSemana = this.hFinSemana + parte.duracion;
         }
       } 
      
@@ -256,7 +256,7 @@ export class FacturacionFormComponent implements OnInit{
         var date = new Date(parte.date.year,parte.date.month-1,parte.date.day);
 
         if (!(date.toString().includes('Sat') || date.toString().includes('Sun'))) {
-          total +=  ((parte.dEnd.hour*60)+(parte.dEnd.minute)) - (parte.dBegining.hour*60 + parte.dBegining.minute);
+          total +=  parte.duracion;
         
       }
      
