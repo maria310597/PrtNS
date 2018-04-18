@@ -45,7 +45,7 @@
                             <p class="text-dark"><i class="fa fa-clock-o"></i> Hora de inicio: <span class="badge badge-danger">{{ partes[0].dBegining.hour}}:{{partes[0].dBegining.minute}}:{{partes[0].dBegining.second}} </span></p>
                             <hr>
                             <h5 class="text-center text-dark" >Horas totales</h5>
-                            <h5 class="text-center text-dark" ><span class="badge badge-danger">{{ (((partes[0].dEnd.hour*60)+(partes[0].dEnd.minute)) - (partes[0].dBegining.hour*60 + partes[0].dBegining.minute)) / 60 | number : '1.2-2' }} h</span></h5>
+                            <h5 class="text-center text-dark" ><span class="badge badge-danger">{{ partes[0].duracion / 60 | number : '1.2-2' }} h</span></h5>
                             <br>
                           </div>
             </div>

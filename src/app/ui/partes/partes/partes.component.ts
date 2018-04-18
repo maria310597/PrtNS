@@ -118,7 +118,7 @@ export class PartesComponent implements OnInit {
   company$: Observable<Company[]>;
   mycompanies: Company[];
   dtTriggerC: Subject<any> = new Subject();
-
+  dropDownCompany: string[] = ["No filtrar"];
   ChangeUser(newU: string) { 
     this.selectedUser = newU;
   }
@@ -141,8 +141,14 @@ export class PartesComponent implements OnInit {
   
   this.companyService.getCollection$().subscribe((myc: Company[]) => {
     this.mycompanies = myc;
+   
     this.dtTriggerC.next();
+    for(let c of myc){
+      this.dropDownCompany.push(c.name)
+    }
+
    });
+  
    
   }
 
@@ -175,6 +181,9 @@ export class PartesComponent implements OnInit {
     });
   }
   filtrar(date :NgbDateStruct, date2: NgbDateStruct){
+    var selectedText = $("#select").find("option:selected").text();
+    this.selectedCompany = selectedText;
+    
     //Ninuno
     if ( this.selectedCompany == "Empresa"){
       if( this.selectedUser == "Usuario"){
@@ -225,7 +234,7 @@ export class PartesComponent implements OnInit {
             
             if(par.date.year >= date.year && par.date.year <= date2.year && par.date.month >= date.month && par.date.month <= date2.month
             && par.date.day >= date.day && par.date.day <= date2.day ){
-              console.log(par.date)
+              
               this.mypartes.push(par);
             }
 

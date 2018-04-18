@@ -16,7 +16,7 @@ export class Report {
     date: NgbDateStruct;
     company: string;
     dBegining: TimeCustom;
-    dEnd: TimeCustom;
+    duracion: number;
     notes: string[];
     km: number;
     displacements: boolean;
@@ -31,7 +31,7 @@ export class Report {
     servAditional: boolean;
     
 
-    constructor(operator: string, date: NgbDateStruct, company: string, dBegining: TimeCustom, dEnd: TimeCustom,
+    constructor(operator: string, date: NgbDateStruct, company: string, dBegining: TimeCustom, duracion: number,
          notes: string[], km: number, displacements: boolean, parking: number, free:boolean, 
          interno: boolean,telemantenimiento:boolean,cocheParticular:boolean, 
          createdby: string, servAditional: boolean, typec?:TypeReport,uid?: string) {
@@ -42,7 +42,7 @@ export class Report {
         this.date = date;
         this.company = company;
         this.dBegining = dBegining;
-        this.dEnd = dEnd;
+        this.duracion = duracion;
         this.notes = notes;
         this.km = km;
         this.displacements = displacements;
