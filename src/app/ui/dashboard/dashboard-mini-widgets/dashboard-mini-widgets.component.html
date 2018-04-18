@@ -1,7 +1,7 @@
 <div *ngIf="myuser | async as myuser" >
 <div class="admin" *ngIf="!myuser.admin else loading">
     <div class="row">
-        <div class="col-sm">
+        <div class="col">
             <div class="card" style="width: 10rem;">
                 <div class="card-body">
                   <h5 class="card-title text-right"><i class="fa fa-car" placement="top" ngbTooltip="Kilometros realizados con coche propio"></i></h5>
@@ -13,7 +13,7 @@
                 </div>
               </div>
         </div>
-        <div class="col-sm">
+        <div class="col">
             <div class="card" style="width: 10rem;">
                 <div class="card-body">
                   <h5 class="card-title text-right"><i class="fa fa-clock-o" placement="top" ngbTooltip="Horas totales este mes"></i></h5>
@@ -25,7 +25,7 @@
                 </div>
               </div>
         </div>
-        <div class="col-sm">
+        <div class="col">
             <div class="card" style="width: 10rem;">
                 <div class="card-body">
                   <h5 class="card-title text-right"><i class="fa fa-money" placement="top" ngbTooltip="Dinero gastado en parking"></i></h5>
@@ -37,7 +37,7 @@
                 </div>
               </div>
         </div>
-        <div class="col-sm">
+        <div class="col">
             <div class="card" style="width: 10rem;">
                 <div class="card-body">
                   <h5 class="card-title text-right"><i class="fa fa-address-card-o" placement="top" ngbTooltip="Partes este mes"></i></h5>
@@ -49,7 +49,7 @@
                 </div>
               </div>
         </div>
-        <div class="col-sm">
+        <div class="col">
             <div class="card" style="width: 10rem;">
                 <div class="card-body">
                   <h5 class="card-title text-right"><i class="fa fa-bookmark-o" placement="top" ngbTooltip="Horas sin iguala"></i></h5>
@@ -67,7 +67,7 @@
 
   <ng-template #loading>
         <div class="row">
-                <div class="col-sm">
+                <div class="col ">
                     <div class="card" style="width: 10rem;">
                         <div class="card-body">
                           <h5 class="card-title text-right"><i class="fa fa-car" placement="top" ngbTooltip="Desplazamientos"></i></h5>
@@ -79,7 +79,7 @@
                         </div>
                       </div>
                 </div>
-                <div class="col-sm">
+                <div class="col">
                     <div class="card" style="width: 10rem;">
                         <div class="card-body">
                           <h5 class="card-title text-right"><i class="fa fa-tasks" placement="top" ngbTooltip="Partes pendientes"></i></h5>
@@ -91,7 +91,7 @@
                         </div>
                       </div>
                 </div>
-                <div class="col-sm">
+                <div class="col">
                     <div class="card" style="width: 10rem;">
                         <div class="card-body">
                           <h5 class="card-title text-right"><i class="fa fa-money" placement="top" ngbTooltip="Dinero gastado en parking"></i></h5>
@@ -103,7 +103,7 @@
                         </div>
                       </div>
                 </div>
-                <div class="col-sm">
+                <div class="col">
                     <div class="card" style="width: 10rem;">
                         <div class="card-body">
                           <h5 class="card-title text-right"><i class="fa fa-address-card-o" placement="top" ngbTooltip="Partes este mes"></i></h5>
@@ -115,7 +115,7 @@
                         </div>
                       </div>
                 </div>
-                <div class="col-sm">
+                <div class="col col-lg">
                     <div class="card" style="width: 10rem;">
                         <div class="card-body">
                           <h5 class="card-title text-right"><i class="fa fa-bookmark-o" placement="top" ngbTooltip="Horas fin de semana"></i></h5>

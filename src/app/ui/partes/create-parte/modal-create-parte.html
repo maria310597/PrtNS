@@ -1,0 +1,204 @@
+<div class="modal-header">
+    <h4 class="modal-title">Nuevo Parte</h4>
+    <button type="button" class="close" aria-label="Cerrar" (click)="activeModal.dismiss('Cerrar')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+    <form>
+        <div class="row">
+            <div class="col-sm">
+                <div ngbDropdown class="d-inline-block">
+                    <button accesskey="e" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedSortOrder}}</button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button class="dropdown-item" *ngFor="let sortOrder of mycompanies" (click)="ChangeSortOrder(sortOrder.name)">{{sortOrder.name}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <label for="date"> Fecha </label>
+        <div class="form-group">
+            <div class="input-group">
+                <input accesskey="f" class="form-control" placeholder="yyyy-mm-dd" id="date" name="date" [(ngModel)]="model.date" [dayTemplate]="customDay" ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append">
+                    <button type="button" arial-label="Selector de fecha" class="btn btn-outline-secondary" (click)="d.toggle()">
+								<i class="fa fa-calendar"></i>
+							</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-group">
+                        <label for="inicio"> Hora de Inicio  &nbsp;</label>
+                        <ngb-timepicker id="inicio" size="small" name="dBegining" [(ngModel)]="time" [(ngModel)]="model.dBegining" [ngModelOptions]="{standalone: true}"></ngb-timepicker>
+                     </div>
+            </div>
+            <div class="col-sm">       
+                    <div class="form-group">
+                        <label for="fin">&nbsp; Hora de Fin &nbsp;</label>
+                        <ngb-timepicker id="fin" size="small" name="dEnd" [(ngModel)]="time2" [(ngModel)]="model.dEnd" [ngModelOptions]="{standalone: true}"></ngb-timepicker>
+                    </div>
+            </div>
+        </div>
+    </div>
+    </div>
+        <br/>
+        
+
+        <div class="card">
+                <div class="card-header">
+                      <i class="fa fa-car"></i> Desplazamiento
+                     </div>
+        <div class="card-body">
+         <div class="row">
+            <div class="col">
+                    <div class="form-group">
+                            <label for="km" class="form-inline"> Km recorridos &nbsp;</label>
+                            <input id="km" type="number" size=10 class="form-control" required [(ngModel)]="model.km" name="km">
+                        </div>
+            </div>
+            <div class="col">
+            <div class="form-group">
+                <label for="parking" class="form-inline"> Parking &nbsp;</label>
+                <input id="parking" accesskey="p" type="number" size=10 class="form-control" required [(ngModel)]="model.parking" name="park">
+            </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col form-group">
+                <label for="displacements"> Desplazamiento </label>
+                <div class="form-check-inline">
+                    <input accesskey="d" class="form-check-input" type="radio" [(ngModel)]="model.displacements" name="dis" id="disSi" [value]="true" checked>
+                    <label class="form-check-label" for="dis"> Si </label>
+                </div>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" [(ngModel)]="model.displacements" name="dis" id="disNo" [value]="false">
+                    <label class="form-check-label" for="dis"> No </label>
+                </div>
+                <br>
+                <label for="cocheP"> Coche particular </label>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" [(ngModel)]="model.cocheParticular" name="coche" id="cocheSi" [value]="true" checked>
+                    <label class="form-check-label" for="coche"> Si </label>
+                </div>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" [(ngModel)]="model.cocheParticular" name="coche" id="cocheNo" [value]="false">
+                    <label class="form-check-label" for="coche"> No </label>
+                </div>
+        </div>
+        <div class="col form-group">
+                <label for="gratuito"> Gratuito </label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" [(ngModel)]="model.free" name="grati" id="gratiSi" [value]="true" checked>
+                    <label class="form-check-label" for="grati"> Si </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" [(ngModel)]="model.free" name="grati" id="gratiNo" [value]="false">
+                    <label class="form-check-label" for="grati"> No </label>
+                </div>
+        </div>
+     </div>        
+    </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-header">
+                <i class="fa fa-adjust"></i> Otros
+        </div>
+        <div class="card-body">
+            <div class="row">
+                    <div class="col form-group">
+                            <label for="intern"> Interno </label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="intern" [(ngModel)]="model.interno" id="internSi" [value]="true" checked>
+                                <label class="form-check-label" for="intern"> Si </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" [(ngModel)]="model.interno" name="intern" id="internNo" [value]="false">
+                                <label class="form-check-label" for="intern"> No </label>
+                            </div>
+                            <br>
+                            <label for="telemantenimiento"> Telemantenimiento </label>
+                            <div class="form-check-inline">
+                                <input class="form-check-input" type="radio" [(ngModel)]="model.telemantenimiento" name="tele" id="teleSi" [value]="true" checked>
+                                <label class="form-check-label" for="tele"> Si </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <input class="form-check-input" type="radio" [(ngModel)]="model.telemantenimiento" name="tele" id="teleNo" [value]="false">
+                                <label class="form-check-label" for="tele"> No </label>
+                            </div>
+                            <br>
+                            <label for="cocheP"> Servicio adicional </label>
+                            <div class="form-check-inline">
+                                <input class="form-check-input" type="radio" [(ngModel)]="model.servAditional" name="serv" id="servSi" [value]="true">
+                                <label class="form-check-label" for="serv"> Si </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <input class="form-check-input" type="radio" [(ngModel)]="model.servAditional" name="serv" id="servNo" [value]="false" checked>
+                                <label class="form-check-label" for="serv"> No </label>
+                            </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+       
+   
+        <br>
+        <label for="comment">Descipción:</label>
+        <textarea accesskey="c" class="form-control" rows="2" name="comment0" id="comment0" [(ngModel)]="model.notes[0]"></textarea>
+        <button (click)="newComment()" class="btn btn-outline-success btn-sm">
+																											<i arialhidden class="fa fa-plus"></i>
+																											<span class="sr-only">Añadir comentario</span>
+																										</button>
+        <br>
+        <br>
+        <div *ngIf="comments>0">
+            <label for="comment">Descipción:</label>
+            <textarea id="comment" class="form-control" rows="2" name="comment1" [(ngModel)]="model.notes[1]"></textarea>
+            <button (click)="newComment()" class="btn btn-outline-success btn-sm">
+																													<i class="fa fa-plus"></i>
+																												</button>
+            <br>
+            <div *ngIf="comments>1">
+                <label for="comment">Descipción:</label>
+                <textarea class="form-control" rows="2" name="comment2" [(ngModel)]="model.notes[2]"></textarea>
+                <button (click)="newComment()" class="btn btn-outline-success btn-sm">
+																															<i class="fa fa-plus"></i>
+																														</button>
+                <br>
+                <div *ngIf="comments>2">
+                    <label for="comment">Descipción:</label>
+                    <textarea class="form-control" rows="2" name="comment3" [(ngModel)]="model.notes[3]"></textarea>
+                </div>
+            </div>
+        </div>
+        <button accesskey="g" class="btn btn-outline-success float-right" type="submit" (click)="check()"> Guardar </button>
+        <br>
+        <br>
+        <div *ngIf="campos[1]==2" class="alert alert-primary" role="alert">
+            Te ha faltado rellenar el campo fecha
+        </div>
+        <div *ngIf="campos[2]==2" class="alert alert-primary" role="alert">
+            Te ha faltado rellenar el campo Empresas
+        </div>
+        <div *ngIf="campos[3]==2" class="alert alert-primary" role="alert">
+            Te ha faltado rellenar el campo hora de inicio
+        </div>
+        <div *ngIf="campos[4]==2" class="alert alert-primary" role="alert">
+            Te ha faltado rellenar el campo hora de fin
+        </div>
+        <div *ngIf="campos[5]==2" class="alert alert-primary" role="alert">
+            La hora de inicio es mayor que la de fin
+        </div>
+    </form>
+</div>

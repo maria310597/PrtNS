@@ -45,10 +45,12 @@ const routes: Routes = [
       {
         path: 'users',
         component: UsersComponent,
+        data: { title: 'Neosistec - Usuarios' }
       },
       {
         path: 'admin',
         component: AdminComponent,
+        data: { title: 'Neosistec - Administración' }
       }
     ]
   },
@@ -59,19 +61,23 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        data: { title: 'Neosistec - Inicio' }
       },
       {
         path: 'vehicles',
-        component: VehiclesComponent
+        component: VehiclesComponent,
+        data: { title: 'Neosistec - Vehículos' }
       },
       {
         path: 'partes',
-        component: PartesComponent
+        component: PartesComponent,
+        data: { title: 'Neosistec - Partes' }
       },
       {
         path: 'company',
-        component: CompanyComponent
+        component: CompanyComponent,
+        data: { title: 'Neosistec - Empresas' }
       },
     ]
   },

@@ -31,6 +31,7 @@ body {
   .sidebar-sticky {
     position: -webkit-sticky;
     position: sticky;
+    background-color:#badc58;
     top: 48px; /* Height of navbar */
     height: calc(100vh - 48px);
     padding-top: .5rem;
@@ -38,6 +39,24 @@ body {
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
   }
   
+   .nav > li.active-pro{
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+  }
+  .nav > li.active-pro a{
+    background: rgba(255, 255, 255, 0.14);
+    opacity: 1;
+    color: rgb(0, 0, 0);
+  }
+
+
+  .nav .nav-item:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-weight: bolder;
+  }
+
   .sidebar .nav-link {
     font-weight: 500;
     color: #333;

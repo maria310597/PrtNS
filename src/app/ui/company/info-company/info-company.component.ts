@@ -32,7 +32,6 @@ import { Company } from '../../../models/company';
         <div id="modalTab">
             <div class="tab-content">
                 <div class="tab-pane active" id="about">
-                    <a><img src="{{company[0].image }}" name="aboutcompany" width="140" height="140" border="0" class="rounded-circle"></a>
                     <h3 class="media-heading">
                     {{company[0].name}} <small *ngIf="company[0].igualada" class="badge badge-danger">Igualada</small>
                     </h3>
@@ -50,8 +49,14 @@ import { Company } from '../../../models/company';
                     <span><strong>Telefono: </strong></span>
                     <span class="badge badge-success">{{company[0].tlf}}</span>
                     <br>
+                    <span><strong>Direccion: </strong></span>
+                    <span class="badge badge-success">{{company[0].address}}</span>
+                    <br>
+                    <span><strong>NIF: </strong></span>
+                    <span class="badge badge-success">{{company[0].nif}}</span>
+                    <br>
                     <span><strong>Último movimiento: </strong></span>
-                    <span class="badge badge-success">{{company[0].lastmovement | date:'d/M/yyy'}}</span>
+                    <span class="badge badge-success">{{company[0].lastmovement.day}}/{{company[0].lastmovement.month}}/{{company[0].lastmovement.year}} </span>
                     <hr>
                 </div>
             </div>

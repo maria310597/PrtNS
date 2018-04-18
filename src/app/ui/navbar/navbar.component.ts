@@ -31,6 +31,13 @@ export class NavbarComponent implements OnInit {
     this.myuser = this.authService.user;
   }
 
+  isMobileMenu() {
+    if ($(window).width() > 991) {
+        return false;
+    }
+    return true;
+};
+
   onSubmit(){
     const fechaActual = new Date();
     let time:TimeCustom = {

@@ -11,205 +11,18 @@ import { User } from '../../../models/user';
 import { NotifyService } from '../../../core/notify.service';
 import { empty } from 'rxjs/Observer';
 import {AuthenticationService} from '../../../services/authentication.service';
+import { NotificationsService } from 'angular2-notifications';
 
 //import { NotifyService } from '../../core/notify.service';
 declare let ClientIP: any;
 @Component({
   selector: 'app-create-parte-form',
-  styles: ["js/bootstrap.min.js", 
-  "js/bootstrap.js"
-],
-  template: `
-  
-  <div class="modal-header">
-      <h4 class="modal-title">Nuevo Parte</h4>
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-    
-    <form>
-    <div class="row">
-  
-   <div class="col-sm">
-   <div ngbDropdown class="d-inline-block">
-   <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedSortOrder}}</button>
-  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-    <button class="dropdown-item" *ngFor="let sortOrder of mycompanies" (click)="ChangeSortOrder(sortOrder.name)" >{{sortOrder.name}}</button>
-  </div>
-  </div>
-  </div>
-
-   </div>
-      
-    <br>
-    <label for="name"> Fecha </label>
-
-    <div class="form-group">
-      <div class="input-group">
-        <input class="form-control" placeholder="yyyy-mm-dd"
-              name="date" [(ngModel)]="model.date" [dayTemplate]="customDay" ngbDatepicker #d="ngbDatepicker">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-          <i class="fa fa-calendar"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-  
-      </div>
-
-    <br />
-
-   
-    <div class="form-inline">
-      <a> Hora de Inicio  &nbsp;</a>
-      <ngb-timepicker size="small" name="dBegining" [(ngModel)]="time" [(ngModel)]="model.dBegining" [ngModelOptions]="{standalone: true}" ></ngb-timepicker>
-    
-      <a>&nbsp; Hora de Fin &nbsp;</a>
-      <ngb-timepicker  size="small" name="dEnd" [(ngModel)]="time2" [(ngModel)]="model.dEnd"[ngModelOptions]="{standalone: true}"></ngb-timepicker>
-    </div>
-
-    <div class="form-inline">
-      <label for="km"class="form-inline"> Km recorridos &nbsp;</label>
-      <input type="number" size=10 class="form-control-inline"  required [(ngModel)]="model.km"  name="km">
-
-    </div>
-<br> 
-
-<div class="form-inline">
-<label for="Park"class="form-inline"> Parking &nbsp;</label>
-<input type="number" size=10 class="form-control-inline"  required [(ngModel)]="model.parking"  name="park">
-
-</div>
-<br> 
-<label for="displacements"> Desplazamiento </label>
-    <div class="form-check-inline">
-      <input class="form-check-input" type="radio" [(ngModel)]="model.displacements" name="dis" id="disSi"  [value]="true" checked>
-      <label class="form-check-label" for="dis"> Si </label>
-    </div>
-    <div class="form-check-inline">
-      <input class="form-check-input" type="radio" [(ngModel)]="model.displacements" name="dis" id="disNo"  [value]="false">
-      <label class="form-check-label" for="dis"> No </label>
-    </div>
-    
-    <br>
-
-    <label for="gratuito"> Gratuito </label>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" [(ngModel)]="model.free" name="grati" id="gratiSi"  [value]="true" checked>
-      <label class="form-check-label" for="grati"> Si </label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" [(ngModel)]="model.free" name="grati" id="gratiNo"  [value]="false">
-      <label class="form-check-label" for="grati"> No </label>
-    </div>
-    <br>
-    
-    <label for="intern"> Interno </label>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="intern" [(ngModel)]="model.interno" id="internSi"  [value]="true" checked>
-      <label class="form-check-label" for="intern"> Si </label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" [(ngModel)]="model.interno" name="intern" id="internNo"  [value]="false">
-      <label class="form-check-label" for="intern"> No </label>
-    </div>
-    <br>
-
-    <label for="telemantenimiento"> Telemantenimiento </label>
-    <div class="form-check-inline">
-      <input class="form-check-input" type="radio" [(ngModel)]="model.telemantenimiento" name="tele" id="teleSi"  [value]="true" checked>
-      <label class="form-check-label" for="tele"> Si </label>
-    </div>
-    <div class="form-check-inline">
-      <input class="form-check-input" type="radio" [(ngModel)]="model.telemantenimiento" name="tele" id="teleNo"  [value]="false">
-      <label class="form-check-label" for="tele"> No </label>
-    </div>
-    <br>
-
-
-    <label for="cocheP"> Coche Particular </label>
-    <div class="form-check-inline">
-      <input class="form-check-input" type="radio" [(ngModel)]="model.cocheParticular" name="coche" id="cocheSi"  [value]="true" checked>
-      <label class="form-check-label" for="coche"> Si </label>
-    </div>
-    <div class="form-check-inline">
-      <input class="form-check-input" type="radio" [(ngModel)]="model.cocheParticular" name="coche" id="cocheNo"  [value]="false">
-      <label class="form-check-label" for="coche"> No </label>
-    </div>
-    <br>
-
-    <label for="cocheP"> Servicio adicional </label>
-    <div class="form-check-inline">
-      <input class="form-check-input" type="radio" [(ngModel)]="model.servAditional" name="serv" id="servSi"  [value]="true" >
-      <label class="form-check-label" for="serv"> Si </label>
-    </div>
-    <div class="form-check-inline">
-      <input class="form-check-input" type="radio" [(ngModel)]="model.servAditional" name="serv" id="servNo"  [value]="false" checked>
-      <label class="form-check-label" for="serv"> No </label>
-    </div>
-    <br>
-  
-    
-    <label for="comment">Descipción:</label>
-    <textarea class="form-control" rows="2" name="comment0" id="comment0" [(ngModel)]="model.notes[0]"></textarea>
-   
-
-    <button (click)="newComment()" class="btn btn-outline-success btn-sm"><i class="fa fa-plus"></i></button>
-    <br>
-    <div *ngIf="comments>0">
-      <label for="comment" >Descipción:</label>
-      <textarea class="form-control" rows="2" name="comment1" [(ngModel)]="model.notes[1]"></textarea>
-        <button (click)="newComment()" class="btn btn-outline-success btn-sm"><i class="fa fa-plus"></i></button>
-        <br>
-        <div *ngIf="comments>1">
-          <label for="comment" >Descipción:</label>
-          <textarea class="form-control" rows="2" name="comment2" [(ngModel)]="model.notes[2]"></textarea>
-        
-
-        <button (click)="newComment()" class="btn btn-outline-success btn-sm"><i class="fa fa-plus"></i></button>
-        <br>
-        <div *ngIf="comments>2">
-          <label for="comment" >Descipción:</label>
-          <textarea class="form-control" rows="2" name="comment3" [(ngModel)]="model.notes[3]"></textarea>
-        </div>
-    </div>
-    </div>
-    
-    
-    <button class="btn btn-outline-success float-right" type="submit" (click)="check()" > Guardar </button>
-    <br>
-    <br>
-    <div  *ngIf="campos[1]==2" class="alert alert-primary" role="alert">
-      Te ha faltado rellenar el campo fecha
-    </div>
-    <div  *ngIf="campos[2]==2" class="alert alert-primary" role="alert">
-      Te ha faltado rellenar el campo Empresas
-    </div>
-    <div  *ngIf="campos[3]==2" class="alert alert-primary" role="alert">
-      Te ha faltado rellenar el campo hora de inicio
-    </div>
-    <div  *ngIf="campos[4]==2" class="alert alert-primary" role="alert">
-      Te ha faltado rellenar el campo hora de fin
-    </div>
-    <div  *ngIf="campos[5]==2" class="alert alert-primary" role="alert">
-     La hora de inicio es mayor que la de fin
-    </div>
-
-    </form>
-    </div>
-  `
+  styleUrls: ['create-parte.component.css'],
+  templateUrl:'modal-create-parte.html'
 })
 
 export class CreateParteForm implements OnInit {
   @Input() parte;
-
-  
-
   model;
   //time: NgbTimeStruct = {hour:0,minute:0,second:0};
   //time2: NgbTimeStruct = {hour:0,minute:0,second:0};
@@ -230,7 +43,7 @@ export class CreateParteForm implements OnInit {
   
   constructor(public activeModal: NgbActiveModal, private ref: ChangeDetectorRef, private partesService: PartesService, 
     private companyService: CompanyService, private userService: UserService,
-     private notify: NotifyService, private authService: AuthenticationService) {
+     private notifyservice: NotificationsService, private authService: AuthenticationService) {
     this.companyService.getCollection$().subscribe((myc: Company[]) => {
        this.mycompanies = myc;
 
@@ -328,14 +141,26 @@ export class CreateParteForm implements OnInit {
        // console.log(this.model)
         this.partesService.updateTodo(this.model);
         this.companyService.updateLastMovement(this.model.company,this.model.date);
-      this.activeModal.close('Close click')
-      this.notify.update('Parte modificado correctamente', 'success');
+      this.activeModal.close('Close click');
+      const toast = this.notifyservice.info('Parte modificado correctamente','', {
+        timeOut: 3000,
+        showProgressBar: false,
+        pauseOnHover: true,
+        clickToClose: true
+      });
+    
       }else{
        
       this.partesService.add(this.model);
       this.companyService.updateLastMovement(this.model.company,this.model.date);
-      this.activeModal.close('Close click')
-      this.notify.update('Parte registrado correctamente', 'success');
+      this.activeModal.close('Close click');
+      const toast = this.notifyservice.info('Parte registrado correctamente.','', {
+        timeOut: 3000,
+        showProgressBar: false,
+        pauseOnHover: true,
+        clickToClose: true
+      });
+  
       }
       }
     }
@@ -349,7 +174,9 @@ export class CreateParteForm implements OnInit {
  
     if (this.parte == undefined){
       var notes: string[] = [];
-      this.model = new Report("",null,"",null,null,notes,0,false,0,false,false,false,false,"",false,null, "");
+      var date = new Date();
+      var mengbDateStruct = { day: date.getUTCDay(), month: date.getUTCMonth(), year: date.getUTCFullYear()};
+      this.model = new Report("",mengbDateStruct,"",null,null,notes,0,false,0,false,false,false,false,"",false,null, "");
       this.model.hiddenIP = ClientIP;
       this.modify = false;
      }

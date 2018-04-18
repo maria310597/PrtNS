@@ -3,26 +3,25 @@
             <h2 class="text-center text-white mb-4">&nbsp;</h2>
             <div class="row">
                 <div class="col-md-6 mx-auto">
-                    <div class="card border-secondary mb-3" style="opacity:0.8">
+                    <div class="card border-secondary mb-3" style="opacity:1">
                         <div class="card-header">
-                          <div id="logo" class="logo text-center">
+                          <div id="logo" class="logo ">
                               <img width="50px" src="/assets/minineo.png" />
                           </div>
                         </div>
                         <div class="card-body">
+                                <h2 class="text-center">Iniciar sesión</h2>
                             <form [formGroup]="userForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate="" (ngSubmit)="login()">
                                 <div class="form-group">
-                                    <label for="uname1">Email</label>
-                                    <input type="email" id="email" class="form-control form-control-lg rounded-0" formControlName="email" required >
-                                    <div class="invalid-feedback">Oops, you missed this one.</div>
+                                    <label for="email">Email</label>
+                                    <input name="email" accesskey="u" type="email" id="email" class="form-control form-control-lg" formControlName="email" required >
                                 </div>
                                 <div class="form-group">
-                                    <label>Contraseña</label>
-                                    <input type="password" class="form-control form-control-lg rounded-0" id="password" formControlName="password" required >
-                                    <div class="invalid-feedback">Enter your password too!</div>
+                                    <label for="clave">Contraseña</label>
+                                    <input name="clave" accesskey="c" type="password" class="form-control form-control-lg " id="clave" formControlName="password" required >
                                 </div>
                                 <div class="card-footer bg-transparent">
-                                    <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Iniciar</button>
+                                    <button aria-label="Iniciar" accesskey="e" type="submit" class="btn btn-success btn-lg float-right" id="inicio">Iniciar</button>
                                 </div>
                               
                             </form>

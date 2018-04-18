@@ -9,6 +9,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { CalendarModule } from 'angular-calendar';
 import { VehicleModule } from './ui/vehicles/vehicle.module';
 import { ChartsModule } from 'ng2-charts';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 // Routing
 import { RouterModule, Routes } from '@angular/router';
@@ -130,7 +131,10 @@ import { FacturacionComponent, FacturacionFormComponent, FacturacionFormNo } fro
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     DataTablesModule,
-    ChartsModule
+    ChartsModule,
+    SimpleNotificationsModule.forRoot({
+      position: ["bottom", "right"]
+    })
   ],
   providers: [
     AuthenticationService,

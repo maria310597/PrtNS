@@ -11,6 +11,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../models/user';
 import { environment } from '../../environments/environment.prod';
+import { NotificationsService } from 'angular2-notifications';
 
 @Injectable()
 export class AuthenticationService {
@@ -32,7 +33,7 @@ export class AuthenticationService {
 
 
   // tslint:disable-next-line:max-line-length
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router, private notify: NotifyService) {
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router, private notifyservice: NotificationsService) {
         this.user = this.afAuth.authState
                 .switchMap((user) => {
                   if (user) {
@@ -48,7 +49,6 @@ export class AuthenticationService {
             private oAuthLogin(provider: firebase.auth.AuthProvider) {
               return this.afAuth.auth.signInWithPopup(provider)
                 .then((credential) => {
-                  this.notify.update('ESTO RULA!!!', 'success');
                   return this.updateUserData(credential.user);
                 })
                 .catch((error) => this.handleError(error) );
@@ -57,7 +57,12 @@ export class AuthenticationService {
             emailSignUp(email: string, password: string, newDate: User) {
               return this.app2.auth().createUserWithEmailAndPassword(email, password)
                 .then((newuser) => {
-                  this.notify.update('Registrado!!!', 'success');
+                  const toast = this.notifyservice.success('Se ha registrado el usuario '+newuser.name+' con éxito.','', {
+                    timeOut: 3000,
+                    showProgressBar: false,
+                    pauseOnHover: true,
+                    clickToClose: true
+                  });
                   this.updateUserData(newuser, newDate);
                   return this.app2.auth().signOut();
                 })
@@ -70,7 +75,6 @@ export class AuthenticationService {
               return this.afAuth.auth.signInWithEmailAndPassword(email, password)
                 .then((user) => {
                   this.loggedIn = true;
-                  this.notify.update('Bienvenido '+ user.realname, 'success');
                   return user; 
                 })
                 .catch((error) => this.handleError(error) );
@@ -79,7 +83,12 @@ export class AuthenticationService {
             resetPassword(email: string) {
               const fbAuth = firebase.auth();
               return fbAuth.sendPasswordResetEmail(email)
-                .then(() => this.notify.update('Password update email sent', 'info'))
+                .then(() =>  this.notifyservice.success('Se ha enviado un correo para resetear la clave.','', {
+                  timeOut: 3000,
+                  showProgressBar: false,
+                  pauseOnHover: true,
+                  clickToClose: true
+                }))
                 .catch((error) => this.handleError(error));
             }
 
@@ -115,7 +124,12 @@ export class AuthenticationService {
                   
                 break;
               }
-              this.notify.update(msg, 'error');
+              const toast = this.notifyservice.error(msg,'', {
+                timeOut: 3000,
+                showProgressBar: false,
+                pauseOnHover: true,
+                clickToClose: true
+              });
               return error;
             }
 

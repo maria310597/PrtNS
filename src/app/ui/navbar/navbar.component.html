@@ -6,15 +6,29 @@
 
 <div *ngIf="myuser | async as myuser" >
     <nav id="navbar" class="navbar navbar-dark sticky-top bg-white  flex-md-nowrap p-0 bb">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" ><img src="/assets/logo-trans.png" width="90%" class="d-inline-block align-top" alt=""></a>
+        <a style="background-color:#badc58" class="navbar-brand col-sm-3 col-md-2 mr-0" ><img src="/assets/logo-trans.png" width="90%" class="d-inline-block align-top" alt=""></a>
       <form (ngSubmit)="onSubmit()" class="form-control-dark w-100" >
-        <input class="form-control form-control-dark w-100 text-dark"  type="text" [(ngModel)]="this.task.description" name="description" placeholder="Añadir recordatorio rapido..." aria-label="Añadir recordatorio rapido...">
+        <input class="form-control form-control-dark w-100 text-dark"  type="text" [(ngModel)]="this.task.description" name="description" placeholder="Añadir recordatorio rápido..." aria-label="Añadir recordatorio rápido...">
       </form>
+      <div  *ngIf="isMobileMenu()" class="row mx-auto">
+          <hr>
+          <div class="col">
+                <app-create-parte></app-create-parte>
+          </div>
+          <div class="col">
+                <app-tasks></app-tasks>  
+          </div>
+         
+            <br>
+            <br>    
+      </div>
         <ul class="navbar-nav px-3 fixdrop ">
+              <li>
                   <div  class="d-inline-block  ">
                     <a [ngbPopover]="menu" placement="left" container="body" popoverTitle="" ><img width="30" height="30" border="1" class="rounded-circle" src="{{myuser.imagen}}"/> </a>
                 
                   </div>
+                </li>
         </ul>
       </nav>
       <div class="container-fluid">
@@ -24,48 +38,40 @@
               <ul class="nav flex-column">
                 <li class="nav-item d-flex justify-content-between align-items-center px-3 mt-4 mb-1 ">
                   <app-create-parte></app-create-parte> <app-tasks></app-tasks>               </li>
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Principal</span>
-                    <a class="d-flex align-items-center text-muted" href="#">
-                      <span data-feather="plus-circle"></span>
-                    </a>
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-white">
+                    <span>Menu principal</span>
                   </h6>
                   <li class="nav-item">
                       <a class="nav-link mm" href="#" routerLink="/dashboard">
-                        <i class="fa fa-dashboard"></i> Inicio
+                        <i class="pe-7s-keypad"></i> Inicio
                       </a>
                     </li>
                   <li *ngIf="myuser.admin" class="nav-item">
                       <a class="nav-link mm" routerLink="/users" href="#">
-                        <i class="fa fa-user"></i> Usuario
+                        <i class="pe-7s-users"></i> Usuario
                       </a>
                     </li>
                   <li class="nav-item">
                       <a class="nav-link mm" href="#" routerLink="/vehicles">
-                        <i class="fa fa-car"></i> Vehículos
+                        <i class="pe-7s-car"></i> Vehículos
                       </a>
                     </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#" routerLink="/company">
-                   <i class="fa fa-briefcase"></i> Empresas
+                   <i class="pe-7s-id"></i> Empresas
                   </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" routerLink="/partes">
-                        <i class="fa fa-sticky-note"></i> Partes
+                        <i class="pe-7s-note2"></i> Partes
                     </a>
                   </li>
               </ul>
-              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>Extras</span>
-                <a class="d-flex align-items-center text-muted" href="#">
-                  <span data-feather="plus-circle"></span>
-                </a>
-              </h6>
+           
               <ul *ngIf="myuser.admin" class="nav flex-column mb-2">
-                <li  class="nav-item">
+                <li  class="nav-item active-pro">
                   <a class="nav-link" href="#" routerLink="/admin">
-                      <i class="fa fa-user"></i> Administracion
+                      <i class="pe-7s-tools"></i> Administracion
                   </a>
                 </li>
  

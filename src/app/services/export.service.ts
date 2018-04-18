@@ -56,6 +56,15 @@ export class ExportService {
     });
 }
 
+
+public exportHoras(){
+  
+}
+
+
+
+
+
   public createPDF(docDefinition : any,filename : string) {
 
   html2canvas(document.querySelector("div.modal-body")).then(function(canvas) {

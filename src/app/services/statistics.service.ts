@@ -142,7 +142,6 @@ export class StatisticsService {
           const partes = pa;
           let partesFiltrados = this.filterPartes(partes,filter);
           if(isAdmin){
-            console.log("Soy admin");
             for(let p of partesFiltrados){
               var date = new Date(p.date.year,p.date.month-1,p.date.day);
               if(p.displacements) final[0]++;
@@ -156,7 +155,6 @@ export class StatisticsService {
          
             }
          }else {
-           console.log("No soy admin");
           for(let p of partesFiltrados){
           if(p.createdby == uid){
             if(p.cocheParticular) final[0] += p.km;

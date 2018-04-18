@@ -13,6 +13,7 @@ import { NotifyService } from './notify.service';
 import { User } from '../models/user';
 import { Frase } from '../models/frase';
 import { FrasesService } from '../services/frases.service';
+import { NotificationsService } from 'angular2-notifications';
 
 interface Backup{
   reports: Report[];
@@ -31,7 +32,7 @@ export class AdminToolsService {
               private companyService: CompanyService,
               private frasService: FrasesService,
               private sanitizer: DomSanitizer,
-              private notifyService: NotifyService) { }
+              private notifyService: NotificationsService) { }
 
 
 
@@ -100,7 +101,12 @@ export class AdminToolsService {
     
       // TODO Añadimos users
       // Faltan cosas de implementar para añadir usuarios tan facil
-      this.notifyService.update("Se han añadido " + regis + " a la base de datos.",'success');
+      this.notifyService.success("Se han añadido " + regis + " a la base de datos.",'', {
+        timeOut: 3000,
+        showProgressBar: false,
+        pauseOnHover: true,
+        clickToClose: true
+      });
       this.importando = false;
   }
 

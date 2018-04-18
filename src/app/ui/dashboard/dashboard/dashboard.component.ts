@@ -9,6 +9,7 @@ import {DashboardMiniWidgetsComponent} from '../dashboard-mini-widgets/dashboard
 import { Estadistica } from '../../../models/estadistica';
 import { FrasesService } from '../../../services/frases.service';
 import { Frase } from '../../../models/frase';
+import { NotificationsService } from 'angular2-notifications';
 
 
 
@@ -20,8 +21,10 @@ import { Frase } from '../../../models/frase';
 export class DashboardComponent implements OnInit {
   privateIP;
   frase: Observable<Frase>;
-  constructor(private auth: AuthenticationService, private pService: PartesService, private stadService: StatisticsService, private fService: FrasesService) { }
+  constructor(private _service: NotificationsService,private auth: AuthenticationService, private pService: PartesService, private stadService: StatisticsService, private fService: FrasesService) { }
   ngOnInit() {
       this.frase = this.fService.getFrases();
   }
+
+
 }

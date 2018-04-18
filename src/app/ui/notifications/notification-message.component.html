@@ -1,6 +1,4 @@
-<div class="row" style="margin-right:2%;margin-top:1%">
-  <div class="col-md-4 col-md-offset-4"></div>
-  <div class="col-md-4 col-md-offset-4"></div>
+<div class="row notification" style="margin-right:2%;margin-top:1%">
 <div *ngIf="notify.msg | async as msg" class="alert col-md-4 col-md-offset-4 	position:absolute; z-index: 10 ;"
   [ngClass]="{ 
     'alert-danger': msg.style == 'error',

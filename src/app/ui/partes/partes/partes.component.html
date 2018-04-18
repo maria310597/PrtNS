@@ -58,16 +58,16 @@
         <th>Fecha</th>
         <th>Hora de inicio</th>
         <th>
-          <i aria-hidden class="fa fa-clock-o" title="duracion"></i>
+          <i aria-hidden class="fa fa-clock-o" ></i>
           <span class="sr-only">duracion</span>
 
         </th>
         <th>
-          <i aria-hidden class="fa fa-road" title="km" ></i>
+          <i aria-hidden class="fa fa-road"  ></i>
           <span class="sr-only">Kilometros</span>
         </th>
         <th>
-          <i aria-hidden class="fa fa-car" title="coche particular"></i>
+          <i aria-hidden class="fa fa-car"></i>
           <span class="sr-only">coche particular</span>
         </th>
         <th>Desplazamiento</th>
@@ -84,19 +84,23 @@
         <td>{{ ((parte.dEnd.hour*60)+(parte.dEnd.minute)) - (parte.dBegining.hour*60 + parte.dBegining.minute) }} minutos </td>
         <td>{{ parte.km }} km</td>
         <td >
-           
-          <i *ngIf="parte.cocheParticular"  aria-hidden class="fa fa-check-square" title="si"></i>
-          <span class="sr-only">si</span>
-          <i *ngIf="!parte.cocheParticular" aria-hidden class="fa fa-times" title="no" ></i>
-          <span class="sr-only">no</span>
+           <a *ngIf="parte.cocheParticular">
+            <i aria-hidden class="fa fa-check-square" ></i>
+            <span class="sr-only">si</span>
+           </a>
+         <a *ngIf="!parte.cocheParticular">
+            <i  aria-hidden class="fa fa-times" ></i>
+            <span class="sr-only">no</span>
+         </a>
+          
         </td>
         <td >
-           <a aria-label="si">
-          <i *ngIf="parte.displacements" aria-hidden class="fa fa-check-square"  title="si">  </i>
+           <a *ngIf="parte.displacements" >
+          <i  aria-hidden class="fa fa-check-square">  </i>
           <span class="sr-only">si</span>
         </a>
-          <a>
-          <i *ngIf="!parte.displacements" aria-hidden class="fa fa-times" title="no" ></i>
+          <a *ngIf="!parte.displacements">
+          <i  aria-hidden class="fa fa-times"  ></i>
           <span class="sr-only">no</span>
         </a>
         </td>
