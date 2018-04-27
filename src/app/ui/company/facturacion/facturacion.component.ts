@@ -56,7 +56,7 @@ export class FacturacionFormComponent implements OnInit{
               this.mypartes.push(p);
             }
           }
-         console.log(this.mypartes)
+         
           
           this.getTotal();
           this.getHorasFinSemana();

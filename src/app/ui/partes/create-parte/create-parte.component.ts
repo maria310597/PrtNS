@@ -387,6 +387,7 @@ duracionM: number= 0;
         var h = this.parte.duracion / 60;
         this.duracionH = Math.trunc(h);
         this.duracionM = this.parte.duracion % 60;
+        this.comments = this.model.notes.length;
      }
 
     
